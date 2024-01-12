@@ -1,0 +1,39 @@
+/* eslint-disable react/no-unstable-nested-components */
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import { StatusBar } from 'react-native';
+import RootNavigator from './root-navigator';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
+import { ToastError, ToastSuccess } from '@/components';
+import { navigationRef } from '@/helpers/GlobalNavigation';
+
+export const AppContainer = () => {
+  const navTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      // background: theme.colors.backgroundColor,
+    },
+  };
+
+  const toastConfig: any = {
+    successMessage: ({ props }: { props: { message: string } }) => (
+      <ToastSuccess message={props.message} />
+    ),
+    errorMessage: ({ props }: { props: { message: string } }) => (
+      <ToastError message={props.message} />
+    ),
+  };
+
+  return (
+    <SafeAreaProvider>
+      <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
+      <NavigationContainer ref={navigationRef} theme={navTheme}>
+        <StatusBar translucent backgroundColor={'transparent'} barStyle={'dark-content'} />
+        <RootNavigator />
+      </NavigationContainer>
+      <Toast config={toastConfig} position='bottom' />
+    </SafeAreaProvider>
+  );
+};
