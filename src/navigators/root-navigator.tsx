@@ -4,10 +4,18 @@ import { headerOptions } from './config-header';
 import { APP_SCREEN, TRootStackParamList } from './screen-types';
 import SignIn from '@/screens/Auth/SignIn';
 import { BottomTab } from './bottom-tab';
+import BootSplash from 'react-native-bootsplash';
 
 const RootStack = createStackNavigator<TRootStackParamList>();
 
 const RootNavigator = React.memo(() => {
+  React.useEffect(() => {
+    const splash = setTimeout(() => {
+      BootSplash.hide({ fade: true });
+    }, 1000);
+    return () => clearTimeout(splash);
+  }, []);
+
   return (
     <>
       {false ? (
