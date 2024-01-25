@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { headerOptions } from './config-header';
 import { APP_SCREEN, TRootStackParamList } from './screen-types';
-import SignIn from '@/screens/Auth/SignIn';
+import SignIn from '@/screens/Auth/SignInScreen';
 import { BottomTab } from './bottom-tab';
 import BootSplash from 'react-native-bootsplash';
 

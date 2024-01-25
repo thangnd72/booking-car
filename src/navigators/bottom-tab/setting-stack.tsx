@@ -1,5 +1,5 @@
 import { APP_SCREEN, TRootStackParamList } from '@/navigators/screen-types';
-import SignIn from '@/screens/Auth/SignIn';
+import SignIn from '@/screens/Auth/SignInScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { headerOptions } from '@/navigators/config-header';
 

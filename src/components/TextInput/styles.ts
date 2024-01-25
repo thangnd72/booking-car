@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
   },
   label: {
     flexDirection: 'row',
+    marginBottom: 4,
   },
   leftLabel: {
     flex: 1,

@@ -1,3 +1,7 @@
+import { EAuthToken } from '@/common/constants';
+import { reset } from '@/helpers/GlobalNavigation';
+import ResponseError, { TErrorData } from '@/interfaces/error.interface';
+import { APP_SCREEN } from '@/navigators/screen-types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios, {
   AxiosError,
@@ -6,11 +10,6 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios';
 import Config from 'react-native-config';
-
-import ResponseError, { TErrorData } from '@/interfaces/error.interface';
-import { EAuthToken } from '@/interfaces/auth.interfaces';
-import { APP_SCREEN } from '@/navigators/screen-types';
-import { reset } from '@/helpers/GlobalNavigation';
 
 const axiosInstance = axios.create({ baseURL: Config.API_URL });
 

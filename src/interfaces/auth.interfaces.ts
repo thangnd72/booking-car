@@ -1,3 +1,4 @@
-export enum EAuthToken {
-  ACCESS_TOKEN = 'access_token',
+export interface ILoginFormData {
+  phoneNumber: string;
+  password: string;
 }

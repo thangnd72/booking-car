@@ -82,6 +82,7 @@ export const Button = (props: IButtonProps) => {
     shadow,
     children,
     horizontal,
+    activeOpacity,
     ...rest
   } = props;
 
@@ -126,7 +127,7 @@ export const Button = (props: IButtonProps) => {
   ];
 
   return (
-    <TouchableOpacity style={[styleComponent]} {...rest}>
+    <TouchableOpacity style={[styleComponent]} {...rest} activeOpacity={activeOpacity || 0.8}>
       {children || <Text />}
     </TouchableOpacity>
   );

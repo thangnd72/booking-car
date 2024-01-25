@@ -17,18 +17,18 @@ import {
 import { ETypeField } from './types';
 import { styles } from './styles';
 import { TextField } from '../TextField';
+import { Control, Controller, FieldValues, RegisterOptions } from 'react-hook-form';
 
-interface ITextInputComponentProps {
+interface ITextInputComponentProps extends TextInputProps {
+  name: string;
   leftLabel?: string;
   rightLabel?: string;
   placeHolder?: string;
-  textValue?: string;
   onChangeValue?: (text: string) => void;
   keyboardType?: KeyboardTypeOptions;
   customTextInputStyle?: Pick<TextInputProps, 'style'>;
   multiline?: boolean;
   numberOfLines?: number;
-  errorMessage?: string | boolean;
   onSubmitEditing?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
   type?: ETypeField;
   editable?: boolean;
@@ -36,10 +36,14 @@ interface ITextInputComponentProps {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   wrapperStyle?: ViewStyle;
+  rules?: RegisterOptions<FieldValues, string>;
+  required?: boolean;
+  control: Control<any>;
 }
 
 export const TextInputField: React.FC<ITextInputComponentProps> = React.memo(
   ({
+    name,
     leftLabel,
     rightLabel,
     placeHolder,
@@ -48,25 +52,21 @@ export const TextInputField: React.FC<ITextInputComponentProps> = React.memo(
     customTextInputStyle,
     multiline = false,
     numberOfLines,
-    errorMessage,
     onSubmitEditing,
     type = ETypeField.TEXT,
     editable = true,
-    textValue,
     onPressIn,
     iconRight,
     iconLeft,
     wrapperStyle,
+    rules,
+    required,
+    control,
+    ...restProps
   }) => {
     const [hidden, setHidden] = React.useState(false);
-    const [value, setValueChange] = React.useState('');
+    const [isFocus, setIsFocus] = React.useState<boolean>(false);
 
-    const _handleOnchangeText = (string: string) => {
-      setValueChange(string);
-      if (onChangeValue) {
-        onChangeValue(string);
-      }
-    };
     const _handleShowPassword = () => {
       setHidden(!hidden);
     };
@@ -104,29 +104,44 @@ export const TextInputField: React.FC<ITextInputComponentProps> = React.memo(
           {leftLabel && <TextField style={styles.leftLabel}>{leftLabel}</TextField>}
           {rightLabel && <TextField style={styles.rightLabel}>{rightLabel}</TextField>}
         </View>
-        <View style={containerStyle}>
-          {iconLeft && <View style={styles.iconRight}>{iconLeft}</View>}
-          <TextInput
-            value={textValue && textValue !== '' ? textValue : value}
-            keyboardType={keyboardType as any}
-            placeholderTextColor={theme.colors.lightOneColor}
-            style={[textInputStyle]}
-            onChangeText={_handleOnchangeText}
-            placeholder={placeHolder}
-            multiline={multiline}
-            secureTextEntry={type === ETypeField.PASSWORD && !hidden && true}
-            editable={editable ?? true}
-            onSubmitEditing={onSubmitEditing}
-            onPressIn={onPressIn}
-          />
-          {type === ETypeField.PASSWORD && (
-            <Pressable style={styles.iconRight} onPress={_handleShowPassword}>
-              {ShowHidePasswordIcon({ show: hidden })}
-            </Pressable>
+        <Controller
+          control={control}
+          rules={{ ...rules, required: required ? 'This field is required' : false }}
+          render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+            <>
+              <View style={containerStyle}>
+                {iconLeft && <View style={styles.iconRight}>{iconLeft}</View>}
+                <TextInput
+                  value={value}
+                  keyboardType={keyboardType as any}
+                  placeholderTextColor={theme.colors.lightOneColor}
+                  style={[textInputStyle]}
+                  onBlur={() => {
+                    onBlur();
+                    setIsFocus(false);
+                  }}
+                  onFocus={() => setIsFocus(true)}
+                  onChangeText={onChange}
+                  placeholder={placeHolder}
+                  multiline={multiline}
+                  secureTextEntry={type === ETypeField.PASSWORD && !hidden && true}
+                  editable={editable ?? true}
+                  onSubmitEditing={onSubmitEditing}
+                  onPressIn={onPressIn}
+                  {...restProps}
+                />
+                {type === ETypeField.PASSWORD && (
+                  <Pressable style={styles.iconRight} onPress={_handleShowPassword}>
+                    {ShowHidePasswordIcon({ show: hidden })}
+                  </Pressable>
+                )}
+                {iconRight && <View style={styles.iconRight}>{iconRight}</View>}
+              </View>
+              {error?.message ? <Text style={styles.errorText}>{error?.message}</Text> : null}
+            </>
           )}
-          {iconRight && <View style={styles.iconRight}>{iconRight}</View>}
-        </View>
-        {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
+          name={name}
+        />
       </View>
     );
   },
