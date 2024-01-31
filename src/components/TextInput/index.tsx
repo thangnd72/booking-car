@@ -106,7 +106,7 @@ export const TextInputField: React.FC<ITextInputComponentProps> = React.memo(
         </View>
         <Controller
           control={control}
-          rules={{ ...rules, required: required ? 'This field is required' : false }}
+          rules={{ ...rules }}
           render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
             <>
               <View style={containerStyle}>

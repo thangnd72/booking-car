@@ -87,7 +87,7 @@ export const Button = (props: IButtonProps) => {
   } = props;
 
   const styleComponent = [
-    flex && { height: '100%', width: '100%' },
+    flex && { flex },
     m && { margin: SIZE.scaleH(m) },
     mv && { marginVertical: SIZE.scaleH(mv) },
     mh && { marginHorizontal: SIZE.scaleW(mh) },

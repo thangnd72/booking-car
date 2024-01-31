@@ -5,7 +5,7 @@ import theme from '@/helpers/theme';
 export const styles = StyleSheet.create({
   container: {
     height: 52,
-    borderRadius: 10,
+    borderRadius: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

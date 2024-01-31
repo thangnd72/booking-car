@@ -1,5 +1,6 @@
 enum Colors {
-  primary = '#ff8b99',
+  primary = '#333333',
+  secondary = '#E83E33',
   bgTabBar = 'rgb(255,243,246)',
   mainDarkerColor = '#F18916',
   mainLighterColor = '#FFB767',
@@ -18,6 +19,7 @@ enum Colors {
   lightThreeColor = '#ECECEC',
   lightFourColor = '#F9F9F9',
   lightFiveColor = '#FFFFFF',
+  lightSixColor = '#F2F2F2',
   greenOneColor = '#e0f5e5',
   greenTwoColor = '#93dba3',
   backgroundColor = '#FFFFFF',

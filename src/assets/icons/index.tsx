@@ -9,7 +9,15 @@ import EyeOffIcon from './eye-off.svg';
 import EyeIcon from './eye.svg';
 import HomeActiveIcon from './home-active.svg';
 import HomeInactiveIcon from './home-inactive.svg';
+import LockIcon from './lock.svg';
+import LogoApp from './logo.svg';
+import NotificationIcon from './notification.svg';
+import OrderActive from './order-active.svg';
+import OrderInactive from './order-inactive.svg';
+import ProfileActive from './profile-active.svg';
+import ProfileInactive from './profile-inactive.svg';
 import UncheckIcon from './uncheck.svg';
+import UserIcon from './user.svg';
 
 const ShowHidePasswordIcon = ({ show = false }: { show: boolean }) =>
   show ? <EyeIcon /> : <EyeOffIcon />;
@@ -23,6 +31,14 @@ export {
   ErrorAroundIcon,
   HomeActiveIcon,
   HomeInactiveIcon,
+  LockIcon,
+  LogoApp,
+  NotificationIcon,
+  OrderActive,
+  OrderInactive,
+  ProfileActive,
+  ProfileInactive,
   ShowHidePasswordIcon,
   UncheckIcon,
+  UserIcon,
 };

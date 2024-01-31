@@ -3,14 +3,26 @@ import { useCallback } from 'react';
 import { Box, Button, Spacer, TextField } from '@/components';
 import { APP_SCREEN } from '@/navigators/screen-types';
 import theme from '@/helpers/theme';
-import { HomeActiveIcon, HomeInactiveIcon } from '@/assets/icons';
+import {
+  HomeActiveIcon,
+  HomeInactiveIcon,
+  OrderActive,
+  OrderInactive,
+  ProfileActive,
+  ProfileInactive,
+} from '@/assets/icons';
+import { SIZE } from '@/helpers/size';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
+import { TRootState, useAppDispatch } from '@/stores';
+import { setShowDialog } from '@/stores/client';
 
 const titleBottom = (route: string) => {
   switch (route) {
     case APP_SCREEN.HOME_STACK:
       return 'Trang chủ';
     case APP_SCREEN.ORDER_STACK:
-      return 'Điện hoa';
+      return 'Đặt hoa theo ngày';
     case APP_SCREEN.NOTIFICATION_STACK:
       return 'Thông báo';
     case APP_SCREEN.SETTING_STACK:
@@ -26,11 +38,11 @@ const IconActive = (route: any) => {
     case APP_SCREEN.HOME_STACK:
       return <HomeActiveIcon />;
     case APP_SCREEN.ORDER_STACK:
-      return <HomeActiveIcon />;
+      return <OrderActive />;
     case APP_SCREEN.NOTIFICATION_STACK:
       return <HomeActiveIcon />;
     case APP_SCREEN.SETTING_STACK:
-      return <HomeActiveIcon />;
+      return <ProfileActive />;
 
     default:
       return <HomeActiveIcon />;
@@ -42,11 +54,11 @@ const IconInActive = (route: any) => {
     case APP_SCREEN.HOME_STACK:
       return <HomeInactiveIcon />;
     case APP_SCREEN.ORDER_STACK:
-      return <HomeInactiveIcon />;
+      return <OrderInactive />;
     case APP_SCREEN.NOTIFICATION_STACK:
       return <HomeInactiveIcon />;
     case APP_SCREEN.SETTING_STACK:
-      return <HomeInactiveIcon />;
+      return <ProfileInactive />;
 
     default:
       return <HomeInactiveIcon />;
@@ -55,6 +67,9 @@ const IconInActive = (route: any) => {
 
 export const TabBar = (prop: any) => {
   const { state, navigation } = prop;
+  const insets = useSafeAreaInsets();
+  const dispatch = useAppDispatch();
+  const { accessToken } = useSelector((state: TRootState) => state.client);
 
   const onPress = useCallback(
     (routeKey: string, routeName: string, isFocused: boolean) => {
@@ -64,7 +79,12 @@ export const TabBar = (prop: any) => {
       });
 
       if (!isFocused && !event.defaultPrevented) {
-        navigation.navigate(routeName);
+        if (!accessToken) {
+          dispatch(setShowDialog(true));
+          console.log('RUN');
+        } else {
+          navigation.navigate(routeName);
+        }
       }
     },
     [navigation],
@@ -82,13 +102,14 @@ export const TabBar = (prop: any) => {
 
   return (
     <Box
-      h={85}
-      pb={10}
+      h={70}
       ph={16}
       direction='row'
       between
-      borderTopColor='#ECECEC'
-      borderTopWidth={0.5}
+      borderRadius={16}
+      color={theme.colors.primary}
+      mh={10}
+      mb={insets.bottom}
     >
       {state.routes.map((route: any, index: number) => {
         const label = titleBottom(route.name);
@@ -96,7 +117,6 @@ export const TabBar = (prop: any) => {
         return (
           <Button
             key={route.key}
-            // flex={1}
             alignSelf='center'
             middle
             onPress={() => onPress(route.key, route.name, isFocused)}
@@ -106,8 +126,8 @@ export const TabBar = (prop: any) => {
             <Spacer height={5} />
             <TextField
               size={11}
-              fontFamily={isFocused ? 'bold' : 'regular'}
-              color={isFocused ? theme.colors.primary : theme.colors.greenTwoColor}
+              fontFamily={isFocused ? theme.fonts.bold : theme.fonts.regular}
+              color={isFocused ? theme.colors.secondary : theme.colors.lightSixColor}
             >
               {label}
             </TextField>

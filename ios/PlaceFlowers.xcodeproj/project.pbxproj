@@ -18,7 +18,7 @@
 		7699B88040F8A987B510C191 /* libPods-PlaceFlowers-PlaceFlowersTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-PlaceFlowers-PlaceFlowersTests.a */; };
 		90FFA39DF74D41E689968D8E /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2425069AC440918CB511B5 /* Roboto-Italic.ttf */; };
 		A93C1C6B0D34410481A2668B /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3373C16BA58741E39218C992 /* Roboto-Light.ttf */; };
-		CFA228872B60FF7E00C2E0B1 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA228862B60FF7E00C2E0B1 /* BootSplash.storyboard */; };
+		CF8997C62B69E82F0033807D /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8997C52B69E82E0033807D /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		5B7EB9410499542E8C5724F5 /* Pods-PlaceFlowers-PlaceFlowersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaceFlowers-PlaceFlowersTests.debug.xcconfig"; path = "Target Support Files/Pods-PlaceFlowers-PlaceFlowersTests/Pods-PlaceFlowers-PlaceFlowersTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-PlaceFlowers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlaceFlowers.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-PlaceFlowers-PlaceFlowersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaceFlowers-PlaceFlowersTests.release.xcconfig"; path = "Target Support Files/Pods-PlaceFlowers-PlaceFlowersTests/Pods-PlaceFlowers-PlaceFlowersTests.release.xcconfig"; sourceTree = "<group>"; };
-		CFA228862B60FF7E00C2E0B1 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = ../../../Desktop/BootSplash.storyboard; sourceTree = "<group>"; };
+		CF8997C52B69E82E0033807D /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = PlaceFlowers/BootSplash.storyboard; sourceTree = "<group>"; };
 		E649A207229046C28A588CAB /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FB3CBAFD4F404D83B32DCEED /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		13B07FAE1A68108700A75B9A /* PlaceFlowers */ = {
 			isa = PBXGroup;
 			children = (
-				CFA228862B60FF7E00C2E0B1 /* BootSplash.storyboard */,
+				CF8997C52B69E82E0033807D /* BootSplash.storyboard */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -266,7 +266,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				0ECDB064BB114B469A06A34C /* Roboto-Bold.ttf in Resources */,
-				CFA228872B60FF7E00C2E0B1 /* BootSplash.storyboard in Resources */,
+				CF8997C62B69E82F0033807D /* BootSplash.storyboard in Resources */,
 				90FFA39DF74D41E689968D8E /* Roboto-Italic.ttf in Resources */,
 				A93C1C6B0D34410481A2668B /* Roboto-Light.ttf in Resources */,
 				70CA04A4F07040289AB313C1 /* Roboto-Medium.ttf in Resources */,
