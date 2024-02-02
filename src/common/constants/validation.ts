@@ -6,12 +6,11 @@ export const validationSchema = {
 };
 
 export const validationError = {
-  email: 'Invalid email address',
-  password:
-    'Password must be 8 to 30 characters and include at least one number and one capital letter.',
+  email: 'Địa chỉ email không hợp lệ.',
+  password: 'Mật khẩu phải có từ 8 đến 30 ký tự và bao gồm ít nhất một số và một chữ in hoa.',
   number: 'This field must be a number',
-  phoneNumber: 'Phone number is invalid.',
+  phoneNumber: 'Vui lòng nhập số điện thoại!',
   maxLength: (length: number = 30) => {
-    return `This field cannot be longer than ${length} characters.`;
+    return `Không thể dài hơn ${length} ký tự.`;
   },
 };

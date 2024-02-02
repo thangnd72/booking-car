@@ -81,7 +81,6 @@ export const TabBar = (prop: any) => {
       if (!isFocused && !event.defaultPrevented) {
         if (!accessToken) {
           dispatch(setShowDialog(true));
-          console.log('RUN');
         } else {
           navigation.navigate(routeName);
         }

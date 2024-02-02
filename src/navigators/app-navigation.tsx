@@ -5,7 +5,7 @@ import { StatusBar } from 'react-native';
 import RootNavigator from './root-navigator';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
-import { ToastError, ToastSuccess } from '@/components';
+import { LoadingScreen, ToastError, ToastSuccess } from '@/components';
 import { navigationRef } from '@/helpers/GlobalNavigation';
 import { PortalHost } from '@gorhom/portal';
 import { AuthPopup } from '@/shared/AuthPopup';
@@ -36,8 +36,9 @@ export const AppContainer = () => {
         <RootNavigator />
         <PortalHost name={'AppModal'} />
       </NavigationContainer>
-      <Toast config={toastConfig} position='bottom' />
+      <Toast config={toastConfig} position='top' />
       <AuthPopup />
+      <LoadingScreen />
     </SafeAreaProvider>
   );
 };

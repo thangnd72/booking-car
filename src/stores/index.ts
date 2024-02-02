@@ -7,7 +7,7 @@ import allReducer from './all-reducer';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: [''],
+  whitelist: ['client'],
 };
 
 const persistedReducer = persistReducer(persistConfig, allReducer);

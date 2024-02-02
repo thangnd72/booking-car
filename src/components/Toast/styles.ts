@@ -3,17 +3,18 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    maxWidth: 358,
+    // maxWidth: 358,
+    minHeight: 50,
     paddingHorizontal: 10,
     paddingVertical: 16,
     borderRadius: 8,
-    backgroundColor: theme.colors.bgSuccessColor,
+    backgroundColor: theme.colors.lightFiveColor,
     display: 'flex',
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  txt: {
-    marginLeft: 6,
+    borderLeftColor: theme.colors.successColor,
+    borderLeftWidth: 4,
   },
 });
 

@@ -18,6 +18,7 @@ import { ETypeField } from './types';
 import { styles } from './styles';
 import { TextField } from '../TextField';
 import { Control, Controller, FieldValues, RegisterOptions } from 'react-hook-form';
+import { Box } from '../Box';
 
 interface ITextInputComponentProps extends TextInputProps {
   name: string;
@@ -39,6 +40,7 @@ interface ITextInputComponentProps extends TextInputProps {
   rules?: RegisterOptions<FieldValues, string>;
   required?: boolean;
   control: Control<any>;
+  showRequiredMark?: boolean;
 }
 
 export const TextInputField: React.FC<ITextInputComponentProps> = React.memo(
@@ -62,6 +64,7 @@ export const TextInputField: React.FC<ITextInputComponentProps> = React.memo(
     rules,
     required,
     control,
+    showRequiredMark = false,
     ...restProps
   }) => {
     const [hidden, setHidden] = React.useState(false);
@@ -101,7 +104,12 @@ export const TextInputField: React.FC<ITextInputComponentProps> = React.memo(
     return (
       <View style={wrapperStyle}>
         <View style={styles.label}>
-          {leftLabel && <TextField style={styles.leftLabel}>{leftLabel}</TextField>}
+          {leftLabel && (
+            <Box flex direction='row'>
+              <TextField style={styles.leftLabel}>{leftLabel}</TextField>
+              {showRequiredMark && <Text style={{ color: theme.colors.errorColor }}> *</Text>}
+            </Box>
+          )}
           {rightLabel && <TextField style={styles.rightLabel}>{rightLabel}</TextField>}
         </View>
         <Controller

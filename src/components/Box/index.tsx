@@ -40,6 +40,7 @@ export interface IBoxProps extends ViewProps {
   shadow?: boolean;
   horizontal?: boolean;
   flexGrow?: number;
+  gap?: number;
 }
 
 export const Box = (props: IBoxProps) => {
@@ -81,10 +82,11 @@ export const Box = (props: IBoxProps) => {
     children,
     horizontal,
     flexGrow,
+    gap,
     ...rest
   } = props;
   const styleComponent = [
-    flex && { flex: 1 },
+    flex && { flex },
     flexGrow && { flexGrow: flexGrow },
     m && { margin: SIZE.scaleH(m) },
     mv && { marginVertical: SIZE.scaleH(mv) },
@@ -118,6 +120,7 @@ export const Box = (props: IBoxProps) => {
     middle && { alignItems: 'center' },
     borderRadius && { borderRadius },
     horizontal && { flexDirection: 'row' },
+    gap && { gap },
     shadow && {
       shadowOpacity: 0.22,
       shadowRadius: 15,

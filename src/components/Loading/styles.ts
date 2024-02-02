@@ -1,11 +1,19 @@
+import theme from '@/helpers/theme';
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
+export const styles = StyleSheet.create({
+  containLoading: {
+    backgroundColor: theme.colors.modalColor,
     justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  lottieView: {
+    width: 50,
+    height: 50,
   },
 });
-
-export default styles;

@@ -1,4 +1,5 @@
 import { EAuthToken } from '@/common/constants';
+import { API_URL } from '@/common/constants/urls';
 import { reset } from '@/helpers/GlobalNavigation';
 import ResponseError, { TErrorData } from '@/interfaces/error.interface';
 import { APP_SCREEN } from '@/navigators/screen-types';
@@ -9,9 +10,8 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
-import Config from 'react-native-config';
 
-const axiosInstance = axios.create({ baseURL: Config.API_URL });
+const axiosInstance = axios.create({ baseURL: API_URL });
 
 const requestHandler = async (config: AxiosRequestConfig) => {
   const accessToken = await AsyncStorage.getItem(EAuthToken.ACCESS_TOKEN);
@@ -23,6 +23,7 @@ const requestHandler = async (config: AxiosRequestConfig) => {
   config.headers = configHeaders;
   config.params = {
     ...config.params,
+    version: Date.now(),
   };
   return config as InternalAxiosRequestConfig<any>;
 };

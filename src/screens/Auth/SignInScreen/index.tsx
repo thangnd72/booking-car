@@ -1,23 +1,42 @@
-import { LockIcon, LogoApp, UserIcon } from '@/assets/icons';
+import { LockIcon, UserIcon } from '@/assets/icons';
 import { validationError, validationSchema } from '@/common';
-import { Box, Button, Modal, Spacer, TextField, TextInputField } from '@/components';
+import { Box, Button, Spacer, TextField, TextInputField } from '@/components';
 import { ETypeField } from '@/components/TextInput/types';
-import { SIZE } from '@/helpers/size';
+import { navigate } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
+import { showError, showSuccess } from '@/helpers/toast';
 import { ILoginFormData } from '@/interfaces/auth.interfaces';
+import { APP_SCREEN } from '@/navigators/screen-types';
+import { useAppDispatch } from '@/stores';
+import { logInAction } from '@/stores/auth';
+import { setGlobalLoading } from '@/stores/client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { SlideInDown, SlideOutDown } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const SignInScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
+  const dispatch = useAppDispatch();
   const { control, handleSubmit } = useForm<ILoginFormData>({
-    defaultValues: { phoneNumber: '', password: '' },
+    defaultValues: { username: '', password: '' },
   });
 
   const signIn = (values: ILoginFormData) => {
-    console.log('values', values);
+    dispatch(setGlobalLoading(true));
+    dispatch(
+      logInAction({
+        ...values,
+        onSuccess: () => {
+          showSuccess('Đăng nhập thành công!');
+          dispatch(setGlobalLoading(false));
+          navigate(APP_SCREEN.HOME);
+        },
+        onError: (err) => {
+          dispatch(setGlobalLoading(false));
+          showError(err.message);
+        },
+      }),
+    );
   };
 
   return (
@@ -30,7 +49,7 @@ const SignInScreen: React.FC = () => {
         leftLabel='Số điện thoại'
         iconLeft={<UserIcon width={20} height={20} />}
         control={control}
-        name='phoneNumber'
+        name='username'
         keyboardType='numeric'
         required
         rules={{
@@ -66,16 +85,15 @@ const SignInScreen: React.FC = () => {
         borderRadius={8}
         mv={32}
       >
-        <TextField
-          size={SIZE.fontPixel(16)}
-          color={theme.colors.lightSixColor}
-          fontFamily={theme.fonts.medium}
-        >
+        <TextField size={16} color={theme.colors.lightSixColor} fontFamily={theme.fonts.medium}>
           Đăng nhập
         </TextField>
       </Button>
       <TextField centered>
-        Bạn chưa có tài khoản? <TextField color={theme.colors.secondary}>Đăng ký</TextField>
+        Bạn chưa có tài khoản?{' '}
+        <TextField color={theme.colors.secondary} onPress={() => navigate(APP_SCREEN.SIGN_UP)}>
+          Đăng ký
+        </TextField>
       </TextField>
     </Box>
   );

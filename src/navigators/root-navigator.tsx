@@ -25,13 +25,13 @@ const RootNavigator = React.memo(() => {
   return (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
       <RootStack.Screen name={APP_SCREEN.BOTTOM_TAB} component={BottomTab} />
-      <RootStack.Screen name={APP_SCREEN.SIGN_UP} component={SignUpScreen} />
       <RootStack.Group
         screenOptions={{
           presentation: 'modal',
         }}
       >
         <RootStack.Screen name={APP_SCREEN.LOGIN} component={SignIn} />
+        <RootStack.Screen name={APP_SCREEN.SIGN_UP} component={SignUpScreen} />
       </RootStack.Group>
     </RootStack.Navigator>
   );

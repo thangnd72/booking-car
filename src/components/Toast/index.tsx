@@ -4,6 +4,7 @@ import styles from './styles';
 import theme from '@/helpers/theme';
 import { CheckedAroundIcon, ErrorAroundIcon } from '@/assets/icons';
 import { TextField } from '../TextField';
+import { Box } from '../Box';
 
 interface IToastSuccess {
   message: string;
@@ -12,8 +13,8 @@ interface IToastSuccess {
 export const ToastSuccess = ({ message }: IToastSuccess) => {
   return (
     <View style={styles.container}>
-      <CheckedAroundIcon fill={theme.colors.lightFourColor} />
-      <TextField style={styles.txt}>{message}</TextField>
+      <CheckedAroundIcon fill={theme.colors.lightFiveColor} width={20} height={20} />
+      <TextField color={theme.colors.primary}>{message}</TextField>
     </View>
   );
 };
@@ -24,9 +25,11 @@ interface IToastError {
 
 export const ToastError = ({ message }: IToastError) => {
   return (
-    <View style={[styles.container, { backgroundColor: theme.colors.bgErrorColor }]}>
-      <ErrorAroundIcon fill={theme.colors.lightFiveColor} />
-      <TextField style={[styles.txt, { color: theme.colors.lightFiveColor }]}>{message}</TextField>
+    <View
+      style={[styles.container, { borderLeftWidth: 4, borderLeftColor: theme.colors.errorColor }]}
+    >
+      <ErrorAroundIcon fill={theme.colors.lightFiveColor} width={20} height={20} />
+      <TextField color={theme.colors.primary}>{message}</TextField>
     </View>
   );
 };

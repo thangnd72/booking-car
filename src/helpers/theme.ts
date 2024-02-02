@@ -7,7 +7,7 @@ enum Colors {
   mainSubtleColor = '#FFEBD5',
   errorColor = '#EF2828',
   infoColor = '#0D67ED',
-  successColor = '#0FDE82',
+  successColor = '#6ec05e',
   darkOneColor = '#333333',
   darkTwoColor = '#595F6A',
   darkThreeColor = '#c6c6c6',

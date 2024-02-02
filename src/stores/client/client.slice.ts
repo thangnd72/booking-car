@@ -4,12 +4,14 @@ type TClientState = {
   profile?: any;
   accessToken?: string;
   showDialog: boolean;
+  loading: boolean;
 };
 
 const initialState: TClientState = {
   profile: undefined,
   accessToken: '',
   showDialog: false,
+  loading: false,
 };
 
 export const clientSlice = createSlice({
@@ -21,6 +23,12 @@ export const clientSlice = createSlice({
     },
     setShowDialog: (state, { payload }) => {
       state.showDialog = payload;
+    },
+    setProfile: (state, { payload }) => {
+      state.profile = payload;
+    },
+    setGlobalLoading: (state, { payload }) => {
+      state.loading = payload;
     },
   },
   extraReducers(builder) {

@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { ArrowLeftIcon } from '@/assets/icons';
+import { BackIcon } from '@/assets/icons';
 import { Box } from '@/components';
 import { SIZE } from '@/helpers/size';
 import theme from '@/helpers/theme';
@@ -15,7 +15,7 @@ const HeaderBack = () => (
     }}
     pl={20}
   >
-    <ArrowLeftIcon />
+    <BackIcon />
   </Box>
 );
 

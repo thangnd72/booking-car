@@ -1,12 +1,27 @@
-/* eslint-disable react/react-in-jsx-scope */
-import { ActivityIndicator, View } from 'react-native';
-import styles from './styles';
-import theme from '@/helpers/theme';
+import Animations from '@/assets/animations';
+import { TRootState } from '@/stores';
+import LottieView from 'lottie-react-native';
+import React from 'react';
+import { View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { styles } from './styles';
 
-export const Loading: React.FC = () => {
-  return (
-    <View style={styles.container}>
-      <ActivityIndicator size='large' color={theme.colors.primary} />
-    </View>
-  );
-};
+export const LoadingScreen = React.memo(() => {
+  const { loading } = useSelector((state: TRootState) => state.client);
+
+  if (loading) {
+    return (
+      <View style={styles.containLoading}>
+        <LottieView
+          style={styles.lottieView}
+          source={Animations.loading}
+          autoPlay
+          loop
+          duration={2000}
+        />
+      </View>
+    );
+  }
+
+  return null;
+});
