@@ -1,11 +1,7 @@
-<svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M14.0908 16.4736H6.09082" stroke="#E83E33" stroke-width="1.5" stroke-linecap="round"
-    stroke-linejoin="round" />
-  <path d="M14.0908 12.2871H6.09082" stroke="#E83E33" stroke-width="1.5" stroke-linecap="round"
-    stroke-linejoin="round" />
-  <path d="M10.0908 8.11035H6.09082" stroke="#E83E33" stroke-width="1.5" stroke-linecap="round"
-    stroke-linejoin="round" />
-  <path fill-rule="evenodd" clip-rule="evenodd"
-    d="M14.2228 3C14.2228 3 5.93078 3.00391 5.91782 3.00391C2.93672 3.02053 1.09082 4.79609 1.09082 7.5044V16.4956C1.09082 19.2176 2.95077 21 5.95779 21C5.95779 21 14.2487 20.9971 14.2627 20.9971C17.2438 20.9804 19.0908 19.2039 19.0908 16.4956V7.5044C19.0908 4.7824 17.2298 3 14.2228 3Z"
-    stroke="#E83E33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-filled" width="28" height="28"
+  viewBox="0 0 24 24" stroke-width="1.5" stroke="#F2F2F2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path
+    d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2zm11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2z"
+    stroke-width="0" fill="#F2F2F2" />
 </svg>

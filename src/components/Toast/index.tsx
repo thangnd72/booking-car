@@ -14,7 +14,9 @@ export const ToastSuccess = ({ message }: IToastSuccess) => {
   return (
     <View style={styles.container}>
       <CheckedAroundIcon fill={theme.colors.lightFiveColor} width={20} height={20} />
-      <TextField color={theme.colors.primary}>{message}</TextField>
+      <TextField pl={6} color={theme.colors.textColor}>
+        {message}
+      </TextField>
     </View>
   );
 };
@@ -29,7 +31,9 @@ export const ToastError = ({ message }: IToastError) => {
       style={[styles.container, { borderLeftWidth: 4, borderLeftColor: theme.colors.errorColor }]}
     >
       <ErrorAroundIcon fill={theme.colors.lightFiveColor} width={20} height={20} />
-      <TextField color={theme.colors.primary}>{message}</TextField>
+      <TextField pl={6} color={theme.colors.textColor}>
+        {message}
+      </TextField>
     </View>
   );
 };

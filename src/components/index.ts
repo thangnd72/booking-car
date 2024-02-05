@@ -12,3 +12,5 @@ export * from './TextField';
 export * from './TextInput';
 export * from './Toast';
 export * from './Modal';
+export * from './FloatActionButton';
+export * from './Carousel';

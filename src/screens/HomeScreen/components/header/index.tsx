@@ -1,9 +1,8 @@
 import { LogoApp, MessageIcon, NotificationIcon } from '@/assets/icons';
-import { Box, Button, TextField } from '@/components';
+import { Box, Button } from '@/components';
 import theme from '@/helpers/theme';
 import { TRootState, useAppDispatch } from '@/stores';
 import { setShowDialog } from '@/stores/client';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 
 export const Header: React.FC = () => {

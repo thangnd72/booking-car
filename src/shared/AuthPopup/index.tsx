@@ -34,11 +34,11 @@ export const AuthPopup: React.FC = () => {
           centered
           fontFamily={theme.fonts.medium}
           size={SIZE.fontPixel(24)}
-          color={theme.colors.secondary}
+          color={theme.colors.primary}
         >
           Thông báo
         </TextField>
-        <TextField centered pv={16} size={SIZE.fontPixel(16)} color={theme.colors.primary}>
+        <TextField centered pv={16} size={SIZE.fontPixel(16)} color={theme.colors.textColor}>
           Vui lòng đăng nhập để thực hiện chức năng này!
         </TextField>
         <Box direction='row' middle style={{ gap: 16 }}>
@@ -51,14 +51,14 @@ export const AuthPopup: React.FC = () => {
             onPress={handleCloseModal}
             centered
           >
-            <TextField fontFamily={theme.fonts.medium} color={theme.colors.primary}>
+            <TextField fontFamily={theme.fonts.medium} color={theme.colors.textColor}>
               Huỷ
             </TextField>
           </Button>
           <Button
             flex={1}
             middle
-            color={theme.colors.secondary}
+            color={theme.colors.primary}
             pv={10}
             borderRadius={8}
             onPress={handleLogin}

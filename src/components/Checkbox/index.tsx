@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { CheckedIcon, UncheckIcon } from '@/assets/icons';
-import styles from './styles';
+import { styles } from './styles';
 
 interface IProps {
   selected: boolean | undefined;

@@ -38,7 +38,7 @@ const IconActive = (route: any) => {
     case APP_SCREEN.HOME_STACK:
       return <HomeActiveIcon />;
     case APP_SCREEN.ORDER_STACK:
-      return <OrderActive />;
+      return <OrderActive width={24} height={25} />;
     case APP_SCREEN.NOTIFICATION_STACK:
       return <HomeActiveIcon />;
     case APP_SCREEN.SETTING_STACK:
@@ -54,7 +54,7 @@ const IconInActive = (route: any) => {
     case APP_SCREEN.HOME_STACK:
       return <HomeInactiveIcon />;
     case APP_SCREEN.ORDER_STACK:
-      return <OrderInactive />;
+      return <OrderInactive width={24} height={25} />;
     case APP_SCREEN.NOTIFICATION_STACK:
       return <HomeInactiveIcon />;
     case APP_SCREEN.SETTING_STACK:
@@ -125,8 +125,8 @@ export const TabBar = (prop: any) => {
             <Spacer height={5} />
             <TextField
               size={11}
-              fontFamily={isFocused ? theme.fonts.bold : theme.fonts.regular}
-              color={isFocused ? theme.colors.secondary : theme.colors.lightSixColor}
+              fontFamily={isFocused ? theme.fonts.medium : theme.fonts.regular}
+              color={theme.colors.lightSixColor}
             >
               {label}
             </TextField>

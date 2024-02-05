@@ -117,7 +117,7 @@ export const SignUpScreen: React.FC = () => {
         <Button
           onPress={handleSubmit(_signUp)}
           h={52}
-          color={theme.colors.secondary}
+          color={theme.colors.primary}
           centered
           middle
           borderRadius={8}

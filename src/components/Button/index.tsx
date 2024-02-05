@@ -46,6 +46,7 @@ export interface IButtonProps extends TouchableOpacityProps {
   horizontal?: any;
   disable?: boolean;
   activeOpacity?: number;
+  wrap?: boolean;
 }
 
 export const Button = (props: IButtonProps) => {
@@ -83,6 +84,7 @@ export const Button = (props: IButtonProps) => {
     children,
     horizontal,
     activeOpacity,
+    wrap,
     ...rest
   } = props;
 
@@ -93,8 +95,8 @@ export const Button = (props: IButtonProps) => {
     mh && { marginHorizontal: SIZE.scaleW(mh) },
     mt && { marginTop: SIZE.scaleH(mt) },
     mb && { marginBottom: SIZE.scaleH(mb) },
-    ml && { marginBottom: SIZE.scaleW(ml) },
-    mr && { marginBottom: SIZE.scaleW(mr) },
+    ml && { marginLeft: SIZE.scaleW(ml) },
+    mr && { marginRight: SIZE.scaleW(mr) },
     p && { padding: SIZE.scaleH(p) },
     pv && { paddingVertical: SIZE.scaleH(pv) },
     ph && { paddingHorizontal: SIZE.scaleW(ph) },
@@ -116,6 +118,7 @@ export const Button = (props: IButtonProps) => {
     middle && { alignItems: 'center' },
     borderRadius && { borderRadius },
     horizontal && { flexDirection: 'row' },
+    wrap && { flexWrap: 'wrap' },
     shadow && {
       shadowOpacity: 0.22,
       shadowRadius: SIZE.scaleW(15),

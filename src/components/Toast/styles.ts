@@ -1,10 +1,10 @@
+import { SIZE } from '@/helpers/size';
 import theme from '@/helpers/theme';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    // maxWidth: 358,
-    minHeight: 50,
+    maxWidth: 358,
     paddingHorizontal: 10,
     paddingVertical: 16,
     borderRadius: 8,

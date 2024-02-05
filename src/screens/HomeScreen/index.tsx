@@ -1,24 +1,53 @@
-import React from 'react';
-import styles from './styles';
-import { Box, Button, FastImg, Spacer, TextField, TextInputField } from '@/components';
-import { useForm } from 'react-hook-form';
-import { validationError, validationSchema } from '@/common';
-import { ILoginFormData } from '@/interfaces/auth.interfaces';
+import { DashboardIcon, SearchIcon } from '@/assets/icons';
+import { Box, Button, Carousel, FloatActionButton, TextField } from '@/components';
 import theme from '@/helpers/theme';
-import { ETypeField } from '@/components/TextInput/types';
-import { LogoApp, MessageIcon, NotificationIcon } from '@/assets/icons';
+import React from 'react';
+import { ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Header } from './components';
+import { Header, General, Category } from './components';
 
-const HomeScreen: React.FC = () => {
+const HomeScreen = React.memo(() => {
   const insets = useSafeAreaInsets();
   return (
     <Box flex ph={16} pt={insets.top}>
       <Header />
-      <TextField mb={32} size={32} fontFamily={theme.fonts.regular} centered>
-        Home
-      </TextField>
+      <Button
+        direction='row'
+        middle
+        color={theme.colors.lightThreeColor}
+        ph={16}
+        pv={12}
+        borderRadius={10}
+      >
+        <SearchIcon />
+        <TextField mb={3} ml={4} size={14} color={theme.colors.darkTwoColor} mt={2}>
+          Tìm kiếm
+        </TextField>
+      </Button>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Category />
+        <General />
+        <Carousel
+          height={200}
+          images={[
+            {
+              url: 'https://st3.depositphotos.com/1021722/33394/i/450/depositphotos_333943612-stock-photo-beautiful-nature-countryside-landscape-spring.jpg',
+              link: '',
+            },
+            {
+              url: 'https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-scenic-lake-by-the-trees-and-flowers-image_2686854.jpg',
+              link: '',
+            },
+            {
+              url: 'https://png.pngtree.com/background/20230412/original/pngtree-natural-forest-with-beautiful-mountains-and-clear-waters-picture-image_2396850.jpg',
+              link: '',
+            },
+          ]}
+          onPressBanner={() => {}}
+        />
+      </ScrollView>
+      <FloatActionButton />
     </Box>
   );
-};
+});
 export default HomeScreen;

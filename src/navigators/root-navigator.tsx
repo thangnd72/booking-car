@@ -13,8 +13,6 @@ import { SignUpScreen } from '@/screens/Auth/SignUpScreen';
 const RootStack = createStackNavigator<TRootStackParamList>();
 
 const RootNavigator = React.memo(() => {
-  const { accessToken } = useSelector((state: TRootState) => state.client);
-
   React.useEffect(() => {
     const splash = setTimeout(() => {
       BootSplash.hide({ fade: true });

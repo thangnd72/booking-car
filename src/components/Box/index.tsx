@@ -41,6 +41,7 @@ export interface IBoxProps extends ViewProps {
   horizontal?: boolean;
   flexGrow?: number;
   gap?: number;
+  wrap?: boolean;
 }
 
 export const Box = (props: IBoxProps) => {
@@ -83,6 +84,7 @@ export const Box = (props: IBoxProps) => {
     horizontal,
     flexGrow,
     gap,
+    wrap,
     ...rest
   } = props;
   const styleComponent = [
@@ -93,8 +95,8 @@ export const Box = (props: IBoxProps) => {
     mh && { marginHorizontal: SIZE.scaleW(mh) },
     mt && { marginTop: SIZE.scaleH(mt) },
     mb && { marginBottom: SIZE.scaleH(mb) },
-    ml && { marginBottom: SIZE.scaleW(ml) },
-    mr && { marginBottom: SIZE.scaleW(mr) },
+    ml && { marginLeft: SIZE.scaleW(ml) },
+    mr && { marginRight: SIZE.scaleW(mr) },
     p && { padding: SIZE.scaleH(p) },
     pv && { paddingVertical: SIZE.scaleH(pv) },
     ph && { paddingHorizontal: SIZE.scaleW(ph) },
@@ -120,6 +122,7 @@ export const Box = (props: IBoxProps) => {
     middle && { alignItems: 'center' },
     borderRadius && { borderRadius },
     horizontal && { flexDirection: 'row' },
+    wrap && { flexWrap: 'wrap' },
     gap && { gap },
     shadow && {
       shadowOpacity: 0.22,

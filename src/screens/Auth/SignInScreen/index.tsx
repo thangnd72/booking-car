@@ -9,7 +9,7 @@ import { ILoginFormData } from '@/interfaces/auth.interfaces';
 import { APP_SCREEN } from '@/navigators/screen-types';
 import { useAppDispatch } from '@/stores';
 import { logInAction } from '@/stores/auth';
-import { setGlobalLoading } from '@/stores/client';
+import { setAccessToken, setGlobalLoading, setProfile } from '@/stores/client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -26,9 +26,11 @@ const SignInScreen: React.FC = () => {
     dispatch(
       logInAction({
         ...values,
-        onSuccess: () => {
+        onSuccess: (response) => {
           showSuccess('Đăng nhập thành công!');
           dispatch(setGlobalLoading(false));
+          dispatch(setAccessToken(response.accessToken));
+          dispatch(setProfile(response.profile));
           navigate(APP_SCREEN.HOME);
         },
         onError: (err) => {
@@ -79,7 +81,7 @@ const SignInScreen: React.FC = () => {
       <Button
         onPress={handleSubmit(signIn)}
         h={52}
-        color={theme.colors.secondary}
+        color={theme.colors.primary}
         centered
         middle
         borderRadius={8}
@@ -91,7 +93,7 @@ const SignInScreen: React.FC = () => {
       </Button>
       <TextField centered>
         Bạn chưa có tài khoản?{' '}
-        <TextField color={theme.colors.secondary} onPress={() => navigate(APP_SCREEN.SIGN_UP)}>
+        <TextField color={theme.colors.primary} onPress={() => navigate(APP_SCREEN.SIGN_UP)}>
           Đăng ký
         </TextField>
       </TextField>
