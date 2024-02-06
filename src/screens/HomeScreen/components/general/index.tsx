@@ -38,17 +38,31 @@ export const General: React.FC = () => {
   };
 
   return (
-    <Box direction='row' between middle wrap p={12}>
-      {GENERAL_OPTIONS.map((item, index) => (
-        <Box key={index}>
-          <Button border borderColor={item.color} p={18} borderRadius={16}>
-            {_renderIcon(item.value)}
-          </Button>
-          <TextField color={theme.colors.textColor} size={14} mv={12} centered>
-            {item.label}
-          </TextField>
-        </Box>
-      ))}
+    <Box pv={16}>
+      <Box direction='row' between middle ph={12}>
+        {GENERAL_OPTIONS.slice(0, 4).map((item, index) => (
+          <Box key={index}>
+            <Button border borderColor={item.color} p={18} borderRadius={16}>
+              {_renderIcon(item.value)}
+            </Button>
+            <TextField color={theme.colors.textColor} size={14} mv={12} centered>
+              {item.label}
+            </TextField>
+          </Box>
+        ))}
+      </Box>
+      <Box direction='row' between middle ph={12}>
+        {GENERAL_OPTIONS.slice(4, 8).map((item, index) => (
+          <Box key={index}>
+            <Button border borderColor={item.color} p={18} borderRadius={16}>
+              {_renderIcon(item.value)}
+            </Button>
+            <TextField color={theme.colors.textColor} size={14} mv={12} centered>
+              {item.label}
+            </TextField>
+          </Box>
+        ))}
+      </Box>
     </Box>
   );
 };

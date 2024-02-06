@@ -105,7 +105,7 @@ export const TextInputField: React.FC<ITextInputComponentProps> = React.memo(
       <View style={wrapperStyle}>
         <View style={styles.label}>
           {leftLabel && (
-            <Box flex direction='row'>
+            <Box flex={1} direction='row'>
               <TextField style={styles.leftLabel}>{leftLabel}</TextField>
               {showRequiredMark && <Text style={{ color: theme.colors.errorColor }}> *</Text>}
             </Box>

@@ -1,7 +1,6 @@
-import { DashboardIcon, PhoneCallIcon, PhoneIcon } from '@/assets/icons';
+import { DashboardIcon, FlowerIcon, PhoneCallIcon } from '@/assets/icons';
 import { GENERAL_OPTIONS } from '@/common/constants/common';
 import { Box, TextField } from '@/components';
-import { SIZE } from '@/helpers/size';
 import theme from '@/helpers/theme';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -21,7 +20,7 @@ export const Category: React.FC = () => {
       >
         {GENERAL_OPTIONS.map((item, index) => (
           <Box key={index} direction='row' middle ph={16} color={item.color} borderRadius={20}>
-            <PhoneCallIcon width={16} height={16} />
+            <FlowerIcon width={20} height={20} />
             <TextField
               color={theme.colors.lightSixColor}
               size={14}

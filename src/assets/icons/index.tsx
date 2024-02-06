@@ -35,6 +35,7 @@ import UncheckIcon from './uncheck.svg';
 import UserIcon from './user.svg';
 import WatchedIcon from './watched.svg';
 import ZaloIcon from './zalo-icon.svg';
+import FlowerIcon from './flower.svg';
 
 const ShowHidePasswordIcon = ({ show = false }: { show: boolean }) =>
   show ? <EyeIcon /> : <EyeOffIcon />;
@@ -42,6 +43,7 @@ const ShowHidePasswordIcon = ({ show = false }: { show: boolean }) =>
 export {
   ArrowDownIcon,
   ArrowLeftIcon,
+  FlowerIcon,
   BackIcon,
   CalendarIcon,
   CallIcon,

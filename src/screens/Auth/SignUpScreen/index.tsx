@@ -48,7 +48,7 @@ export const SignUpScreen: React.FC = () => {
   };
 
   return (
-    <Box p={16} flex>
+    <Box p={16} flex={1}>
       <TextField centered size={24} mb={24} mt={8} fontFamily={theme.fonts.medium}>
         Thông tin đăng ký
       </TextField>

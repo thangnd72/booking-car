@@ -42,7 +42,7 @@ const SignInScreen: React.FC = () => {
   };
 
   return (
-    <Box flex ph={24} pt={insets.top + 40}>
+    <Box flex={1} ph={24} pt={insets.top + 40}>
       <TextField mb={32} size={32} fontFamily={theme.fonts.regular} centered>
         Đăng nhập
       </TextField>

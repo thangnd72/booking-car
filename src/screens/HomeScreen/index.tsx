@@ -1,15 +1,15 @@
-import { DashboardIcon, SearchIcon } from '@/assets/icons';
+import { SearchIcon } from '@/assets/icons';
 import { Box, Button, Carousel, FloatActionButton, TextField } from '@/components';
 import theme from '@/helpers/theme';
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Header, General, Category } from './components';
+import { Category, General, Header } from './components';
 
 const HomeScreen = React.memo(() => {
   const insets = useSafeAreaInsets();
   return (
-    <Box flex ph={16} pt={insets.top}>
+    <Box flex={1} ph={16} pt={insets.top}>
       <Header />
       <Button
         direction='row'
