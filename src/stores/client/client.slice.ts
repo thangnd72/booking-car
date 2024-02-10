@@ -30,6 +30,7 @@ export const clientSlice = createSlice({
     setGlobalLoading: (state, { payload }) => {
       state.loading = payload;
     },
+    logout: (state) => initialState,
   },
   extraReducers(builder) {
     // builder.addCase(asyncActions.getProfileAction.fulfilled, (state, action) => {

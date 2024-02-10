@@ -47,6 +47,7 @@ export interface IButtonProps extends TouchableOpacityProps {
   disable?: boolean;
   activeOpacity?: number;
   wrap?: boolean;
+  gap?: number;
 }
 
 export const Button = (props: IButtonProps) => {
@@ -85,6 +86,7 @@ export const Button = (props: IButtonProps) => {
     horizontal,
     activeOpacity,
     wrap,
+    gap,
     ...rest
   } = props;
 
@@ -119,6 +121,7 @@ export const Button = (props: IButtonProps) => {
     borderRadius && { borderRadius },
     horizontal && { flexDirection: 'row' },
     wrap && { flexWrap: 'wrap' },
+    gap && { gap },
     shadow && {
       shadowOpacity: 0.22,
       shadowRadius: SIZE.scaleW(15),

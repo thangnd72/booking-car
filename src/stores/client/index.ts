@@ -5,6 +5,6 @@ import slice from './client.slice';
 export { EClientActions };
 export const {
   reducer: clientReducer,
-  actions: { setAccessToken, setShowDialog, setProfile, setGlobalLoading },
+  actions: { setAccessToken, setShowDialog, setProfile, setGlobalLoading, logout },
 } = slice;
 export const { getProfileAction } = asyncActions;

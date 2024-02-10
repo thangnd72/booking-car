@@ -16,6 +16,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { TRootState, useAppDispatch } from '@/stores';
 import { setShowDialog } from '@/stores/client';
+import useAuth from '@/hooks/useAuth';
 
 const titleBottom = (route: string) => {
   switch (route) {
@@ -69,7 +70,7 @@ export const TabBar = (prop: any) => {
   const { state, navigation } = prop;
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
-  const { accessToken } = useSelector((state: TRootState) => state.client);
+  const isAuth = useAuth();
 
   const onPress = useCallback(
     (routeKey: string, routeName: string, isFocused: boolean) => {
@@ -79,14 +80,14 @@ export const TabBar = (prop: any) => {
       });
 
       if (!isFocused && !event.defaultPrevented) {
-        if (!accessToken) {
+        if (!isAuth) {
           dispatch(setShowDialog(true));
         } else {
           navigation.navigate(routeName);
         }
       }
     },
-    [navigation],
+    [navigation, isAuth],
   );
 
   const onLongPress = useCallback(

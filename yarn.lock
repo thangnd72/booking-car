@@ -2154,6 +2154,18 @@
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
 
+"@types/lodash.add@^3.7.9":
+  version "3.7.9"
+  resolved "https://registry.yarnpkg.com/@types/lodash.add/-/lodash.add-3.7.9.tgz#122a6c92f323323039b68cb57536d6dcab25c0c7"
+  integrity sha512-bB8Wf/WOgrOPeid1tgj2rGKwZEMDLXzJjUp0/RsBY+gxYgFhGlQqDEuYExdIA1lrzHoygqmOUd0AQSBh3aUk4g==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.202"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.202.tgz#f09dbd2fb082d507178b2f2a5c7e74bd72ff98f8"
+  integrity sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==
+
 "@types/node@*":
   version "20.11.0"
   resolved "https://registry.npmjs.org/@types/node/-/node-20.11.0.tgz"
@@ -5173,7 +5185,7 @@ lodash.throttle@^4.1.1:
 
 lodash@^4.17.21:
   version "4.17.21"
-  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^4.1.0:
@@ -6198,6 +6210,11 @@ react-native-gesture-handler@^2.14.0:
     invariant "^2.2.4"
     lodash "^4.17.21"
     prop-types "^15.7.2"
+
+react-native-image-crop-picker@^0.40.2:
+  version "0.40.2"
+  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.40.2.tgz#be9098435504b8a2083f7cad553dfeedc442a804"
+  integrity sha512-u9iceozX8985vtZV5ozLMfNuCDjtm00GivExSxKwZmwv2wZYyv30VJkKhVJffVYsujvIzMfSCaWJPBsb5nSfZg==
 
 react-native-keyboard-manager@^6.5.11-2:
   version "6.5.11-2"

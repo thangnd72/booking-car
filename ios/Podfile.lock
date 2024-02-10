@@ -1160,6 +1160,15 @@ PODS:
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
+  - RNImageCropPicker (0.40.2):
+    - React-Core
+    - React-RCTImage
+    - RNImageCropPicker/QBImagePickerController (= 0.40.2)
+    - TOCropViewController
+  - RNImageCropPicker/QBImagePickerController (0.40.2):
+    - React-Core
+    - React-RCTImage
+    - TOCropViewController
   - RNReanimated (3.6.2):
     - glog
     - RCT-Folly (= 2022.05.16.00)
@@ -1178,6 +1187,7 @@ PODS:
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
   - SocketRocket (0.6.1)
+  - TOCropViewController (2.6.1)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -1263,6 +1273,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -1290,6 +1301,7 @@ SPEC REPOS:
     - SDWebImage
     - SDWebImageWebPCoder
     - SocketRocket
+    - TOCropViewController
 
 EXTERNAL SOURCES:
   boost:
@@ -1407,6 +1419,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fast-image"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -1491,12 +1505,14 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 618d03a5f52fbccb3d7010076bc54712844c18ef
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNGestureHandler: 25b969a1ffc806b9f9ad2e170d4a3b049c6af85e
+  RNImageCropPicker: d9616a0cb9b72e8551ff94a7a5021fbd29050aa5
   RNReanimated: 5589be82dc26b3f94738eb7c6b1f942787532b25
   RNScreens: b582cb834dc4133307562e930e8fa914b8c04ef2
   RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
+  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   Yoga: e64aa65de36c0832d04e8c7bd614396c77a80047
 
 PODFILE CHECKSUM: 4f23eecb8b7e0cf84cd3e6456fc40beee298312d

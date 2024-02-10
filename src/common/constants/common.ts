@@ -5,41 +5,41 @@ export const GENERAL_OPTIONS = [
   {
     label: 'Cộng đồng',
     value: EGeneral.COMMUNITY,
-    color: theme.colors.primary,
+    color: '#ffa503',
   },
   {
     label: 'Tích điểm',
     value: EGeneral.ACCUMULATE_POINTS,
-    color: theme.colors.secondary,
+    color: '#ff7f51',
   },
   {
     label: 'Đơn hàng',
     value: EGeneral.ORDER,
-    color: theme.colors.blueOne,
+    color: '#f13e3e',
   },
   {
     label: 'Quà tặng',
     value: EGeneral.PRESENT,
-    color: theme.colors.greenTwoColor,
+    color: '#1990ff',
   },
   {
     label: 'Đã xem',
     value: EGeneral.WATCHED,
-    color: theme.colors.infoColor,
+    color: '#76bee3',
   },
   {
     label: 'Yêu thích',
     value: EGeneral.FAVORITE,
-    color: theme.colors.mainDarkerColor,
+    color: '#ff6465',
   },
   {
     label: 'Phù hợp',
     value: EGeneral.FIT,
-    color: theme.colors.primary,
+    color: '#126ef1',
   },
   {
     label: 'Mua nhiều',
     value: EGeneral.BUY_A_LOT,
-    color: theme.colors.secondary,
+    color: '#ffb64c',
   },
 ];

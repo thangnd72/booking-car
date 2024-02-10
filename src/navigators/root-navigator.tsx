@@ -28,20 +28,8 @@ const RootNavigator = React.memo(() => {
           presentation: 'modal',
         }}
       >
-        <RootStack.Screen
-          name={APP_SCREEN.LOGIN}
-          component={SignIn}
-          options={() => ({
-            presentation: 'modal',
-          })}
-        />
-        <RootStack.Screen
-          name={APP_SCREEN.SIGN_UP}
-          component={SignUpScreen}
-          options={() => ({
-            presentation: 'modal',
-          })}
-        />
+        <RootStack.Screen name={APP_SCREEN.LOGIN} component={SignIn} />
+        <RootStack.Screen name={APP_SCREEN.SIGN_UP} component={SignUpScreen} />
       </RootStack.Group>
     </RootStack.Navigator>
   );

@@ -5,9 +5,11 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Category, General, Header } from './components';
+import useAuth from '@/hooks/useAuth';
 
 const HomeScreen = React.memo(() => {
   const insets = useSafeAreaInsets();
+  const isAuth = useAuth();
   return (
     <Box flex={1} ph={16} pt={insets.top}>
       <Header />
@@ -46,7 +48,7 @@ const HomeScreen = React.memo(() => {
           onPressBanner={() => {}}
         />
       </ScrollView>
-      <FloatActionButton />
+      {isAuth && <FloatActionButton />}
     </Box>
   );
 });

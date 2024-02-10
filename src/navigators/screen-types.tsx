@@ -30,6 +30,7 @@ export enum APP_SCREEN {
 
   // setting
   SETTING_STACK = 'SETTING_STACK',
+  SETTING = 'SETTING',
   PROFILE = 'PROFILE',
 }
 
@@ -48,6 +49,7 @@ export type TAuthorizeParamsList = {
   [APP_SCREEN.ORDER]: undefined;
   [APP_SCREEN.NOTIFICATION]: undefined;
   [APP_SCREEN.PROFILE]: undefined;
+  [APP_SCREEN.SETTING]: undefined;
 };
 
 export type TRootStackParamList = {
