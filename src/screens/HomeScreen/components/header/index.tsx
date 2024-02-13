@@ -1,16 +1,16 @@
 import { LogoApp, MessageIcon, NotificationIcon } from '@/assets/icons';
 import { Box, Button } from '@/components';
 import theme from '@/helpers/theme';
-import { TRootState, useAppDispatch } from '@/stores';
+import useAuth from '@/hooks/useAuth';
+import { useAppDispatch } from '@/stores';
 import { setShowDialog } from '@/stores/client';
-import { useSelector } from 'react-redux';
 
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { accessToken } = useSelector((state: TRootState) => state.client);
+  const isAuth = useAuth();
 
   const _onPressOrder = () => {
-    if (!accessToken) {
+    if (!isAuth) {
       dispatch(setShowDialog(true));
     }
   };

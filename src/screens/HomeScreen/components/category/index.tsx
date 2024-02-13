@@ -1,10 +1,20 @@
 import { DashboardIcon, FlowerIcon, PhoneCallIcon } from '@/assets/icons';
-import { GENERAL_OPTIONS } from '@/common/constants/common';
-import { Box, TextField } from '@/components';
+import { CATEGORY_COLORS, GENERAL_OPTIONS } from '@/common/constants/common';
+import { Box, Button, TextField } from '@/components';
+import { navigate } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
+import { IProductCategory } from '@/interfaces/product.interface';
+import { APP_SCREEN } from '@/navigators/screen-types';
 import { ScrollView } from 'react-native-gesture-handler';
 
-export const Category: React.FC = () => {
+interface IProps {
+  categories: IProductCategory[];
+}
+
+export const Category: React.FC<IProps> = ({ categories }) => {
+  const _onPressCategory = () => {
+    navigate(APP_SCREEN.PRODUCT_BY_CATEGORY);
+  };
   return (
     <Box>
       <Box direction='row' middle gap={8} pv={16}>
@@ -18,21 +28,30 @@ export const Category: React.FC = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ gap: 10 }}
       >
-        {GENERAL_OPTIONS.map((item, index) => (
-          <Box key={index} direction='row' middle ph={16} color={item.color} borderRadius={20}>
-            <FlowerIcon width={20} height={20} />
-            <TextField
-              color={theme.colors.lightSixColor}
-              size={14}
-              mv={12}
-              centered
-              ml={6}
-              fontFamily={theme.fonts.medium}
+        {categories &&
+          categories.map((item, index) => (
+            <Button
+              key={index}
+              direction='row'
+              middle
+              ph={16}
+              color={CATEGORY_COLORS[index % CATEGORY_COLORS.length]}
+              borderRadius={20}
+              onPress={_onPressCategory}
             >
-              {item.label}
-            </TextField>
-          </Box>
-        ))}
+              <FlowerIcon width={20} height={20} />
+              <TextField
+                color={theme.colors.lightSixColor}
+                size={14}
+                mv={12}
+                centered
+                ml={6}
+                fontFamily={theme.fonts.medium}
+              >
+                {item.name}
+              </TextField>
+            </Button>
+          ))}
       </ScrollView>
     </Box>
   );

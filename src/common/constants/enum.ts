@@ -12,3 +12,8 @@ export enum EGeneral {
   FIT = 'fit',
   BUY_A_LOT = 'buy a lot',
 }
+
+export enum ESortType {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}

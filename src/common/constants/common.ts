@@ -1,5 +1,27 @@
-import theme from '@/helpers/theme';
+import {
+  TCommonGetListParams,
+  TCommonGetListResponse,
+  TPagination,
+} from '@/interfaces/common.interface';
 import { EGeneral } from './enum';
+
+export const DEFAULT_PAGE = 0;
+export const DEFAULT_PAGE_SIZE = 10;
+export const DEFAULT_PAGE_SIZE_ALL = 1000;
+
+export const DEFAULT_PAGINATION: TPagination = {
+  total: 1,
+};
+
+export const DEFAULT_GET_LIST_PARAMS: TCommonGetListParams = {
+  page: DEFAULT_PAGE,
+  size: DEFAULT_PAGE_SIZE,
+};
+
+export const DEFAULT_GET_LIST_RESPONSE: TCommonGetListResponse = {
+  ...DEFAULT_PAGINATION,
+  data: [],
+};
 
 export const GENERAL_OPTIONS = [
   {
@@ -42,4 +64,15 @@ export const GENERAL_OPTIONS = [
     value: EGeneral.BUY_A_LOT,
     color: '#ffb64c',
   },
+];
+
+export const CATEGORY_COLORS = [
+  '#ffa503',
+  '#ff7f51',
+  '#f13e3e',
+  '#1990ff',
+  '#76bee3',
+  '#ff6465',
+  '#126ef1',
+  '#ffb64c',
 ];

@@ -7,3 +7,7 @@ export const randomUniqueId = () => {
     return v.toString(16);
   });
 };
+
+export const numberWithCommas = (value: number) => {
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};

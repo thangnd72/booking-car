@@ -1,4 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
+import AddIcon from './add.svg';
 import ArrowDownIcon from './arrow-down.svg';
 import ArrowLeftIcon from './arrow-left.svg';
 import ArrowRightIcon from './arrow-right.svg';
@@ -15,6 +16,7 @@ import ErrorAroundIcon from './error-around.svg';
 import EyeOffIcon from './eye-off.svg';
 import EyeIcon from './eye.svg';
 import FavoriteIcon from './favorite.svg';
+import FilterIcon from './filter.svg';
 import FitIcon from './fit.svg';
 import FlowerIcon from './flower.svg';
 import GiftIcon from './gift.svg';
@@ -49,6 +51,7 @@ const ShowHidePasswordIcon = ({ show = false }: { show: boolean }) =>
   show ? <EyeIcon /> : <EyeOffIcon />;
 
 export {
+  AddIcon,
   ArrowDownIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -63,6 +66,7 @@ export {
   DashboardIcon,
   ErrorAroundIcon,
   FavoriteIcon,
+  FilterIcon,
   FitIcon,
   FlowerIcon,
   GiftIcon,

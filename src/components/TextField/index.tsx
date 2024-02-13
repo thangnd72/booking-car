@@ -103,11 +103,17 @@ export const TextField = (props: ITextProps) => {
     upper && { textTransform: 'uppercase' },
     capital && { textTransform: 'capitalize' },
     style,
-    numberOfLines && { numberOfLines: numberOfLines },
+    // numberOfLines && { numberOfLines: numberOfLines, ellipsizeMode: 'tail' },
     transparent && { backgroundColor: 'transparent' },
   ];
   return (
-    <Text allowFontScaling={false} {...rest} style={[styleComponent]}>
+    <Text
+      allowFontScaling={false}
+      {...rest}
+      style={[styleComponent]}
+      numberOfLines={numberOfLines}
+      ellipsizeMode={'tail'}
+    >
       {children}
     </Text>
   );

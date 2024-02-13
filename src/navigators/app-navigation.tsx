@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unstable-nested-components */
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar } from 'react-native';

@@ -1,15 +1,40 @@
 import { SearchIcon } from '@/assets/icons';
+import { DEFAULT_GET_LIST_PARAMS } from '@/common/constants/common';
 import { Box, Button, Carousel, FloatActionButton, TextField } from '@/components';
 import theme from '@/helpers/theme';
+import useAuth from '@/hooks/useAuth';
+import { TRootState, useAppDispatch } from '@/stores';
+import { getListProductAction, getProductCategoryAction } from '@/stores/product';
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
 import { Category, General, Header } from './components';
-import useAuth from '@/hooks/useAuth';
+import { navigate } from '@/helpers/GlobalNavigation';
+import { APP_SCREEN } from '@/navigators/screen-types';
 
 const HomeScreen = React.memo(() => {
   const insets = useSafeAreaInsets();
   const isAuth = useAuth();
+  const dispatch = useAppDispatch();
+
+  const { productCategories } = useSelector((state: TRootState) => state.product);
+
+  const _onSearch = () => {
+    navigate(APP_SCREEN.PRODUCT_LIST);
+  };
+
+  const _init = async () => {
+    await Promise.all([
+      dispatch(getProductCategoryAction({ ...DEFAULT_GET_LIST_PARAMS, size: 20 })),
+      // dispatch(getListProductAction(DEFAULT_GET_LIST_PARAMS)),
+    ]);
+  };
+
+  React.useEffect(() => {
+    _init();
+  }, []);
+
   return (
     <Box flex={1} ph={16} pt={insets.top}>
       <Header />
@@ -20,6 +45,7 @@ const HomeScreen = React.memo(() => {
         ph={16}
         pv={12}
         borderRadius={10}
+        onPress={_onSearch}
       >
         <SearchIcon />
         <TextField mb={3} ml={4} size={14} color={theme.colors.darkTwoColor} mt={2}>
@@ -27,7 +53,7 @@ const HomeScreen = React.memo(() => {
         </TextField>
       </Button>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Category />
+        <Category categories={productCategories.data} />
         <General />
         <Carousel
           height={200}

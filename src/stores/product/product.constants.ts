@@ -1,0 +1,4 @@
+export enum EProductActions {
+  GET_LIST_PRODUCT = 'GET_LIST_PRODUCT',
+  GET_PRODUCT_CATEGORY = 'GET_PRODUCT_CATEGORY',
+}
