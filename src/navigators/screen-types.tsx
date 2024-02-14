@@ -21,6 +21,7 @@ export enum APP_SCREEN {
   HOME = 'HOME',
   PRODUCT_BY_CATEGORY = 'PRODUCT_BY_CATEGORY',
   PRODUCT_LIST = 'PRODUCT_LIST',
+  PRODUCT_DETAIL = 'PRODUCT_DETAIL',
 
   // home stack
   ORDER_STACK = 'ORDER_STACK',
@@ -54,6 +55,7 @@ export type TAuthorizeParamsList = {
   [APP_SCREEN.SETTING]: undefined;
   [APP_SCREEN.PRODUCT_BY_CATEGORY]: undefined;
   [APP_SCREEN.PRODUCT_LIST]: undefined;
+  [APP_SCREEN.PRODUCT_DETAIL]: { productId: string };
 };
 
 export type TRootStackParamList = {

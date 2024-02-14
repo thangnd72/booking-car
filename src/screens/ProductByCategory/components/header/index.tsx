@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
         borderColor={theme.colors.darkFiveColor}
         flex={1}
         ph={16}
-        pv={10}
+        h={45}
         middle
         direction='row'
       >

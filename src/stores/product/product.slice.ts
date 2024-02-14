@@ -7,13 +7,12 @@ import * as asyncActions from './product.actions';
 type TProductState = {
   productCategories: TCommonGetListResponse<IProductCategory[]>;
   productList: TCommonGetListResponse<IProduct[]>;
-  loadMoreList: boolean;
+  productDetail?: IProduct;
 };
 
 const initialState: TProductState = {
   productCategories: DEFAULT_GET_LIST_RESPONSE,
   productList: DEFAULT_GET_LIST_RESPONSE,
-  loadMoreList: false,
 };
 
 export const productSlice = createSlice({
@@ -37,6 +36,10 @@ export const productSlice = createSlice({
 
     builder.addCase(asyncActions.getProductCategoryAction.fulfilled, (state, action) => {
       state.productCategories = action.payload;
+    });
+
+    builder.addCase(asyncActions.getProductDetailAction.fulfilled, (state, action) => {
+      state.productDetail = action.payload;
     });
   },
 });

@@ -10,6 +10,7 @@ import CameraIcon from './camera.svg';
 import CartIcon from './cart.svg';
 import CheckedAroundIcon from './checked-around.svg';
 import CheckedIcon from './checked.svg';
+import CloseIcon from './close.svg';
 import CommunityIcon from './community.svg';
 import DashboardIcon from './dashboard.svg';
 import ErrorAroundIcon from './error-around.svg';
@@ -28,12 +29,14 @@ import LockIcon from './lock.svg';
 import LogoApp from './logo.svg';
 import LogoutIcon from './logout.svg';
 import MessageIcon from './message.svg';
+import MinusIcon from './minus.svg';
 import NotificationIcon from './notification.svg';
 import OrderActive from './order-active.svg';
 import OrderInactive from './order-inactive.svg';
 import OrderIcon from './order.svg';
 import PhoneCallIcon from './phone-call.svg';
 import PhoneIcon from './phone.svg';
+import PlusIcon from './plus.svg';
 import PointsIcon from './points.svg';
 import PresentIcon from './present.svg';
 import ProfileActive from './profile-active.svg';
@@ -41,6 +44,7 @@ import ProfileInactive from './profile-inactive.svg';
 import RankingIcon from './ranking.svg';
 import ReportIcon from './report.svg';
 import SearchIcon from './search.svg';
+import StarIcon from './star.svg';
 import ThemeIcon from './theme.svg';
 import UncheckIcon from './uncheck.svg';
 import UserIcon from './user.svg';
@@ -62,6 +66,7 @@ export {
   CartIcon,
   CheckedAroundIcon,
   CheckedIcon,
+  CloseIcon,
   CommunityIcon,
   DashboardIcon,
   ErrorAroundIcon,
@@ -78,12 +83,14 @@ export {
   LogoApp,
   LogoutIcon,
   MessageIcon,
+  MinusIcon,
   NotificationIcon,
   OrderActive,
   OrderIcon,
   OrderInactive,
   PhoneCallIcon,
   PhoneIcon,
+  PlusIcon,
   PointsIcon,
   PresentIcon,
   ProfileActive,
@@ -92,6 +99,7 @@ export {
   ReportIcon,
   SearchIcon,
   ShowHidePasswordIcon,
+  StarIcon,
   ThemeIcon,
   UncheckIcon,
   UserIcon,

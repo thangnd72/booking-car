@@ -1,1 +1,1 @@
-export const API_URL = 'https://sp.io.vn';
+export const API_URL = 'https://massage.chaien.vn';

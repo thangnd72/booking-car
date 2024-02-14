@@ -17,3 +17,12 @@ export type TPagination = {
 export type TCommonGetListResponse<T = any> = TPagination & {
   data: T;
 };
+
+export type TFormatResponse = {
+  code: number;
+  message: string;
+};
+
+export type TCommonGetDataResponse<T = any> = TFormatResponse & {
+  data: T;
+};

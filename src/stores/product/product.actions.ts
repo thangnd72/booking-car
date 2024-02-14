@@ -2,8 +2,12 @@ import ResponseError from '@/interfaces/error.interface';
 import { getListProductCategoryApi } from '@/services/category.services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { EProductActions } from './product.constants';
-import { TGetListProductAction, TGetListProductCategoryAction } from './product.types';
-import { getListProductApi } from '@/services/product.services';
+import {
+  TGetListProductAction,
+  TGetListProductCategoryAction,
+  TGetListProductDetailAction,
+} from './product.types';
+import { getListProductApi, getListProductDetailApi } from '@/services/product.services';
 
 export const getListProductAction = createAsyncThunk(
   EProductActions.GET_LIST_PRODUCT,
@@ -32,6 +36,21 @@ export const getProductCategoryAction = createAsyncThunk(
       const response = await getListProductCategoryApi(bodyRequest);
       onSuccess?.(response);
       return response;
+    } catch (error) {
+      onError?.(error as ResponseError);
+      return rejectWithValue(error);
+    }
+  },
+);
+
+export const getProductDetailAction = createAsyncThunk(
+  EProductActions.GET_PRODUCT_DETAIL,
+  async (payload: TGetListProductDetailAction, { rejectWithValue }) => {
+    const { onSuccess, onError, id } = payload;
+    try {
+      const response = await getListProductDetailApi(id);
+      onSuccess?.(response.data);
+      return response.data;
     } catch (error) {
       onError?.(error as ResponseError);
       return rejectWithValue(error);

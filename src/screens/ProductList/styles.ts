@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   searchInput: {
-    width: '100%',
+    // width: '100%',
     paddingLeft: 8,
     paddingRight: 16,
   },
@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   },
   containerItem: {
     gap: 8,
+    paddingBottom: 16,
   },
 });
 

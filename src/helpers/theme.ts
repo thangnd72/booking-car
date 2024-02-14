@@ -25,7 +25,7 @@ enum Colors {
   greenOneColor = '#e0f5e5',
   greenTwoColor = '#93dba3',
   backgroundColor = '#FFFFFF',
-  modalColor = 'rgba(0,0,0,0.3)',
+  modalColor = 'rgba(0,0,0,0.2)',
   bgSuccessColor = '#E6FBF3',
   bgErrorColor = '#FF7777',
   transparent = 'transparent',
