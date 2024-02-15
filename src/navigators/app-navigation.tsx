@@ -29,7 +29,6 @@ export const AppContainer = () => {
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
       <NavigationContainer ref={navigationRef} theme={navTheme}>
         <StatusBar translucent backgroundColor={'transparent'} barStyle={'dark-content'} />
         <RootNavigator />

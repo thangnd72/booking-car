@@ -41,7 +41,7 @@ const ProductDetails = React.memo(() => {
 
   if (loading) {
     return (
-      <Box middle centered>
+      <Box flex={1} middle centered>
         <ActivityIndicator color={theme.colors.primary} />
       </Box>
     );
