@@ -30,7 +30,3 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
   },
 });
-
-function scaleW(arg0: number) {
-  throw new Error('Function not implemented.');
-}

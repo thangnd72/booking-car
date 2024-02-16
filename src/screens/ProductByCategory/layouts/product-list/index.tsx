@@ -1,32 +1,35 @@
-import { SearchIcon } from '@/assets/icons';
 import { DEFAULT_GET_LIST_PARAMS } from '@/common/constants/common';
-import { Box, ListView } from '@/components';
+import { Box, Empty, ListView } from '@/components';
 import theme from '@/helpers/theme';
+import { TCommonGetListParams } from '@/interfaces/common.interface';
 import { TGetListProductParams } from '@/interfaces/product.interface';
 import { ProductItem } from '@/shared';
 import { TRootState, useAppDispatch } from '@/stores';
 import { EProductActions, getListProductAction } from '@/stores/product';
-import { debounce } from 'lodash';
 import React, { useCallback } from 'react';
-import { ActivityIndicator, TextInput } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ActivityIndicator } from 'react-native';
 import { useSelector } from 'react-redux';
-import { Header } from './components';
 import styles from './styles';
 
-const ProductList = React.memo(() => {
-  const dispatch = useAppDispatch();
-  const insets = useSafeAreaInsets();
+interface IProps {
+  categoryId: string;
+  keyword?: string;
+}
 
-  const [queryParams, setQueryParams] =
-    React.useState<TGetListProductParams>(DEFAULT_GET_LIST_PARAMS);
+export const ProductList = React.memo(({ categoryId, keyword }: IProps) => {
+  const dispatch = useAppDispatch();
+
+  const [queryParams, setQueryParams] = React.useState<TGetListProductParams>({
+    ...DEFAULT_GET_LIST_PARAMS,
+    categoryId,
+  });
 
   const { productList } = useSelector((state: TRootState) => state.product);
   const loadingProduct = useSelector(
     (state: TRootState) => state.loading[EProductActions.GET_LIST_PRODUCT],
   );
 
-  const _getListProduct = (params: TGetListProductParams) => {
+  const _getListProduct = (params: TCommonGetListParams) => {
     dispatch(getListProductAction(params));
   };
 
@@ -55,45 +58,17 @@ const ProductList = React.memo(() => {
     }
   };
 
-  const debounceSearch = useCallback(
-    debounce(async (keyword?: string) => {
-      setQueryParams({ ...queryParams, page: 0, query: keyword });
-    }, 500),
-    [queryParams],
-  );
-
-  const _onChangeKeyword = (keyword: string) => {
-    debounceSearch(keyword);
-  };
+  React.useEffect(() => {
+    setQueryParams({ ...queryParams, page: 0, query: keyword });
+  }, [keyword]);
 
   React.useEffect(() => {
     _getListProduct(queryParams);
   }, [queryParams]);
 
   return (
-    <Box flex={1} pt={insets.top} color={theme.colors.backgroundColor}>
-      <Box ph={16}>
-        <Header />
-        <Box
-          borderRadius={24}
-          border
-          borderColor={theme.colors.darkFiveColor}
-          ph={16}
-          h={45}
-          mv={10}
-          middle
-          direction='row'
-        >
-          <SearchIcon width={20} />
-          <TextInput
-            style={styles.searchInput}
-            placeholder='Tìm kiếm sản phẩm'
-            placeholderTextColor={theme.colors.darkTwoColor}
-            onChangeText={_onChangeKeyword}
-          />
-        </Box>
-      </Box>
-      <Box color={theme.colors.lightSixColor} flex={1}>
+    <Box color={theme.colors.lightSixColor} flex={1}>
+      {productList.data.length > 0 ? (
         <ListView
           keyExtractor={(item) => item.id}
           data={productList.data}
@@ -106,8 +81,9 @@ const ProductList = React.memo(() => {
           onRefresh={_onRefresh}
           ListFooterComponent={_renderFooter}
         />
-      </Box>
+      ) : (
+        <>{!loadingProduct && <Empty />}</>
+      )}
     </Box>
   );
 });
-export default ProductList;

@@ -4,9 +4,9 @@ import {
   TCommonGetListResponse,
 } from '@/interfaces/common.interface';
 import ResponseError from '@/interfaces/error.interface';
-import { IProduct, IProductCategory } from '@/interfaces/product.interface';
+import { IProduct, IProductCategory, TGetListProductParams } from '@/interfaces/product.interface';
 
-export type TGetListProductAction = TCommonGetListParams & {
+export type TGetListProductAction = TGetListProductParams & {
   onSuccess?: (response: TCommonGetListResponse<IProduct[]>) => void;
   onError?: (error: ResponseError) => void;
 };

@@ -53,7 +53,7 @@ export type TAuthorizeParamsList = {
   [APP_SCREEN.NOTIFICATION]: undefined;
   [APP_SCREEN.PROFILE]: undefined;
   [APP_SCREEN.SETTING]: undefined;
-  [APP_SCREEN.PRODUCT_BY_CATEGORY]: undefined;
+  [APP_SCREEN.PRODUCT_BY_CATEGORY]: { categoryId: string };
   [APP_SCREEN.PRODUCT_LIST]: undefined;
   [APP_SCREEN.PRODUCT_DETAIL]: { productId: string };
 };

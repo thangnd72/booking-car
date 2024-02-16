@@ -12,8 +12,8 @@ interface IProps {
 }
 
 export const Category: React.FC<IProps> = ({ categories }) => {
-  const _onPressCategory = () => {
-    navigate(APP_SCREEN.PRODUCT_BY_CATEGORY);
+  const _onPressCategory = (categoryId: string) => {
+    navigate(APP_SCREEN.PRODUCT_BY_CATEGORY, { categoryId });
   };
   return (
     <Box>
@@ -37,7 +37,7 @@ export const Category: React.FC<IProps> = ({ categories }) => {
               ph={16}
               color={CATEGORY_COLORS[index % CATEGORY_COLORS.length]}
               borderRadius={20}
-              onPress={_onPressCategory}
+              onPress={() => _onPressCategory(item.id)}
             >
               <FlowerIcon width={20} height={20} />
               <TextField

@@ -1,3 +1,5 @@
+import { TCommonGetListParams } from './common.interface';
+
 export interface IProduct {
   code: string;
   name: string;
@@ -21,3 +23,7 @@ export interface IProductCategory {
   createdDate: string;
   lastModifiedDate: any;
 }
+
+export type TGetListProductParams = TCommonGetListParams & {
+  categoryId?: string;
+};

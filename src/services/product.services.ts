@@ -1,13 +1,9 @@
-import {
-  TCommonGetDataResponse,
-  TCommonGetListParams,
-  TCommonGetListResponse,
-} from '@/interfaces/common.interface';
+import { TCommonGetDataResponse, TCommonGetListResponse } from '@/interfaces/common.interface';
+import { IProduct, TGetListProductParams } from '@/interfaces/product.interface';
 import { AxiosResponse } from 'axios';
 import { ApiClient } from './api-client';
-import { IProduct } from '@/interfaces/product.interface';
 
-export const getListProductApi = async (params: TCommonGetListParams) => {
+export const getListProductApi = async (params: TGetListProductParams) => {
   const response: AxiosResponse<TCommonGetListResponse<IProduct[]>> = await ApiClient.get(
     '/api/v1/product/paging',
     {
