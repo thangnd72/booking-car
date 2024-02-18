@@ -1,55 +1,54 @@
 import { SearchIcon } from '@/assets/icons';
 import { DEFAULT_GET_LIST_PARAMS } from '@/common/constants/common';
-import { Box, ListView } from '@/components';
+import { Box, ListView, TextField } from '@/components';
 import theme from '@/helpers/theme';
-import { TGetListProductParams } from '@/interfaces/product.interface';
-import { ProductItem } from '@/shared';
+import { TCommonGetListParams } from '@/interfaces/common.interface';
 import { TRootState, useAppDispatch } from '@/stores';
-import { EProductActions, getListProductAction } from '@/stores/product';
+import { EClientActions, getListUserAction } from '@/stores/client';
 import { debounce } from 'lodash';
 import React, { useCallback } from 'react';
 import { ActivityIndicator, TextInput } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
-import { Header } from './components';
+import { Header, UserItem } from './components';
 import styles from './styles';
 
-const ProductList = React.memo(() => {
+const ManageUser = React.memo(() => {
   const dispatch = useAppDispatch();
   const insets = useSafeAreaInsets();
 
   const [queryParams, setQueryParams] =
-    React.useState<TGetListProductParams>(DEFAULT_GET_LIST_PARAMS);
+    React.useState<TCommonGetListParams>(DEFAULT_GET_LIST_PARAMS);
 
-  const { productList } = useSelector((state: TRootState) => state.product);
-  const loadingProduct = useSelector(
-    (state: TRootState) => state.loading[EProductActions.GET_LIST_PRODUCT],
+  const { listUser } = useSelector((state: TRootState) => state.client);
+  const loadingUser = useSelector(
+    (state: TRootState) => state.loading[EClientActions.GET_LIST_USER],
   );
 
-  const _getListProduct = (params: TGetListProductParams) => {
-    dispatch(getListProductAction(params));
+  const _getListUser = (params: TCommonGetListParams) => {
+    dispatch(getListUserAction(params));
   };
 
   const _onRefresh = () => {
-    _getListProduct(DEFAULT_GET_LIST_PARAMS);
+    setQueryParams({ ...DEFAULT_GET_LIST_PARAMS });
   };
 
   const _renderFooter = useCallback(() => {
-    if (!loadingProduct) {
+    if (!loadingUser) {
       return null;
     }
     return <ActivityIndicator color={theme.colors.primary} />;
-  }, [loadingProduct]);
+  }, [loadingUser]);
 
   const _onLoadMore = () => {
-    if (loadingProduct) {
+    if (loadingUser) {
       return;
     }
-    if (productList.page <= productList?.totalPages) {
+    if (listUser.page <= listUser?.totalPages) {
       dispatch(
-        getListProductAction({
+        getListUserAction({
           ...queryParams,
-          page: productList.page + 1,
+          page: listUser.page + 1,
         }),
       );
     }
@@ -67,47 +66,44 @@ const ProductList = React.memo(() => {
   };
 
   React.useEffect(() => {
-    _getListProduct(queryParams);
+    _getListUser(queryParams);
   }, [queryParams]);
 
   return (
     <Box flex={1} pt={insets.top} color={theme.colors.backgroundColor}>
-      <Box ph={16}>
+      <Box ph={16} pt={16}>
         <Header />
         <Box
+          mt={10}
           borderRadius={24}
           border
           borderColor={theme.colors.darkFiveColor}
           ph={16}
           h={45}
-          mv={10}
           middle
           direction='row'
         >
           <SearchIcon width={20} />
           <TextInput
+            value={queryParams.query}
             style={styles.searchInput}
-            placeholder='Tìm kiếm sản phẩm'
+            placeholder='Tìm kiếm người dùng'
             placeholderTextColor={theme.colors.darkTwoColor}
             onChangeText={_onChangeKeyword}
           />
         </Box>
       </Box>
-      <Box color={theme.colors.lightSixColor} flex={1}>
-        <ListView
-          keyExtractor={(item) => item.id}
-          data={productList.data}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item, index }) => <ProductItem product={item} />}
-          numColumns={2}
-          contentContainerStyle={styles.containerItem}
-          style={styles.container}
-          onEndReached={_onLoadMore}
-          onRefresh={_onRefresh}
-          ListFooterComponent={_renderFooter}
-        />
-      </Box>
+      <ListView
+        keyExtractor={(item) => item.id}
+        data={listUser.data}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => <UserItem user={item} />}
+        contentContainerStyle={styles.containerItem}
+        onEndReached={_onLoadMore}
+        onRefresh={_onRefresh}
+        ListFooterComponent={_renderFooter}
+      />
     </Box>
   );
 });
-export default ProductList;
+export default ManageUser;

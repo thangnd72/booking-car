@@ -4,8 +4,8 @@ export type TCommonGetListParams = {
   page?: number;
   size?: number;
   query?: string;
-  orderBy?: ESortType;
-  orderByDescending?: boolean;
+  asc?: string;
+  desc?: string;
 };
 
 export type TPagination = {

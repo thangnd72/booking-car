@@ -34,7 +34,7 @@ export const ProductList = React.memo(({ categoryId, keyword }: IProps) => {
   };
 
   const _onRefresh = () => {
-    _getListProduct(DEFAULT_GET_LIST_PARAMS);
+    setQueryParams({ ...DEFAULT_GET_LIST_PARAMS });
   };
 
   const _renderFooter = useCallback(() => {

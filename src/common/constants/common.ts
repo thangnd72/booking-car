@@ -11,6 +11,8 @@ export const DEFAULT_PAGE_SIZE_ALL = 1000;
 
 export const DEFAULT_PAGINATION: TPagination = {
   total: 1,
+  totalPages: 1,
+  page: 0,
 };
 
 export const DEFAULT_GET_LIST_PARAMS: TCommonGetListParams = {

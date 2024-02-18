@@ -18,6 +18,13 @@ export interface IClient {
   id: string;
   fullName: string;
   phoneNumber: string;
-  role: any[];
-  createdDate: string;
+  roles: IClientRole[];
+  created: string;
+  avatarUrl: string;
+}
+
+export interface IClientRole {
+  id: string;
+  name: string;
+  roleId: string;
 }

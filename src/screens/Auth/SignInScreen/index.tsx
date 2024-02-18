@@ -1,5 +1,5 @@
 import { LockIcon, UserIcon } from '@/assets/icons';
-import { validationError, validationSchema } from '@/common';
+import { EAuthToken, validationError, validationSchema } from '@/common';
 import { Box, Button, Spacer, TextField, TextInputField } from '@/components';
 import { ETypeField } from '@/components/TextInput/types';
 import { navigate } from '@/helpers/GlobalNavigation';
@@ -10,6 +10,7 @@ import { APP_SCREEN } from '@/navigators/screen-types';
 import { useAppDispatch } from '@/stores';
 import { logInAction } from '@/stores/auth';
 import { setAccessToken, setGlobalLoading, setProfile } from '@/stores/client';
+import { saveString } from '@/utils/storage';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -30,6 +31,7 @@ const SignInScreen: React.FC = () => {
           showSuccess('Đăng nhập thành công!');
           dispatch(setGlobalLoading(false));
           dispatch(setAccessToken(response.accessToken));
+          saveString(EAuthToken.ACCESS_TOKEN, response.accessToken);
           dispatch(setProfile(response.profile));
           navigate(APP_SCREEN.HOME);
         },

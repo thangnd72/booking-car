@@ -6,21 +6,22 @@ import {
   LocationIcon,
   LockIcon,
   LogoutIcon,
-  PresentIcon,
   ReportIcon,
   ThemeIcon,
+  UserManageIcon,
 } from '@/assets/icons';
 import { randomUniqueId } from '@/common';
 import { Box, Button, FastImg, TextField } from '@/components';
 import { navigate, reset } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
 import { APP_SCREEN } from '@/navigators/screen-types';
-import { useAppDispatch } from '@/stores';
+import { TRootState, useAppDispatch } from '@/stores';
 import { logout } from '@/stores/client';
 import { uniqueId } from 'lodash';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
+import { useSelector } from 'react-redux';
 import { LogoutDialog, Statistical } from './components';
 import styles from './styles';
 
@@ -28,6 +29,8 @@ const SettingScreen = React.memo(() => {
   const dispatch = useAppDispatch();
   const [userAvatar, setUserAvatar] = useState<ImageOrVideo>();
   const [confirmPopup, setConfirmPopup] = useState<boolean>(false);
+
+  const { profile } = useSelector((state: TRootState) => state.client);
 
   const chooseAvatar = async () => {
     try {
@@ -62,6 +65,10 @@ const SettingScreen = React.memo(() => {
     navigate(APP_SCREEN.HOME);
   };
 
+  const _onManageUser = () => {
+    navigate(APP_SCREEN.MANAGE_USER);
+  };
+
   const _renderSettings = [
     {
       key: randomUniqueId(),
@@ -70,28 +77,14 @@ const SettingScreen = React.memo(() => {
     },
     {
       key: randomUniqueId(),
-      title: 'Chủ đề quan tâm',
-      icon: <ThemeIcon />,
-    },
-    {
-      key: randomUniqueId(),
       title: 'Địa chỉ của bạn',
       icon: <LocationIcon />,
     },
     {
       key: randomUniqueId(),
-      title: 'Danh sách quà tặng',
-      icon: <GiftIcon />,
-    },
-    {
-      key: randomUniqueId(),
-      title: 'Quà tặng của bạn',
-      icon: <GiftIcon />,
-    },
-    {
-      key: randomUniqueId(),
-      title: 'Thống kê mua hàng',
-      icon: <ReportIcon />,
+      title: 'Quản lý người dùng',
+      icon: <UserManageIcon />,
+      action: _onManageUser,
     },
     {
       key: randomUniqueId(),
@@ -111,7 +104,7 @@ const SettingScreen = React.memo(() => {
       <Box>
         <Box middle>
           <FastImg
-            uri={userAvatar?.path ?? 'https://ik.imagekit.io/tvlk/blog/2021/09/du-lich-anh-2.jpg'}
+            uri={userAvatar?.path || profile?.avatarUrl || ''}
             pictureStyle={styles.profileImg}
           />
           <Button
@@ -131,10 +124,13 @@ const SettingScreen = React.memo(() => {
             size={18}
             pt={16}
           >
-            Nguyễn Đình Thắng
+            {profile?.fullName}
           </TextField>
           <TextField mt={4} size={12} color={theme.colors.darkOneColor}>
-            0975346755
+            {profile?.phoneNumber}
+          </TextField>
+          <TextField mt={4} size={12} color={theme.colors.darkOneColor}>
+            {profile?.roles && profile.roles[0].name}
           </TextField>
         </Box>
       </Box>

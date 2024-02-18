@@ -1,5 +1,5 @@
-import { DashboardIcon, FlowerIcon, PhoneCallIcon } from '@/assets/icons';
-import { CATEGORY_COLORS, GENERAL_OPTIONS } from '@/common/constants/common';
+import { DashboardIcon, FlowerIcon } from '@/assets/icons';
+import { CATEGORY_COLORS } from '@/common/constants/common';
 import { Box, Button, TextField } from '@/components';
 import { navigate } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
@@ -16,8 +16,8 @@ export const Category: React.FC<IProps> = ({ categories }) => {
     navigate(APP_SCREEN.PRODUCT_BY_CATEGORY, { categoryId });
   };
   return (
-    <Box>
-      <Box direction='row' middle gap={8} pv={16}>
+    <Box pb={10}>
+      <Box direction='row' middle gap={8} pv={16} ph={16}>
         <DashboardIcon width={24} height={24} />
         <TextField size={16} color={theme.colors.textColor}>
           Danh mục
@@ -26,7 +26,7 @@ export const Category: React.FC<IProps> = ({ categories }) => {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ gap: 10 }}
+        contentContainerStyle={{ gap: 10, paddingHorizontal: 16 }}
       >
         {categories &&
           categories.map((item, index) => (

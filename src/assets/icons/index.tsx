@@ -20,6 +20,8 @@ import EyeIcon from './eye.svg';
 import FavoriteIcon from './favorite.svg';
 import FilterIcon from './filter.svg';
 import FitIcon from './fit.svg';
+import FlowerActiveIcon from './flower-active.svg';
+import FlowerInactiveIcon from './flower-inactive.svg';
 import FlowerIcon from './flower.svg';
 import GiftIcon from './gift.svg';
 import HomeActiveIcon from './home-active.svg';
@@ -48,6 +50,7 @@ import SearchIcon from './search.svg';
 import StarIcon from './star.svg';
 import ThemeIcon from './theme.svg';
 import UncheckIcon from './uncheck.svg';
+import UserManageIcon from './user-manage.svg';
 import UserIcon from './user.svg';
 import WatchedIcon from './watched.svg';
 import ZaloIcon from './zalo-icon.svg';
@@ -75,7 +78,9 @@ export {
   FavoriteIcon,
   FilterIcon,
   FitIcon,
+  FlowerActiveIcon,
   FlowerIcon,
+  FlowerInactiveIcon,
   GiftIcon,
   HomeActiveIcon,
   HomeInactiveIcon,
@@ -105,6 +110,7 @@ export {
   ThemeIcon,
   UncheckIcon,
   UserIcon,
+  UserManageIcon,
   WatchedIcon,
   ZaloIcon,
 };

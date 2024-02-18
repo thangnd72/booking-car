@@ -7,4 +7,5 @@ export const {
   reducer: clientReducer,
   actions: { setAccessToken, setShowDialog, setProfile, setGlobalLoading, logout },
 } = slice;
-export const { getProfileAction } = asyncActions;
+export const { getListUserAction, upgradeUserToWholeSaleAction, downgradeUserToCustomerAction } =
+  asyncActions;

@@ -54,7 +54,7 @@ export const Header: React.FC<IProps> = ({ product }) => {
           </Button>
         </Box>
       </Button>
-      {product?.imageUrls.length && (
+      {product?.imageUrls && product.imageUrls.length > 0 && (
         <ImageView
           isVisible={isVisible}
           imageUrls={product?.imageUrls}

@@ -9,12 +9,17 @@ import { useRef } from 'react';
 import { CartModal, ICartModalRef } from '../CartModal';
 import { EActionType } from '../CartModal/types';
 import styles from './styles';
+import useAuth from '@/hooks/useAuth';
+import { useAppDispatch } from '@/stores';
+import { setShowDialog } from '@/stores/client';
 
 interface IProps {
   product: IProduct;
 }
 
 export const ProductItem: React.FC<IProps> = ({ product }) => {
+  const isAuth = useAuth();
+  const dispatch = useAppDispatch();
   const cartModalRef = useRef<ICartModalRef>(null);
 
   const _onPressProduct = () => {
@@ -22,6 +27,10 @@ export const ProductItem: React.FC<IProps> = ({ product }) => {
   };
 
   const _onAddToCart = () => {
+    if (!isAuth) {
+      dispatch(setShowDialog(true));
+      return;
+    }
     cartModalRef.current?.onShowModal(true, EActionType.ADD_TO_CART, product);
   };
 

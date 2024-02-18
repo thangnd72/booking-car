@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
       <Box direction='row' gap={12}>
         <Button
           onPress={_onPressOrder}
-          color={theme.colors.lightThreeColor}
+          color={theme.colors.lightFourColor}
           centered
           middle
           borderRadius={21}
@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
         </Button>
         <Button
           onPress={_onPressOrder}
-          color={theme.colors.lightThreeColor}
+          color={theme.colors.lightFourColor}
           centered
           middle
           borderRadius={21}

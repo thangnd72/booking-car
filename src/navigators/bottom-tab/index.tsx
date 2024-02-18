@@ -1,7 +1,7 @@
 import { APP_SCREEN } from '@/navigators/screen-types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeStackNavigation } from './home-stack';
-import { NotificationStackNavigation } from './notification-stack';
+import { PlanStackNavigation } from './plan-stack';
 import { OrderStackNavigation } from './order-stack';
 import { SettingStackNavigation } from './setting-stack';
 import { TabBar } from './tab-bar';
@@ -18,7 +18,7 @@ export const BottomTab = () => {
     >
       <Tab.Screen name={APP_SCREEN.HOME_STACK} component={HomeStackNavigation} />
       <Tab.Screen name={APP_SCREEN.ORDER_STACK} component={OrderStackNavigation} />
-      <Tab.Screen name={APP_SCREEN.NOTIFICATION_STACK} component={NotificationStackNavigation} />
+      <Tab.Screen name={APP_SCREEN.PLAN_STACK} component={PlanStackNavigation} />
       <Tab.Screen name={APP_SCREEN.SETTING_STACK} component={SettingStackNavigation} />
     </Tab.Navigator>
   );

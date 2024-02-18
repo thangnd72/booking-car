@@ -20,7 +20,7 @@ export enum APP_SCREEN {
   HOME_STACK = 'HOME_STACK',
   HOME = 'HOME',
   PRODUCT_BY_CATEGORY = 'PRODUCT_BY_CATEGORY',
-  PRODUCT_LIST = 'PRODUCT_LIST',
+  MANAGE_USER = 'MANAGE_USER',
   PRODUCT_DETAIL = 'PRODUCT_DETAIL',
 
   // home stack
@@ -28,7 +28,7 @@ export enum APP_SCREEN {
   ORDER = 'ORDER',
 
   // notification stack
-  NOTIFICATION_STACK = 'NOTIFICATION_STACK',
+  PLAN_STACK = 'PLAN_STACK',
   NOTIFICATION = 'NOTIFICATION',
 
   // setting
@@ -54,7 +54,7 @@ export type TAuthorizeParamsList = {
   [APP_SCREEN.PROFILE]: undefined;
   [APP_SCREEN.SETTING]: undefined;
   [APP_SCREEN.PRODUCT_BY_CATEGORY]: { categoryId: string };
-  [APP_SCREEN.PRODUCT_LIST]: undefined;
+  [APP_SCREEN.MANAGE_USER]: undefined;
   [APP_SCREEN.PRODUCT_DETAIL]: { productId: string };
 };
 

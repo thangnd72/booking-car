@@ -1,28 +1,32 @@
 import { SearchIcon } from '@/assets/icons';
 import { DEFAULT_GET_LIST_PARAMS } from '@/common/constants/common';
-import { Box, Button, Carousel, FloatActionButton, TextField } from '@/components';
+import { Box, Button, FloatActionButton, ListView } from '@/components';
 import theme from '@/helpers/theme';
 import useAuth from '@/hooks/useAuth';
+import { TGetListProductParams } from '@/interfaces/product.interface';
+import { ProductItem } from '@/shared';
 import { TRootState, useAppDispatch } from '@/stores';
-import { getListProductAction, getProductCategoryAction } from '@/stores/product';
-import React from 'react';
-import { ScrollView } from 'react-native';
+import { EProductActions, getListProductAction, getProductCategoryAction } from '@/stores/product';
+import { debounce } from 'lodash';
+import React, { useCallback } from 'react';
+import { ActivityIndicator, TextInput } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
-import { Category, General, Header } from './components';
-import { navigate } from '@/helpers/GlobalNavigation';
-import { APP_SCREEN } from '@/navigators/screen-types';
+import { Category, Header } from './components';
+import styles from './styles';
 
 const HomeScreen = React.memo(() => {
   const insets = useSafeAreaInsets();
   const isAuth = useAuth();
   const dispatch = useAppDispatch();
+  const [queryParams, setQueryParams] =
+    React.useState<TGetListProductParams>(DEFAULT_GET_LIST_PARAMS);
 
   const { productCategories } = useSelector((state: TRootState) => state.product);
-
-  const _onSearch = () => {
-    navigate(APP_SCREEN.PRODUCT_LIST);
-  };
+  const { productList } = useSelector((state: TRootState) => state.product);
+  const loadingProduct = useSelector(
+    (state: TRootState) => state.loading[EProductActions.GET_LIST_PRODUCT],
+  );
 
   const _init = async () => {
     await Promise.all([
@@ -31,50 +35,92 @@ const HomeScreen = React.memo(() => {
     ]);
   };
 
+  const _getListProduct = (params: TGetListProductParams) => {
+    dispatch(getListProductAction(params));
+  };
+
+  const _onRefresh = () => {
+    setQueryParams({ ...DEFAULT_GET_LIST_PARAMS });
+  };
+
+  const _renderFooter = useCallback(() => {
+    if (!loadingProduct) {
+      return null;
+    }
+    return <ActivityIndicator color={theme.colors.primary} />;
+  }, [loadingProduct]);
+
+  const _onLoadMore = () => {
+    if (loadingProduct) {
+      return;
+    }
+    if (productList.page <= productList?.totalPages) {
+      dispatch(
+        getListProductAction({
+          ...queryParams,
+          page: productList.page + 1,
+        }),
+      );
+    }
+  };
+
+  const debounceSearch = useCallback(
+    debounce(async (keyword?: string) => {
+      setQueryParams({ ...queryParams, page: 0, query: keyword });
+    }, 500),
+    [queryParams],
+  );
+
+  const _onChangeKeyword = (keyword: string) => {
+    debounceSearch(keyword);
+  };
+
+  React.useEffect(() => {
+    _getListProduct(queryParams);
+  }, [queryParams]);
+
   React.useEffect(() => {
     _init();
   }, []);
 
   return (
-    <Box flex={1} ph={16} pt={insets.top}>
-      <Header />
-      <Button
-        direction='row'
-        middle
-        color={theme.colors.lightThreeColor}
-        ph={16}
-        pv={12}
-        borderRadius={10}
-        onPress={_onSearch}
-      >
-        <SearchIcon />
-        <TextField mb={3} ml={4} size={14} color={theme.colors.darkTwoColor} mt={2}>
-          Tìm kiếm
-        </TextField>
-      </Button>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Category categories={productCategories.data} />
-        <General />
-        <Carousel
-          height={200}
-          images={[
-            {
-              url: 'https://st3.depositphotos.com/1021722/33394/i/450/depositphotos_333943612-stock-photo-beautiful-nature-countryside-landscape-spring.jpg',
-              link: '',
-            },
-            {
-              url: 'https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-scenic-lake-by-the-trees-and-flowers-image_2686854.jpg',
-              link: '',
-            },
-            {
-              url: 'https://png.pngtree.com/background/20230412/original/pngtree-natural-forest-with-beautiful-mountains-and-clear-waters-picture-image_2396850.jpg',
-              link: '',
-            },
-          ]}
-          onPressBanner={() => {}}
+    <Box flex={1} pt={insets.top} color={theme.colors.backgroundColor}>
+      <Box ph={16}>
+        <Header />
+        <Button
+          direction='row'
+          middle
+          color={theme.colors.lightFourColor}
+          ph={16}
+          h={45}
+          borderRadius={10}
+        >
+          <SearchIcon />
+          <TextInput
+            style={styles.searchInput}
+            placeholder='Tìm kiếm sản phẩm'
+            placeholderTextColor={theme.colors.darkTwoColor}
+            onChangeText={_onChangeKeyword}
+          />
+        </Button>
+      </Box>
+      <Category categories={productCategories.data} />
+
+      <Box color={theme.colors.lightSixColor} flex={1}>
+        <ListView
+          keyExtractor={(item) => item.id}
+          data={productList.data}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item, index }) => <ProductItem product={item} />}
+          numColumns={2}
+          contentContainerStyle={styles.containerItem}
+          style={styles.wrapperProduct}
+          onEndReached={_onLoadMore}
+          onRefresh={_onRefresh}
+          ListFooterComponent={_renderFooter}
         />
-      </ScrollView>
-      {isAuth && <FloatActionButton />}
+        {isAuth && <FloatActionButton />}
+      </Box>
     </Box>
   );
 });

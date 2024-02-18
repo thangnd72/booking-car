@@ -4,6 +4,8 @@ import { Box, Button, Spacer, TextField } from '@/components';
 import { APP_SCREEN } from '@/navigators/screen-types';
 import theme from '@/helpers/theme';
 import {
+  FlowerActiveIcon,
+  FlowerInactiveIcon,
   HomeActiveIcon,
   HomeInactiveIcon,
   OrderActive,
@@ -24,8 +26,8 @@ const titleBottom = (route: string) => {
       return 'Trang chủ';
     case APP_SCREEN.ORDER_STACK:
       return 'Đặt hoa theo ngày';
-    case APP_SCREEN.NOTIFICATION_STACK:
-      return 'Thông báo';
+    case APP_SCREEN.PLAN_STACK:
+      return 'Dự trù';
     case APP_SCREEN.SETTING_STACK:
       return 'Tài khoản';
 
@@ -39,9 +41,9 @@ const IconActive = (route: any) => {
     case APP_SCREEN.HOME_STACK:
       return <HomeActiveIcon />;
     case APP_SCREEN.ORDER_STACK:
-      return <OrderActive width={24} height={25} />;
-    case APP_SCREEN.NOTIFICATION_STACK:
-      return <HomeActiveIcon />;
+      return <FlowerActiveIcon />;
+    // case APP_SCREEN.USER_STACK:
+    //   return <UserActiveIcon />;
     case APP_SCREEN.SETTING_STACK:
       return <ProfileActive />;
 
@@ -55,9 +57,9 @@ const IconInActive = (route: any) => {
     case APP_SCREEN.HOME_STACK:
       return <HomeInactiveIcon />;
     case APP_SCREEN.ORDER_STACK:
-      return <OrderInactive width={24} height={25} />;
-    case APP_SCREEN.NOTIFICATION_STACK:
-      return <HomeInactiveIcon />;
+      return <FlowerInactiveIcon />;
+    // case APP_SCREEN.USER_STACK:
+    //   return <UserInactiveIcon />;
     case APP_SCREEN.SETTING_STACK:
       return <ProfileInactive />;
 

@@ -63,7 +63,7 @@ export const CartModal = forwardRef<ICartModalRef>(({}, ref) => {
               )}đ`}</TextField>
               <TextField
                 size={12}
-                color={theme.colors.darkFourColor}
+                color={theme.colors.darkSixColor}
               >{`Số lượng: ${actions.product?.quantity}`}</TextField>
               <Box
                 direction='row'

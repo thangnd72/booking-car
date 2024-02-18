@@ -6,7 +6,7 @@ import BootSplash from 'react-native-bootsplash';
 import { BottomTab } from './bottom-tab';
 import { APP_SCREEN, TRootStackParamList } from './screen-types';
 import ProductByCategory from '@/screens/ProductByCategory';
-import ProductList from '@/screens/ProductList';
+import ManageUser from '@/screens/ManageUser';
 import ProductDetails from '@/screens/ProductDetail';
 
 const RootStack = createStackNavigator<TRootStackParamList>();
@@ -38,8 +38,8 @@ const RootNavigator = React.memo(() => {
         }}
       />
       <RootStack.Screen
-        name={APP_SCREEN.PRODUCT_LIST}
-        component={ProductList}
+        name={APP_SCREEN.MANAGE_USER}
+        component={ManageUser}
         options={{
           headerShown: false,
         }}

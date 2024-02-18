@@ -1,11 +1,10 @@
 import { APP_SCREEN, TRootStackParamList } from '@/navigators/screen-types';
-import SignIn from '@/screens/Auth/SignInScreen';
-import HomeScreen from '@/screens/HomeScreen';
+import ManageUser from '@/screens/ManageUser';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator<TRootStackParamList>();
 
-export const NotificationStackNavigation = () => {
+export const PlanStackNavigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Group
@@ -14,8 +13,8 @@ export const NotificationStackNavigation = () => {
         }}
       >
         <Stack.Screen
-          name={APP_SCREEN.NOTIFICATION}
-          component={HomeScreen}
+          name={APP_SCREEN.MANAGE_USER}
+          component={ManageUser}
           options={{
             headerShown: false,
           }}

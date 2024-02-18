@@ -9,8 +9,8 @@ export const Header: React.FC = () => {
       <Button onPress={goBack}>
         <ArrowLeftIcon />
       </Button>
-      <TextField size={18} fontFamily={theme.fonts.medium}>
-        Danh sách sản phẩm
+      <TextField size={20} fontFamily={theme.fonts.medium} color={theme.colors.textColor}>
+        Danh sách người dùng
       </TextField>
       <Box direction='row' gap={12}>
         <Button>

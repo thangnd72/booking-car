@@ -1,5 +1,5 @@
 import { LockIcon, PhoneIcon, UserIcon } from '@/assets/icons';
-import { validationError, validationSchema } from '@/common';
+import { EAuthToken, validationError, validationSchema } from '@/common';
 import { Box, Button, Spacer, TextField, TextInputField } from '@/components';
 import { ETypeField } from '@/components/TextInput/types';
 import { navigate } from '@/helpers/GlobalNavigation';
@@ -10,6 +10,7 @@ import { APP_SCREEN } from '@/navigators/screen-types';
 import { useAppDispatch } from '@/stores';
 import { signUpAction } from '@/stores/auth';
 import { setAccessToken, setGlobalLoading, setProfile } from '@/stores/client';
+import { saveString } from '@/utils/storage';
 import { useForm } from 'react-hook-form';
 import { ScrollView } from 'react-native';
 
@@ -30,6 +31,7 @@ export const SignUpScreen: React.FC = () => {
     showSuccess('Đăng ký tài khoản thành công!');
     dispatch(setAccessToken(response.accessToken));
     dispatch(setProfile(response.profile));
+    saveString(EAuthToken.ACCESS_TOKEN, response.accessToken);
     navigate(APP_SCREEN.HOME);
   };
 

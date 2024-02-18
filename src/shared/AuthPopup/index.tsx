@@ -26,8 +26,8 @@ export const AuthPopup: React.FC = () => {
     <Modal
       isVisible={showDialog}
       onBackdropPress={handleCloseModal}
-      entering={FadeIn.duration(200)}
-      exiting={FadeOut.duration(200)}
+      entering={FadeIn.duration(100)}
+      exiting={FadeOut.duration(100)}
     >
       <Box borderRadius={16} color={theme.colors.backgroundColor} pv={24} mh={16} ph={24} centered>
         <TextField
