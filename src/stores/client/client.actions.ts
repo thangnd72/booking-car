@@ -1,8 +1,9 @@
 import ResponseError from '@/interfaces/error.interface';
-import { getListUserApi, upgradeUserToWholeSaleApi } from '@/services/client.services';
+import { getListRoleApi } from '@/services/common.services';
+import { getListUserApi, updateUserProfileApi } from '@/services/user.services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { EClientActions } from './client.constants';
-import { TDowngradeUserAction, TGetListUserAction, TUpgradeUserAction } from './client.types';
+import { TGetListRoleAction, TGetListUserAction, TUpdateProfileUserAction } from './client.types';
 
 export const getListUserAction = createAsyncThunk(
   EClientActions.GET_LIST_USER,
@@ -23,14 +24,14 @@ export const getListUserAction = createAsyncThunk(
   },
 );
 
-export const upgradeUserToWholeSaleAction = createAsyncThunk(
-  EClientActions.UPGRADE_USER_TO_WHOLE_SALE,
-  async (payload: TUpgradeUserAction, { rejectWithValue }) => {
-    const { onSuccess, onError, userId } = payload;
+export const updateProfileUserAction = createAsyncThunk(
+  EClientActions.UPDATE_PROFILE,
+  async (payload: TUpdateProfileUserAction, { rejectWithValue }) => {
+    const { onSuccess, onError, ...bodyRequest } = payload;
     try {
-      const response = await upgradeUserToWholeSaleApi(userId);
+      const response = await updateUserProfileApi(bodyRequest);
       onSuccess?.(response);
-      return response;
+      return response.data;
     } catch (error) {
       onError?.(error as ResponseError);
       return rejectWithValue(error);
@@ -38,14 +39,14 @@ export const upgradeUserToWholeSaleAction = createAsyncThunk(
   },
 );
 
-export const downgradeUserToCustomerAction = createAsyncThunk(
-  EClientActions.DOWNGRADE_USER_TO_CUSTOMER,
-  async (payload: TDowngradeUserAction, { rejectWithValue }) => {
-    const { onSuccess, onError, userId } = payload;
+export const getListRoleAction = createAsyncThunk(
+  EClientActions.GET_LIST_ROLE,
+  async (payload: TGetListRoleAction, { rejectWithValue }) => {
+    const { onSuccess, onError } = payload;
     try {
-      const response = await upgradeUserToWholeSaleApi(userId);
+      const response = await getListRoleApi();
       onSuccess?.(response);
-      return response;
+      return response.data;
     } catch (error) {
       onError?.(error as ResponseError);
       return rejectWithValue(error);

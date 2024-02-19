@@ -17,3 +17,12 @@ export enum ESortType {
   ASC = 'ASC',
   DESC = 'DESC',
 }
+
+export enum EUserRole {
+  SUPER_ADMIN = 'super_admin',
+  ADMIN = 'admin',
+  WHOLE_SALE = 'whole_sale',
+  CUSTOMER = 'customer',
+  SALE = 'sale',
+  WARE_HOUSE_KEPPER = 'ware_house_kepper',
+}

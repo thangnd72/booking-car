@@ -31,6 +31,7 @@ import LocationIcon from './location.svg';
 import LockIcon from './lock.svg';
 import LogoApp from './logo.svg';
 import LogoutIcon from './logout.svg';
+import ManageIcon from './manage-icon.svg';
 import MessageIcon from './message.svg';
 import MinusIcon from './minus.svg';
 import NotificationIcon from './notification.svg';
@@ -44,6 +45,8 @@ import PointsIcon from './points.svg';
 import PresentIcon from './present.svg';
 import ProfileActive from './profile-active.svg';
 import ProfileInactive from './profile-inactive.svg';
+import RadioActiveIcon from './radio-active.svg';
+import RadioInactiveIcon from './radio-inactive.svg';
 import RankingIcon from './ranking.svg';
 import ReportIcon from './report.svg';
 import SearchIcon from './search.svg';
@@ -89,6 +92,7 @@ export {
   LockIcon,
   LogoApp,
   LogoutIcon,
+  ManageIcon,
   MessageIcon,
   MinusIcon,
   NotificationIcon,
@@ -102,6 +106,8 @@ export {
   PresentIcon,
   ProfileActive,
   ProfileInactive,
+  RadioActiveIcon,
+  RadioInactiveIcon,
   RankingIcon,
   ReportIcon,
   SearchIcon,

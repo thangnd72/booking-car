@@ -1,5 +1,5 @@
 import { APP_SCREEN, TRootStackParamList } from '@/navigators/screen-types';
-import ManageUser from '@/screens/ManageUser';
+import PlanProduct from '@/screens/PlanProduct';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator<TRootStackParamList>();
@@ -13,8 +13,8 @@ export const PlanStackNavigation = () => {
         }}
       >
         <Stack.Screen
-          name={APP_SCREEN.MANAGE_USER}
-          component={ManageUser}
+          name={APP_SCREEN.PLAN_PRODUCT}
+          component={PlanProduct}
           options={{
             headerShown: false,
           }}

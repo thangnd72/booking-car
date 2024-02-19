@@ -1,6 +1,5 @@
 import { Box, Button, Modal, TextField } from '@/components';
 import { navigate } from '@/helpers/GlobalNavigation';
-import { SIZE } from '@/helpers/size';
 import theme from '@/helpers/theme';
 import { APP_SCREEN } from '@/navigators/screen-types';
 import { TRootState, useAppDispatch } from '@/stores';
@@ -30,15 +29,10 @@ export const AuthPopup: React.FC = () => {
       exiting={FadeOut.duration(100)}
     >
       <Box borderRadius={16} color={theme.colors.backgroundColor} pv={24} mh={16} ph={24} centered>
-        <TextField
-          centered
-          fontFamily={theme.fonts.medium}
-          size={SIZE.fontPixel(24)}
-          color={theme.colors.primary}
-        >
+        <TextField centered fontFamily={theme.fonts.medium} size={24} color={theme.colors.primary}>
           Thông báo
         </TextField>
-        <TextField centered pv={16} size={SIZE.fontPixel(16)} color={theme.colors.textColor}>
+        <TextField centered pv={16} size={16} color={theme.colors.textColor}>
           Vui lòng đăng nhập để thực hiện chức năng này!
         </TextField>
         <Box direction='row' middle style={{ gap: 16 }}>

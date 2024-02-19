@@ -10,7 +10,7 @@ import { APP_SCREEN } from '@/navigators/screen-types';
 import { useAppDispatch } from '@/stores';
 import { logInAction } from '@/stores/auth';
 import { setAccessToken, setGlobalLoading, setProfile } from '@/stores/client';
-import { saveString } from '@/utils/storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -31,7 +31,7 @@ const SignInScreen: React.FC = () => {
           showSuccess('Đăng nhập thành công!');
           dispatch(setGlobalLoading(false));
           dispatch(setAccessToken(response.accessToken));
-          saveString(EAuthToken.ACCESS_TOKEN, response.accessToken);
+          AsyncStorage.setItem(EAuthToken.ACCESS_TOKEN, response.accessToken);
           dispatch(setProfile(response.profile));
           navigate(APP_SCREEN.HOME);
         },

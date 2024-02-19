@@ -1,25 +1,26 @@
 import {
   ArrowRightIcon,
   CameraIcon,
-  GiftIcon,
   ListIcon,
   LocationIcon,
   LockIcon,
   LogoutIcon,
-  ReportIcon,
-  ThemeIcon,
   UserManageIcon,
 } from '@/assets/icons';
 import { randomUniqueId } from '@/common';
 import { Box, Button, FastImg, TextField } from '@/components';
 import { navigate, reset } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
+import { showError } from '@/helpers/toast';
+import ResponseError from '@/interfaces/error.interface';
 import { APP_SCREEN } from '@/navigators/screen-types';
+import { uploadPhotoApi } from '@/services/common.services';
 import { TRootState, useAppDispatch } from '@/stores';
-import { logout } from '@/stores/client';
+import { logout, updateProfileUserAction } from '@/stores/client';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { uniqueId } from 'lodash';
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
+import { ActivityIndicator, Platform, ScrollView } from 'react-native';
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
 import { useSelector } from 'react-redux';
 import { LogoutDialog, Statistical } from './components';
@@ -27,10 +28,39 @@ import styles from './styles';
 
 const SettingScreen = React.memo(() => {
   const dispatch = useAppDispatch();
-  const [userAvatar, setUserAvatar] = useState<ImageOrVideo>();
   const [confirmPopup, setConfirmPopup] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const { profile } = useSelector((state: TRootState) => state.client);
+
+  const updateProfileImage = async (photo: ImageOrVideo) => {
+    if (!profile) return;
+    try {
+      setLoading(true);
+      const formData = new FormData();
+      const avatar = {
+        uri: Platform.OS === 'ios' ? photo.path?.replace('file://', '') : photo.path,
+        name: photo.filename,
+        type: photo.mime,
+      };
+      formData.append('file', avatar);
+      const response = await uploadPhotoApi(formData);
+
+      dispatch(
+        updateProfileUserAction({
+          ...profile,
+          avatar: response.data,
+          onSuccess: () => {
+            setLoading(false);
+          },
+        }),
+      );
+    } catch (error) {
+      setLoading(false);
+      const { message } = error as ResponseError;
+      showError(message);
+    }
+  };
 
   const chooseAvatar = async () => {
     try {
@@ -44,7 +74,7 @@ const SettingScreen = React.memo(() => {
       if (!file) {
         return;
       }
-      setUserAvatar(file);
+      updateProfileImage(file);
     } catch (e: any) {
       console.log(e.message);
     }
@@ -61,6 +91,7 @@ const SettingScreen = React.memo(() => {
   const handleLogout = () => {
     onDismiss();
     dispatch(logout());
+    AsyncStorage.clear();
     reset(APP_SCREEN.HOME);
     navigate(APP_SCREEN.HOME);
   };
@@ -103,10 +134,13 @@ const SettingScreen = React.memo(() => {
     <ScrollView style={styles.container}>
       <Box>
         <Box middle>
-          <FastImg
-            uri={userAvatar?.path || profile?.avatarUrl || ''}
-            pictureStyle={styles.profileImg}
-          />
+          {loading ? (
+            <Box flex={1} w={100} h={100} middle centered>
+              <ActivityIndicator color={theme.colors.primary} />
+            </Box>
+          ) : (
+            <FastImg uri={profile?.avatarUrl || ''} pictureStyle={styles.profileImg} />
+          )}
           <Button
             onPress={chooseAvatar}
             style={styles.cameraWrapper}

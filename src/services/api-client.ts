@@ -1,9 +1,9 @@
 import { EAuthToken } from '@/common/constants';
 import { API_URL } from '@/common/constants/urls';
 import { reset } from '@/helpers/GlobalNavigation';
+import { showError } from '@/helpers/toast';
 import ResponseError, { TErrorData } from '@/interfaces/error.interface';
 import { APP_SCREEN } from '@/navigators/screen-types';
-import { loadString } from '@/utils/storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios, {
   AxiosError,
@@ -15,7 +15,7 @@ import axios, {
 const axiosInstance = axios.create({ baseURL: API_URL });
 
 const requestHandler = async (config: AxiosRequestConfig) => {
-  const accessToken = loadString(EAuthToken.ACCESS_TOKEN);
+  const accessToken = await AsyncStorage.getItem(EAuthToken.ACCESS_TOKEN);
 
   const configHeaders = {
     Authorization: accessToken ? `Bearer ${accessToken}` : '',
@@ -32,7 +32,8 @@ const requestHandler = async (config: AxiosRequestConfig) => {
 const responseErrorHandler = async (err: AxiosError<TErrorData>) => {
   if (err?.response?.status === 401) {
     await AsyncStorage.getAllKeys().then(AsyncStorage.multiRemove);
-    reset(APP_SCREEN.LOGIN);
+    reset(APP_SCREEN.HOME);
+    showError('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại!');
     throw new ResponseError('Login session expired', undefined);
   }
 

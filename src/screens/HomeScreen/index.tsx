@@ -14,6 +14,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { Category, Header } from './components';
 import styles from './styles';
+import { getListRoleAction } from '@/stores/client';
 
 const HomeScreen = React.memo(() => {
   const insets = useSafeAreaInsets();
@@ -31,7 +32,7 @@ const HomeScreen = React.memo(() => {
   const _init = async () => {
     await Promise.all([
       dispatch(getProductCategoryAction({ ...DEFAULT_GET_LIST_PARAMS, size: 20 })),
-      // dispatch(getListProductAction(DEFAULT_GET_LIST_PARAMS)),
+      dispatch(getListRoleAction({})),
     ]);
   };
 

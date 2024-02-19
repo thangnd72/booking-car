@@ -3,7 +3,7 @@ import {
   TCommonGetListResponse,
   TPagination,
 } from '@/interfaces/common.interface';
-import { EGeneral } from './enum';
+import { EGeneral, EUserRole } from './enum';
 
 export const DEFAULT_PAGE = 0;
 export const DEFAULT_PAGE_SIZE = 10;

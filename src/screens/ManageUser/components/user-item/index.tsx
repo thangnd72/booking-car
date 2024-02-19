@@ -1,16 +1,24 @@
-import { ArrowLeftIcon, CartIcon } from '@/assets/icons';
+import { ArrowLeftIcon, CartIcon, ManageIcon } from '@/assets/icons';
 import { Box, Button, FastImg, TextField } from '@/components';
 import { goBack } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
 import styles from './styles';
 import dayjs from 'dayjs';
-import { IClient } from '@/interfaces/auth.interfaces';
+import { IUser } from '@/interfaces/auth.interfaces';
+import { IRoleModalRef, RoleModal } from '../role-modal';
+import { useRef } from 'react';
 
 interface IProps {
-  user: IClient;
+  user: IUser;
 }
 
 export const UserItem: React.FC<IProps> = ({ user }) => {
+  const roleModalRef = useRef<IRoleModalRef>(null);
+
+  const _onChangeRole = () => {
+    roleModalRef.current?.onShowModal(true, user);
+  };
+
   return (
     <Box
       direction='row'
@@ -42,6 +50,10 @@ export const UserItem: React.FC<IProps> = ({ user }) => {
           user.roles[0]?.name || ''
         }`}</TextField>
       </Box>
+      <Button borderRadius={50} color={theme.colors.lightFourColor} p={4} onPress={_onChangeRole}>
+        <ManageIcon />
+      </Button>
+      <RoleModal ref={roleModalRef} />
     </Box>
   );
 };

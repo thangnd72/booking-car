@@ -25,11 +25,11 @@ export enum APP_SCREEN {
 
   // home stack
   ORDER_STACK = 'ORDER_STACK',
-  ORDER = 'ORDER',
+  PRODUCT_BY_DAY = 'PRODUCT_BY_DAY',
 
   // notification stack
   PLAN_STACK = 'PLAN_STACK',
-  NOTIFICATION = 'NOTIFICATION',
+  PLAN_PRODUCT = 'PLAN_PRODUCT',
 
   // setting
   SETTING_STACK = 'SETTING_STACK',
@@ -49,8 +49,8 @@ export type TUnAuthorizeParamsList = {
 
 export type TAuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
-  [APP_SCREEN.ORDER]: undefined;
-  [APP_SCREEN.NOTIFICATION]: undefined;
+  [APP_SCREEN.PRODUCT_BY_DAY]: undefined;
+  [APP_SCREEN.PLAN_PRODUCT]: undefined;
   [APP_SCREEN.PROFILE]: undefined;
   [APP_SCREEN.SETTING]: undefined;
   [APP_SCREEN.PRODUCT_BY_CATEGORY]: { categoryId: string };

@@ -10,7 +10,7 @@ import { APP_SCREEN } from '@/navigators/screen-types';
 import { useAppDispatch } from '@/stores';
 import { signUpAction } from '@/stores/auth';
 import { setAccessToken, setGlobalLoading, setProfile } from '@/stores/client';
-import { saveString } from '@/utils/storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useForm } from 'react-hook-form';
 import { ScrollView } from 'react-native';
 
@@ -31,7 +31,7 @@ export const SignUpScreen: React.FC = () => {
     showSuccess('Đăng ký tài khoản thành công!');
     dispatch(setAccessToken(response.accessToken));
     dispatch(setProfile(response.profile));
-    saveString(EAuthToken.ACCESS_TOKEN, response.accessToken);
+    AsyncStorage.setItem(EAuthToken.ACCESS_TOKEN, response.accessToken);
     navigate(APP_SCREEN.HOME);
   };
 

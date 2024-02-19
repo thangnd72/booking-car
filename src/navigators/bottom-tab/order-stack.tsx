@@ -1,6 +1,5 @@
 import { APP_SCREEN, TRootStackParamList } from '@/navigators/screen-types';
-import SignIn from '@/screens/Auth/SignInScreen';
-import HomeScreen from '@/screens/HomeScreen';
+import ProductByDay from '@/screens/ProductByDay';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator<TRootStackParamList>();
@@ -18,8 +17,8 @@ export const OrderStackNavigation = () => {
         }}
       >
         <Stack.Screen
-          name={APP_SCREEN.ORDER}
-          component={HomeScreen}
+          name={APP_SCREEN.PRODUCT_BY_DAY}
+          component={ProductByDay}
           options={{
             headerShown: true,
           }}

@@ -6233,11 +6233,6 @@ react-native-keyboard-manager@^6.5.11-2:
   resolved "https://registry.npmjs.org/react-native-keyboard-manager/-/react-native-keyboard-manager-6.5.11-2.tgz"
   integrity sha512-YpU7Ek7CZZbT06x8X6G/wwUjL915AOwWho/vxxlj7Dm3CljzmSHAJu4TwR7oCTihoD82W+fA1mUmozmYJYrDGg==
 
-react-native-mmkv@^2.11.0:
-  version "2.11.0"
-  resolved "https://registry.npmjs.org/react-native-mmkv/-/react-native-mmkv-2.11.0.tgz"
-  integrity sha512-28PdUHjZJmAw3q+8zJDAAdohnZMpDC7WgRUJxACOMkcmJeqS3u5cKS/lSq2bhf1CvaeIiHYHUWiyatUjMRCDQQ==
-
 react-native-modalbox@^2.0.2:
   version "2.0.2"
   resolved "https://registry.npmjs.org/react-native-modalbox/-/react-native-modalbox-2.0.2.tgz"
