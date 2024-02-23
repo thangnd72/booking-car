@@ -37,12 +37,12 @@ export const ProductItem: React.FC<IProps> = ({ product }) => {
   return (
     <>
       <Button
-        flex={1}
         borderRadius={16}
         color={theme.colors.backgroundColor}
         centered
         mh={6}
         onPress={_onPressProduct}
+        style={styles.shadow}
       >
         <FastImg uri={product.imageUrls[0] || ''} pictureStyle={styles.thumbnail} />
         <Box gap={4} p={12}>

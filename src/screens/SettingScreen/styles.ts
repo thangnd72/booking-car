@@ -1,4 +1,5 @@
 import { SIZE } from '@/helpers/size';
+import theme from '@/helpers/theme';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -6,6 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: SIZE.scaleW(16),
     paddingTop: 80,
+    backgroundColor: theme.colors.backgroundColor,
   },
   profileImg: {
     width: 100,

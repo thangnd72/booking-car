@@ -8,6 +8,8 @@ import { APP_SCREEN, TRootStackParamList } from './screen-types';
 import ProductByCategory from '@/screens/ProductByCategory';
 import ManageUser from '@/screens/ManageUser';
 import ProductDetails from '@/screens/ProductDetail';
+import ShoppingCart from '@/screens/ShoppingCart';
+import CheckoutScreen from '@/screens/CheckoutScreen';
 
 const RootStack = createStackNavigator<TRootStackParamList>();
 
@@ -47,6 +49,20 @@ const RootNavigator = React.memo(() => {
       <RootStack.Screen
         name={APP_SCREEN.PRODUCT_DETAIL}
         component={ProductDetails}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <RootStack.Screen
+        name={APP_SCREEN.SHOPPING_CART}
+        component={ShoppingCart}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <RootStack.Screen
+        name={APP_SCREEN.CHECKOUT_SCREEN}
+        component={CheckoutScreen}
         options={{
           headerShown: false,
         }}

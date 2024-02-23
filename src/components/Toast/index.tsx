@@ -4,7 +4,6 @@ import styles from './styles';
 import theme from '@/helpers/theme';
 import { CheckedAroundIcon, ErrorAroundIcon } from '@/assets/icons';
 import { TextField } from '../TextField';
-import { Box } from '../Box';
 
 interface IToastSuccess {
   message: string;
@@ -28,7 +27,14 @@ interface IToastError {
 export const ToastError = ({ message }: IToastError) => {
   return (
     <View
-      style={[styles.container, { borderLeftWidth: 4, borderLeftColor: theme.colors.errorColor }]}
+      style={[
+        styles.container,
+        {
+          borderLeftWidth: 4,
+          borderLeftColor: theme.colors.errorColor,
+          backgroundColor: theme.colors.bgErrorColor,
+        },
+      ]}
     >
       <ErrorAroundIcon fill={theme.colors.lightFiveColor} width={20} height={20} />
       <TextField pl={6} color={theme.colors.textColor}>

@@ -8,13 +8,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 16,
     borderRadius: 8,
-    backgroundColor: theme.colors.lightFiveColor,
+    backgroundColor: theme.colors.bgSuccessColor,
     display: 'flex',
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     borderLeftColor: theme.colors.successColor,
     borderLeftWidth: 4,
+    zIndex: 10000,
   },
 });
 

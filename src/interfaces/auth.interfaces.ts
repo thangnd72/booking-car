@@ -32,4 +32,5 @@ export interface IUserRole {
   name: string;
   roleId: string;
   code: EUserRole;
+  modified?: string;
 }

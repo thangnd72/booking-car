@@ -22,6 +22,8 @@ import { ModalProps } from './type';
 import { sharedTiming } from '@/common/animated';
 import { styles } from './styles';
 import { useDisableBackHandler } from '@/hooks/useDisableBackHandler';
+import { ToastError, ToastSuccess } from '../Toast';
+import Toast from 'react-native-toast-message';
 
 export const ModalContent = forwardRef(
   (
@@ -66,6 +68,16 @@ export const ModalContent = forwardRef(
       }),
       [],
     );
+
+    // config toast
+    const toastConfig: any = {
+      successMessage: ({ props }: { props: { message: string } }) => (
+        <ToastSuccess message={props.message} />
+      ),
+      errorMessage: ({ props }: { props: { message: string } }) => (
+        <ToastError message={props.message} />
+      ),
+    };
 
     // function
     const openEnd = () => {
@@ -185,6 +197,7 @@ export const ModalContent = forwardRef(
       <Animated.View style={styles.modal}>
         {renderBackdrop()}
         {contentView()}
+        <Toast config={toastConfig} position='top' />
       </Animated.View>
     );
   },

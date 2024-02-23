@@ -2,9 +2,12 @@ import { RadioActiveIcon, RadioInactiveIcon } from '@/assets/icons';
 import { EUserRole } from '@/common';
 import { Box, Button, Modal, TextField } from '@/components';
 import theme from '@/helpers/theme';
+import { showError } from '@/helpers/toast';
 import { IUser, IUserRole } from '@/interfaces/auth.interfaces';
-import { TRootState } from '@/stores';
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import { TRootState, useAppDispatch } from '@/stores';
+import { updateCustomerProfileAction } from '@/stores/client';
+import { omit } from 'lodash';
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 import { SlideInDown, SlideOutDown } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 
@@ -27,6 +30,10 @@ export const RoleModal = forwardRef<IRoleModalRef>(({}, ref) => {
   const { listRole } = useSelector((state: TRootState) => state.client);
   const [roleSelected, setRoleSelected] = useState<IUserRole>();
 
+  const { isVisible, user } = actions;
+
+  const dispatch = useAppDispatch();
+
   useImperativeHandle(
     ref,
     () => ({
@@ -44,17 +51,41 @@ export const RoleModal = forwardRef<IRoleModalRef>(({}, ref) => {
     setRoleSelected(role);
   };
 
+  const _onChangeRole = () => {
+    if (!user || !roleSelected || disableButton) {
+      return;
+    }
+    const newUser = {
+      ...user,
+      roles: [omit(roleSelected, ['modified'])],
+    };
+    dispatch(
+      updateCustomerProfileAction({
+        ...newUser,
+        onSuccess: () => {
+          setActions(INITIAL_ACTIONS);
+        },
+        onError: (err) => showError(err.message),
+      }),
+    );
+  };
+
+  const disableButton = useMemo(() => {
+    if (user?.roles[0]?.roleId === roleSelected?.roleId) {
+      return true;
+    }
+    return false;
+  }, [roleSelected, user]);
+
   useEffect(() => {
     if (actions.user) {
       setRoleSelected({ ...actions.user.roles[0], id: actions.user.roles[0].roleId });
     }
   }, [actions.user]);
 
-  console.log(roleSelected);
-
   return (
     <Modal
-      isVisible={actions.isVisible}
+      isVisible={isVisible}
       entering={SlideInDown.stiffness(300)}
       exiting={SlideOutDown.stiffness(300)}
       onBackdropPress={() => setActions(INITIAL_ACTIONS)}
@@ -63,7 +94,7 @@ export const RoleModal = forwardRef<IRoleModalRef>(({}, ref) => {
         <TextField
           centered
           color={theme.colors.primary}
-          size={2}
+          size={21}
           mb={16}
           fontFamily={theme.fonts.medium}
         >
@@ -94,7 +125,8 @@ export const RoleModal = forwardRef<IRoleModalRef>(({}, ref) => {
           pv={12}
           borderRadius={8}
           mt={16}
-          onPress={() => {}}
+          style={disableButton ? { opacity: 0.6 } : {}}
+          onPress={_onChangeRole}
         >
           <TextField color={theme.colors.backgroundColor} size={16} fontFamily={theme.fonts.medium}>
             Đồng ý

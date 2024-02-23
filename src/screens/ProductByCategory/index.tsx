@@ -66,7 +66,7 @@ const ProductByCategory = React.memo(() => {
   }, [page]);
 
   return (
-    <Box flex={1} pt={insets.top}>
+    <Box flex={1} pt={insets.top} color={theme.colors.backgroundColor}>
       <Box ph={16}>
         <Header onChangeText={_onChangeKeyword} />
       </Box>
@@ -82,7 +82,7 @@ const ProductByCategory = React.memo(() => {
             const isSelected = page === index;
             return (
               <Box middle>
-                <Button ph={16} pv={6} h={33} onPress={() => _onChangeCategory(index)}>
+                <Button ph={16} pv={6} h={36} onPress={() => _onChangeCategory(index)}>
                   <TextField
                     fontFamily={isSelected ? theme.fonts.medium : theme.fonts.regular}
                     color={isSelected ? theme.colors.primary : theme.colors.textColor}

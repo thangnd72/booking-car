@@ -61,12 +61,24 @@ export const clientSlice = createSlice({
         state.listUser = payload;
       }
     });
+
     builder.addCase(asyncActions.updateProfileUserAction.fulfilled, (state, { payload }) => {
       state.profile = payload;
     });
+
     builder.addCase(asyncActions.getListRoleAction.fulfilled, (state, { payload }) => {
       state.listRole = payload;
     });
+
+    // builder.addCase(asyncActions.updateCustomerProfileAction.fulfilled, (state, { payload }) => {
+    //   const newUsers = state.listUser.data.map((user) => {
+    //     if (user.id === payload.id) {
+    //       return payload;
+    //     }
+    //     return user;
+    //   });
+    //   state.listUser = { ...state.listUser, data: newUsers };
+    // });
   },
 });
 

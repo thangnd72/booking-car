@@ -7,5 +7,9 @@ export const {
   actions: {},
 } = productSlice;
 export const { reducer: productReducer } = productSlice;
-export const { getListProductAction, getProductCategoryAction, getProductDetailAction } =
-  productActions;
+export const {
+  getListProductAction,
+  getProductCategoryAction,
+  getProductDetailAction,
+  getListProductByCategoryAction,
+} = productActions;

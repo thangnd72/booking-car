@@ -8,11 +8,13 @@ type TProductState = {
   productCategories: TCommonGetListResponse<IProductCategory[]>;
   productList: TCommonGetListResponse<IProduct[]>;
   productDetail?: IProduct;
+  productByCategory: TCommonGetListResponse<IProduct[]>;
 };
 
 const initialState: TProductState = {
   productCategories: DEFAULT_GET_LIST_RESPONSE,
   productList: DEFAULT_GET_LIST_RESPONSE,
+  productByCategory: DEFAULT_GET_LIST_RESPONSE,
 };
 
 export const productSlice = createSlice({
@@ -31,6 +33,20 @@ export const productSlice = createSlice({
         };
       } else {
         state.productList = payload;
+      }
+    });
+
+    builder.addCase(asyncActions.getListProductByCategoryAction.fulfilled, (state, { payload }) => {
+      if (payload.page > 0) {
+        state.productByCategory = {
+          ...state.productByCategory,
+          totalPages: payload.totalPages,
+          page: payload.page,
+          total: payload.total,
+          data: [...state.productByCategory.data, ...payload.data],
+        };
+      } else {
+        state.productByCategory = payload;
       }
     });
 

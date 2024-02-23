@@ -1,22 +1,24 @@
-import { ArrowLeftIcon, CartIcon } from '@/assets/icons';
-import { Box, Button, FastImg, ImageView, TextField } from '@/components';
+import { ArrowLeftIcon, TrashIcon } from '@/assets/icons';
+import { Box, Button, TextField } from '@/components';
 import { goBack } from '@/helpers/GlobalNavigation';
-import { SIZE } from '@/helpers/size';
 import theme from '@/helpers/theme';
-import { useState } from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import styles from './styles';
 
-export const Header: React.FC = () => {
+interface IProps {
+  onRemove: () => void;
+}
+
+export const Header: React.FC<IProps> = ({ onRemove }) => {
   return (
-    <Box direction='row' middle gap={8}>
+    <Box direction='row' middle between gap={8}>
       <Button onPress={goBack}>
         <ArrowLeftIcon />
       </Button>
-      <TextField>Giỏ hàng</TextField>
+      <TextField size={20} fontFamily={theme.fonts.medium} color={theme.colors.textColor}>
+        Giỏ hàng
+      </TextField>
       <Box direction='row' gap={12}>
-        <Button>
-          <CartIcon width={24} />
+        <Button onPress={onRemove}>
+          <TrashIcon width={24} />
         </Button>
       </Box>
     </Box>

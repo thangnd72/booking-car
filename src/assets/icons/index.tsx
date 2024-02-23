@@ -1,4 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
+import AddBlackIcon from './add-black.svg';
 import AddIcon from './add.svg';
 import ArrowDownIcon from './arrow-down.svg';
 import ArrowLeftIcon from './arrow-left.svg';
@@ -34,6 +35,7 @@ import LogoutIcon from './logout.svg';
 import ManageIcon from './manage-icon.svg';
 import MessageIcon from './message.svg';
 import MinusIcon from './minus.svg';
+import NoteIcon from './note.svg';
 import NotificationIcon from './notification.svg';
 import OrderActive from './order-active.svg';
 import OrderInactive from './order-inactive.svg';
@@ -48,13 +50,20 @@ import ProfileInactive from './profile-inactive.svg';
 import RadioActiveIcon from './radio-active.svg';
 import RadioInactiveIcon from './radio-inactive.svg';
 import RankingIcon from './ranking.svg';
+import RedLocationIcon from './red-location.svg';
 import ReportIcon from './report.svg';
 import SearchIcon from './search.svg';
+import ShoppingCartIcon from './shopping-cart.svg';
 import StarIcon from './star.svg';
 import ThemeIcon from './theme.svg';
+import TickActiveIcon from './tick-active.svg';
+import TickInactiveIcon from './tick-inactive.svg';
+import TrashIcon from './trash.svg';
 import UncheckIcon from './uncheck.svg';
 import UserManageIcon from './user-manage.svg';
 import UserIcon from './user.svg';
+import WareHouseActiveIcon from './ware-house-active.svg';
+import WareHouseInactiveIcon from './ware-house-inactive.svg';
 import WatchedIcon from './watched.svg';
 import ZaloIcon from './zalo-icon.svg';
 
@@ -62,6 +71,7 @@ const ShowHidePasswordIcon = ({ show = false }: { show: boolean }) =>
   show ? <EyeIcon /> : <EyeOffIcon />;
 
 export {
+  AddBlackIcon,
   AddIcon,
   ArrowDownIcon,
   ArrowLeftIcon,
@@ -95,6 +105,7 @@ export {
   ManageIcon,
   MessageIcon,
   MinusIcon,
+  NoteIcon,
   NotificationIcon,
   OrderActive,
   OrderIcon,
@@ -109,14 +120,21 @@ export {
   RadioActiveIcon,
   RadioInactiveIcon,
   RankingIcon,
+  RedLocationIcon,
   ReportIcon,
   SearchIcon,
+  ShoppingCartIcon,
   ShowHidePasswordIcon,
   StarIcon,
   ThemeIcon,
+  TickActiveIcon,
+  TickInactiveIcon,
+  TrashIcon,
   UncheckIcon,
   UserIcon,
   UserManageIcon,
+  WareHouseActiveIcon,
+  WareHouseInactiveIcon,
   WatchedIcon,
   ZaloIcon,
 };

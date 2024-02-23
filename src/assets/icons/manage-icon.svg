@@ -1,5 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-activity" width="28" height="28"
-  viewBox="0 0 24 24" stroke-width="1.5" stroke="#79B669" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M3 12h4l3 8l4 -16l3 8h4" />
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M6.25 6.95117H12.4167C13.1583 6.95117 13.75 7.55115 13.75 8.28448V9.7595" stroke="#79B669" stroke-width="1.5"
+    stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M7.65834 5.55078L6.25 6.95083L7.65834 8.35916" stroke="#79B669" stroke-width="1.5" stroke-miterlimit="10"
+    stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M13.75 13.0505H7.58334C6.84167 13.0505 6.25 12.4505 6.25 11.7172V10.2422" stroke="#79B669" stroke-width="1.5"
+    stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M12.3418 14.451L13.7501 13.0509L12.3418 11.6426" stroke="#79B669" stroke-width="1.5" stroke-miterlimit="10"
+    stroke-linecap="round" stroke-linejoin="round" />
+  <path
+    d="M9.99935 18.3327C14.6017 18.3327 18.3327 14.6017 18.3327 9.99935C18.3327 5.39698 14.6017 1.66602 9.99935 1.66602C5.39698 1.66602 1.66602 5.39698 1.66602 9.99935C1.66602 14.6017 5.39698 18.3327 9.99935 18.3327Z"
+    stroke="#79B669" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
 </svg>

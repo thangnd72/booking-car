@@ -18,9 +18,16 @@ export const getListUserApi = async (params: TCommonGetListParams) => {
 };
 
 export const updateUserProfileApi = async (payload: IUser) => {
-  console.log('payload', payload);
   const response: AxiosResponse<TCommonGetDataResponse<IUser>> = await ApiClient.put(
     `/api/v1/user/update-profile`,
+    payload,
+  );
+  return response.data;
+};
+
+export const updateCustomerProfileApi = async (payload: IUser) => {
+  const response: AxiosResponse<TCommonGetDataResponse<IUser>> = await ApiClient.put(
+    `/api/v1/user/update-profile-for-user`,
     payload,
   );
   return response.data;

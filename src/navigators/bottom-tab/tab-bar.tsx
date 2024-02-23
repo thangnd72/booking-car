@@ -12,6 +12,8 @@ import {
   OrderInactive,
   ProfileActive,
   ProfileInactive,
+  WareHouseActiveIcon,
+  WareHouseInactiveIcon,
 } from '@/assets/icons';
 import { SIZE } from '@/helpers/size';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -39,32 +41,32 @@ const titleBottom = (route: string) => {
 const IconActive = (route: any) => {
   switch (route.name) {
     case APP_SCREEN.HOME_STACK:
-      return <HomeActiveIcon />;
+      return <HomeActiveIcon width={24} height={24} />;
     case APP_SCREEN.ORDER_STACK:
-      return <FlowerActiveIcon />;
-    // case APP_SCREEN.USER_STACK:
-    //   return <UserActiveIcon />;
+      return <FlowerActiveIcon width={24} height={24} />;
+    case APP_SCREEN.PLAN_STACK:
+      return <WareHouseActiveIcon width={24} height={24} />;
     case APP_SCREEN.SETTING_STACK:
       return <ProfileActive />;
 
     default:
-      return <HomeActiveIcon />;
+      return <HomeActiveIcon width={24} height={24} />;
   }
 };
 
 const IconInActive = (route: any) => {
   switch (route.name) {
     case APP_SCREEN.HOME_STACK:
-      return <HomeInactiveIcon />;
+      return <HomeInactiveIcon width={24} height={24} />;
     case APP_SCREEN.ORDER_STACK:
-      return <FlowerInactiveIcon />;
-    // case APP_SCREEN.USER_STACK:
-    //   return <UserInactiveIcon />;
+      return <FlowerInactiveIcon width={24} height={24} />;
+    case APP_SCREEN.PLAN_STACK:
+      return <WareHouseInactiveIcon width={24} height={24} />;
     case APP_SCREEN.SETTING_STACK:
       return <ProfileInactive />;
 
     default:
-      return <HomeInactiveIcon />;
+      return <HomeInactiveIcon width={24} height={24} />;
   }
 };
 
@@ -127,9 +129,8 @@ export const TabBar = (prop: any) => {
             {isFocused ? <IconActive {...route} /> : <IconInActive {...route} />}
             <Spacer height={5} />
             <TextField
-              size={11}
-              fontFamily={isFocused ? theme.fonts.medium : theme.fonts.regular}
-              color={theme.colors.lightSixColor}
+              size={12}
+              color={isFocused ? theme.colors.white : theme.colors.lightSixColor}
             >
               {label}
             </TextField>

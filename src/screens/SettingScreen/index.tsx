@@ -100,22 +100,27 @@ const SettingScreen = React.memo(() => {
     navigate(APP_SCREEN.MANAGE_USER);
   };
 
+  const _onNavigateCarts = () => {
+    navigate(APP_SCREEN.SHOPPING_CART);
+  };
+
   const _renderSettings = [
-    {
-      key: randomUniqueId(),
-      title: 'Đơn hàng',
-      icon: <ListIcon />,
-    },
-    {
-      key: randomUniqueId(),
-      title: 'Địa chỉ của bạn',
-      icon: <LocationIcon />,
-    },
     {
       key: randomUniqueId(),
       title: 'Quản lý người dùng',
       icon: <UserManageIcon />,
       action: _onManageUser,
+    },
+    {
+      key: randomUniqueId(),
+      title: 'Đơn hàng',
+      icon: <ListIcon />,
+      action: _onNavigateCarts,
+    },
+    {
+      key: randomUniqueId(),
+      title: 'Địa chỉ của bạn',
+      icon: <LocationIcon />,
     },
     {
       key: randomUniqueId(),
@@ -155,42 +160,48 @@ const SettingScreen = React.memo(() => {
           <TextField
             fontFamily={theme.fonts.medium}
             color={theme.colors.textColor}
-            size={18}
+            size={20}
             pt={16}
           >
             {profile?.fullName}
           </TextField>
           <TextField mt={4} size={12} color={theme.colors.darkOneColor}>
-            {profile?.phoneNumber}
+            {`Vai trò: ${profile?.roles && profile.roles[0].name}`}
           </TextField>
-          <TextField mt={4} size={12} color={theme.colors.darkOneColor}>
-            {profile?.roles && profile.roles[0].name}
+          <TextField mt={4} size={12} color={theme.colors.darkSixColor}>
+            {profile?.phoneNumber}
           </TextField>
         </Box>
       </Box>
       <Statistical />
-      {_renderSettings.map((entry) => (
-        <Button
-          pv={12}
-          direction='row'
-          middle
-          between
-          key={entry.key}
-          onPress={() => {
-            if (entry.action) {
-              entry.action();
-            }
-          }}
-        >
-          <Box direction='row' middle gap={8}>
-            {entry.icon}
-            <TextField size={16} color={theme.colors.textColor}>
-              {entry.title}
-            </TextField>
-          </Box>
-          <ArrowRightIcon />
-        </Button>
-      ))}
+      <Box gap={12}>
+        {_renderSettings.map((entry) => (
+          <Button
+            pv={12}
+            ph={12}
+            direction='row'
+            middle
+            between
+            key={entry.key}
+            color={theme.colors.lightFourColor}
+            borderRadius={8}
+            onPress={() => {
+              if (entry.action) {
+                entry.action();
+              }
+            }}
+          >
+            <Box direction='row' middle gap={8}>
+              {entry.icon}
+              <TextField size={16} color={theme.colors.textColor}>
+                {entry.title}
+              </TextField>
+            </Box>
+            <ArrowRightIcon />
+          </Button>
+        ))}
+      </Box>
+
       <LogoutDialog isOpen={confirmPopup} onDismiss={onDismiss} onLogout={handleLogout} />
     </ScrollView>
   );

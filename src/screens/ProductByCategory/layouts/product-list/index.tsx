@@ -5,7 +5,11 @@ import { TCommonGetListParams } from '@/interfaces/common.interface';
 import { TGetListProductParams } from '@/interfaces/product.interface';
 import { ProductItem } from '@/shared';
 import { TRootState, useAppDispatch } from '@/stores';
-import { EProductActions, getListProductAction } from '@/stores/product';
+import {
+  EProductActions,
+  getListProductAction,
+  getListProductByCategoryAction,
+} from '@/stores/product';
 import React, { useCallback } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { useSelector } from 'react-redux';
@@ -24,13 +28,13 @@ export const ProductList = React.memo(({ categoryId, keyword }: IProps) => {
     categoryId,
   });
 
-  const { productList } = useSelector((state: TRootState) => state.product);
+  const { productByCategory } = useSelector((state: TRootState) => state.product);
   const loadingProduct = useSelector(
-    (state: TRootState) => state.loading[EProductActions.GET_LIST_PRODUCT],
+    (state: TRootState) => state.loading[EProductActions.GET_LIST_PRODUCT_BY_CATEGORY],
   );
 
   const _getListProduct = (params: TCommonGetListParams) => {
-    dispatch(getListProductAction(params));
+    dispatch(getListProductByCategoryAction(params));
   };
 
   const _onRefresh = () => {
@@ -48,18 +52,18 @@ export const ProductList = React.memo(({ categoryId, keyword }: IProps) => {
     if (loadingProduct) {
       return;
     }
-    if (productList.page <= productList?.totalPages) {
+    if (productByCategory.page <= productByCategory?.totalPages) {
       dispatch(
         getListProductAction({
           ...queryParams,
-          page: productList.page + 1,
+          page: productByCategory.page + 1,
         }),
       );
     }
   };
 
   React.useEffect(() => {
-    setQueryParams({ ...queryParams, page: 0, query: keyword });
+    if (keyword !== undefined) setQueryParams({ ...queryParams, page: 0, query: keyword });
   }, [keyword]);
 
   React.useEffect(() => {
@@ -68,10 +72,10 @@ export const ProductList = React.memo(({ categoryId, keyword }: IProps) => {
 
   return (
     <Box color={theme.colors.lightSixColor} flex={1}>
-      {productList.data.length > 0 ? (
+      {productByCategory.data.length > 0 ? (
         <ListView
           keyExtractor={(item) => item.id}
-          data={productList.data}
+          data={productByCategory.data}
           showsVerticalScrollIndicator={false}
           renderItem={({ item, index }) => <ProductItem product={item} />}
           numColumns={2}
@@ -82,7 +86,7 @@ export const ProductList = React.memo(({ categoryId, keyword }: IProps) => {
           ListFooterComponent={_renderFooter}
         />
       ) : (
-        <>{!loadingProduct && <Empty />}</>
+        <>{!loadingProduct && keyword && <Empty />}</>
       )}
     </Box>
   );

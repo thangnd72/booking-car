@@ -1,6 +1,10 @@
 import ResponseError from '@/interfaces/error.interface';
 import { getListRoleApi } from '@/services/common.services';
-import { getListUserApi, updateUserProfileApi } from '@/services/user.services';
+import {
+  getListUserApi,
+  updateCustomerProfileApi,
+  updateUserProfileApi,
+} from '@/services/user.services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { EClientActions } from './client.constants';
 import { TGetListRoleAction, TGetListUserAction, TUpdateProfileUserAction } from './client.types';
@@ -45,6 +49,21 @@ export const getListRoleAction = createAsyncThunk(
     const { onSuccess, onError } = payload;
     try {
       const response = await getListRoleApi();
+      onSuccess?.(response);
+      return response.data;
+    } catch (error) {
+      onError?.(error as ResponseError);
+      return rejectWithValue(error);
+    }
+  },
+);
+
+export const updateCustomerProfileAction = createAsyncThunk(
+  EClientActions.UPDATE_CUSTOMER_PROFILE,
+  async (payload: TUpdateProfileUserAction, { rejectWithValue }) => {
+    const { onSuccess, onError, ...bodyRequest } = payload;
+    try {
+      const response = await updateCustomerProfileApi(bodyRequest);
       onSuccess?.(response);
       return response.data;
     } catch (error) {

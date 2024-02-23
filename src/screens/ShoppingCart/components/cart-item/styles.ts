@@ -3,11 +3,10 @@ import theme from '@/helpers/theme';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  thumbnail: {
-    resizeMode: 'cover',
-    height: SIZE.scaleH(180),
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
+  flowerImg: {
+    width: 68,
+    height: 68,
+    // borderRadius: 4,
   },
   shadow: {
     shadowColor: theme.colors.darkFourColor,
@@ -15,9 +14,8 @@ const styles = StyleSheet.create({
       width: 0.5,
       height: 2,
     },
-    shadowOpacity: 0.4,
+    shadowOpacity: 0.6,
     elevation: 6,
-    width: (SIZE.WIDTH - 40) / 2,
   },
 });
 

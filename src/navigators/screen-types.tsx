@@ -1,3 +1,5 @@
+import { IProduct } from '@/interfaces/product.interface';
+
 export enum APP_SCREEN {
   // root stack
   AUTHORIZE = 'AUTHORIZE',
@@ -22,6 +24,8 @@ export enum APP_SCREEN {
   PRODUCT_BY_CATEGORY = 'PRODUCT_BY_CATEGORY',
   MANAGE_USER = 'MANAGE_USER',
   PRODUCT_DETAIL = 'PRODUCT_DETAIL',
+  SHOPPING_CART = 'SHOPPING_CART',
+  CHECKOUT_SCREEN = 'CHECKOUT_SCREEN',
 
   // home stack
   ORDER_STACK = 'ORDER_STACK',
@@ -56,6 +60,8 @@ export type TAuthorizeParamsList = {
   [APP_SCREEN.PRODUCT_BY_CATEGORY]: { categoryId: string };
   [APP_SCREEN.MANAGE_USER]: undefined;
   [APP_SCREEN.PRODUCT_DETAIL]: { productId: string };
+  [APP_SCREEN.SHOPPING_CART]: undefined;
+  [APP_SCREEN.CHECKOUT_SCREEN]: { products: IProduct[] };
 };
 
 export type TRootStackParamList = {

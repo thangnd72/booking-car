@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { IUser } from '@/interfaces/auth.interfaces';
 import { IRoleModalRef, RoleModal } from '../role-modal';
 import { useRef } from 'react';
+import { EUserRole } from '@/common';
 
 interface IProps {
   user: IUser;
@@ -50,9 +51,11 @@ export const UserItem: React.FC<IProps> = ({ user }) => {
           user.roles[0]?.name || ''
         }`}</TextField>
       </Box>
-      <Button borderRadius={50} color={theme.colors.lightFourColor} p={4} onPress={_onChangeRole}>
-        <ManageIcon />
-      </Button>
+      {user.roles[0].code !== EUserRole.SUPER_ADMIN && (
+        <Button borderRadius={50} color={theme.colors.lightFourColor} p={6} onPress={_onChangeRole}>
+          <ManageIcon width={24} height={24} />
+        </Button>
+      )}
       <RoleModal ref={roleModalRef} />
     </Box>
   );
