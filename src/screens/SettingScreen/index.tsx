@@ -117,11 +117,11 @@ const SettingScreen = React.memo(() => {
       icon: <ListIcon />,
       action: _onNavigateCarts,
     },
-    {
-      key: randomUniqueId(),
-      title: 'Địa chỉ của bạn',
-      icon: <LocationIcon />,
-    },
+    // {
+    //   key: randomUniqueId(),
+    //   title: 'Địa chỉ của bạn',
+    //   icon: <LocationIcon />,
+    // },
     {
       key: randomUniqueId(),
       title: 'Đổi mật khẩu',

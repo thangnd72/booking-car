@@ -26,4 +26,5 @@ export interface IProductCategory {
 
 export type TGetListProductParams = TCommonGetListParams & {
   categoryId?: string;
+  tomorrow?: boolean;
 };

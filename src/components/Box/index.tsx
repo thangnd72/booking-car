@@ -37,6 +37,8 @@ export interface IBoxProps extends ViewProps {
   justifyContent?: string;
   alignSelf?: FlexAlignType;
   borderRadius?: number;
+  borderTopLeftRadius?: number;
+  borderTopRightRadius?: number;
   shadow?: boolean;
   horizontal?: boolean;
   flexGrow?: number;
@@ -79,6 +81,8 @@ export const Box = (props: IBoxProps) => {
     justifyContent,
     alignSelf,
     borderRadius,
+    borderTopLeftRadius,
+    borderTopRightRadius,
     shadow,
     children,
     horizontal,
@@ -121,6 +125,8 @@ export const Box = (props: IBoxProps) => {
     direction && { flexDirection: direction },
     middle && { alignItems: 'center' },
     borderRadius && { borderRadius },
+    borderTopLeftRadius && { borderTopLeftRadius },
+    borderTopRightRadius && { borderTopRightRadius },
     horizontal && { flexDirection: 'row' },
     wrap && { flexWrap: 'wrap' },
     gap && { gap },

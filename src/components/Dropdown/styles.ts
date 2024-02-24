@@ -6,9 +6,9 @@ const dropdownWidth = SIZE.SCREEN_WIDTH - 32;
 
 export const styles = StyleSheet.create({
   button: {
-    height: 48,
+    height: 52,
     zIndex: 1,
-    borderRadius: 10,
+    borderRadius: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

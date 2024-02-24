@@ -1,13 +1,11 @@
-import { ArrowLeftIcon, CartIcon, ManageIcon } from '@/assets/icons';
-import { Box, Button, FastImg, TextField } from '@/components';
-import { goBack } from '@/helpers/GlobalNavigation';
-import theme from '@/helpers/theme';
-import styles from './styles';
-import dayjs from 'dayjs';
-import { IUser } from '@/interfaces/auth.interfaces';
-import { IRoleModalRef, RoleModal } from '../role-modal';
-import { useRef } from 'react';
+import { ManageIcon } from '@/assets/icons';
 import { EUserRole } from '@/common';
+import { Box, Button, FastImg, TextField } from '@/components';
+import theme from '@/helpers/theme';
+import { IUser } from '@/interfaces/auth.interfaces';
+import { useRef } from 'react';
+import { IRoleModalRef, RoleModal } from '../role-modal';
+import styles from './styles';
 
 interface IProps {
   user: IUser;

@@ -1,16 +1,14 @@
 import { LockIcon, PhoneIcon, UserIcon } from '@/assets/icons';
-import { EAuthToken, validationError, validationSchema } from '@/common';
+import { validationError, validationSchema } from '@/common';
 import { Box, Button, Spacer, TextField, TextInputField } from '@/components';
 import { ETypeField } from '@/components/TextInput/types';
-import { navigate } from '@/helpers/GlobalNavigation';
+import { goBack } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
 import { showError, showSuccess } from '@/helpers/toast';
 import { ISignUpFormData, ISignUpResponse } from '@/interfaces/auth.interfaces';
-import { APP_SCREEN } from '@/navigators/screen-types';
 import { useAppDispatch } from '@/stores';
 import { signUpAction } from '@/stores/auth';
-import { setAccessToken, setGlobalLoading, setProfile } from '@/stores/client';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setGlobalLoading } from '@/stores/client';
 import { useForm } from 'react-hook-form';
 import { ScrollView } from 'react-native';
 
@@ -29,10 +27,7 @@ export const SignUpScreen: React.FC = () => {
   const _onSuccess = (response: ISignUpResponse) => {
     dispatch(setGlobalLoading(false));
     showSuccess('Đăng ký tài khoản thành công!');
-    dispatch(setAccessToken(response.accessToken));
-    dispatch(setProfile(response.profile));
-    AsyncStorage.setItem(EAuthToken.ACCESS_TOKEN, response.accessToken);
-    navigate(APP_SCREEN.HOME);
+    goBack();
   };
 
   const _signUp = (values: ISignUpFormData) => {
@@ -50,7 +45,7 @@ export const SignUpScreen: React.FC = () => {
   };
 
   return (
-    <Box p={16} flex={1}>
+    <Box p={16} flex={1} color={theme.colors.backgroundColor}>
       <TextField centered size={24} mb={24} mt={8} fontFamily={theme.fonts.medium}>
         Thông tin đăng ký
       </TextField>

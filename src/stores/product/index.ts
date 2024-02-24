@@ -10,6 +10,7 @@ export const { reducer: productReducer } = productSlice;
 export const {
   getListProductAction,
   getProductCategoryAction,
+  getListProductTomorrowAction,
   getProductDetailAction,
   getListProductByCategoryAction,
 } = productActions;

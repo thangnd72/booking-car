@@ -27,7 +27,7 @@ const titleBottom = (route: string) => {
     case APP_SCREEN.HOME_STACK:
       return 'Trang chủ';
     case APP_SCREEN.ORDER_STACK:
-      return 'Đặt hoa theo ngày';
+      return 'Hoa ngày mai';
     case APP_SCREEN.PLAN_STACK:
       return 'Dự trù';
     case APP_SCREEN.SETTING_STACK:

@@ -70,15 +70,12 @@ export const clientSlice = createSlice({
       state.listRole = payload;
     });
 
-    // builder.addCase(asyncActions.updateCustomerProfileAction.fulfilled, (state, { payload }) => {
-    //   const newUsers = state.listUser.data.map((user) => {
-    //     if (user.id === payload.id) {
-    //       return payload;
-    //     }
-    //     return user;
-    //   });
-    //   state.listUser = { ...state.listUser, data: newUsers };
-    // });
+    builder.addCase(asyncActions.updateCustomerProfileAction.fulfilled, (state, { payload }) => {
+      const currentIndexUser = state.listUser.data.findIndex((e) => e.id === payload.id);
+      if (currentIndexUser !== -1) {
+        state.listUser.data[currentIndexUser] = payload;
+      }
+    });
   },
 });
 

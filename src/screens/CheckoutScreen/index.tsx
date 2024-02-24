@@ -4,9 +4,9 @@ import { goBack } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
 import { IProduct } from '@/interfaces/product.interface';
 import { useRoute } from '@react-navigation/native';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ProductItem } from './components';
+import { ReceiverModal, IReceiverModalRef, ProductItem } from './components';
 import { ScrollView } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import styles from './styles';
@@ -19,6 +19,8 @@ const CheckoutScreen = React.memo(() => {
   const insets = useSafeAreaInsets();
   const { params } = useRoute();
   const { products } = (params as IParms) ?? [];
+
+  const addressModalRef = useRef<IReceiverModalRef>(null);
 
   return (
     <Box flex={1} pt={insets.top} between color={theme.colors.backgroundColor}>
@@ -33,7 +35,12 @@ const CheckoutScreen = React.memo(() => {
           <Box w={24} />
         </Box>
         <ScrollView>
-          <Button direction='row' gap={8} ph={16}>
+          <Button
+            direction='row'
+            gap={8}
+            ph={16}
+            onPress={() => addressModalRef.current?.onShowModal(true)}
+          >
             <RedLocationIcon />
             <Box gap={6}>
               <TextField color={theme.colors.textColor}>Thông tin người nhận</TextField>
@@ -85,6 +92,7 @@ const CheckoutScreen = React.memo(() => {
           </Button>
         </Box>
       </Box>
+      <ReceiverModal ref={addressModalRef} />
     </Box>
   );
 });

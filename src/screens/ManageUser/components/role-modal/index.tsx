@@ -55,10 +55,14 @@ export const RoleModal = forwardRef<IRoleModalRef>(({}, ref) => {
     if (!user || !roleSelected || disableButton) {
       return;
     }
+
     const newUser = {
       ...user,
-      roles: [omit(roleSelected, ['modified'])],
-    };
+      roles: [
+        { ...omit(roleSelected, ['modified']), roleId: roleSelected.id, id: user.roles[0].id },
+      ],
+    } as IUser;
+
     dispatch(
       updateCustomerProfileAction({
         ...newUser,

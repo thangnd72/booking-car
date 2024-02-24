@@ -30,8 +30,7 @@ const requestHandler = async (config: AxiosRequestConfig) => {
 const responseErrorHandler = async (err: AxiosError<TErrorData>) => {
   if (err?.response?.status === 401) {
     await AsyncStorage.getAllKeys().then(AsyncStorage.multiRemove);
-    showError('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại!');
-    throw new ResponseError('Login session expired', undefined);
+    throw new ResponseError('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại!', undefined);
   }
 
   const data = err?.response?.data;

@@ -9,8 +9,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: theme.colors.lightOneColor,
+    backgroundColor: theme.colors.lightFourColor,
   },
   textInput: {
     flex: 1,
@@ -29,7 +28,8 @@ export const styles = StyleSheet.create({
     marginBottom: 4,
   },
   leftLabel: {
-    fontSize: 12,
+    fontSize: 14,
+    color: theme.colors.textColor,
   },
   rightLabel: {
     fontSize: 12,
