@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import * as asyncActions from './client.actions';
 import { DEFAULT_GET_LIST_RESPONSE } from '@/common/constants/common';
 import { TCommonGetDataResponse, TCommonGetListResponse } from '@/interfaces/common.interface';
+import { ICartType } from '@/interfaces/cart.interface';
 
 type TClientState = {
   profile?: IUser;
@@ -12,6 +13,7 @@ type TClientState = {
   // manage user
   listUser: TCommonGetListResponse<IUser[]>;
   listRole: IUserRole[];
+  cartTypes: ICartType[];
 };
 
 const initialState: TClientState = {
@@ -21,6 +23,7 @@ const initialState: TClientState = {
   loading: false,
   listUser: DEFAULT_GET_LIST_RESPONSE,
   listRole: [],
+  cartTypes: [],
 };
 
 export const clientSlice = createSlice({
@@ -68,6 +71,10 @@ export const clientSlice = createSlice({
 
     builder.addCase(asyncActions.getListRoleAction.fulfilled, (state, { payload }) => {
       state.listRole = payload;
+    });
+
+    builder.addCase(asyncActions.getCartTypesAction.fulfilled, (state, { payload }) => {
+      state.cartTypes = payload;
     });
 
     builder.addCase(asyncActions.updateCustomerProfileAction.fulfilled, (state, { payload }) => {

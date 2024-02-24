@@ -8,22 +8,57 @@ import {
 import { numberWithCommas } from '@/common';
 import { Box, Button, FastImg, TextField } from '@/components';
 import theme from '@/helpers/theme';
-import { IProduct } from '@/interfaces/product.interface';
+import { showError } from '@/helpers/toast';
+import { IProductItem } from '@/interfaces/cart.interface';
+import { TRootState, useAppDispatch } from '@/stores';
+import { getListCartAction, updateCartAction } from '@/stores/cart';
+import { useSelector } from 'react-redux';
 import styles from './styles';
 
 interface IProps {
-  product: IProduct;
+  product: IProductItem;
   isSelected: boolean;
-  onSelectProducts: (product: IProduct) => void;
+  selectedTabId: number;
+  onSelectProducts: (product: IProductItem) => void;
   onRemoveItem: () => void;
 }
 
 export const CartItem: React.FC<IProps> = ({
   product,
   isSelected = false,
+  selectedTabId,
   onSelectProducts,
   onRemoveItem,
 }) => {
+  const dispatch = useAppDispatch();
+
+  const { shoppingCart } = useSelector((state: TRootState) => state.cart);
+
+  const _onUpdateQuantity = (type: 'minus' | 'plus') => {
+    if (!shoppingCart || (type === 'minus' && product.quantity <= 1)) return;
+
+    const currentIndexProduct = shoppingCart.items.findIndex(
+      (e) => e.productId === product.productId && e.type === selectedTabId,
+    );
+
+    if (currentIndexProduct !== -1) {
+      const listProduct = [...shoppingCart.items];
+      listProduct[currentIndexProduct] = {
+        ...product,
+        quantity: type === 'minus' ? product.quantity - 1 : product.quantity + 1,
+      };
+      dispatch(
+        updateCartAction({
+          items: listProduct,
+          onSuccess: () => {
+            dispatch(getListCartAction({}));
+          },
+          onError: (err) => showError(err.message),
+        }),
+      );
+    }
+  };
+
   return (
     <Box
       direction='row'
@@ -52,14 +87,28 @@ export const CartItem: React.FC<IProps> = ({
             >
               Thanh Lieu Moc chau (29999 canh`)
             </TextField>
-            <TextField color={theme.colors.primary}>{`${numberWithCommas(188995)} đ`}</TextField>
+            <TextField color={theme.colors.primary}>{`${numberWithCommas(
+              product.price,
+            )} đ`}</TextField>
             <Box direction='row' middle between mt={4}>
               <Box direction='row' middle gap={16}>
-                <Button border borderRadius={100} borderColor={theme.colors.lightTwoColor} p={1}>
+                <Button
+                  border
+                  borderRadius={100}
+                  borderColor={theme.colors.lightThreeColor}
+                  p={1}
+                  onPress={() => _onUpdateQuantity('minus')}
+                >
                   <MinusIcon width={20} height={20} />
                 </Button>
-                <TextField color={theme.colors.textColor}>1</TextField>
-                <Button border borderRadius={100} borderColor={theme.colors.lightTwoColor} p={1}>
+                <TextField color={theme.colors.textColor}>{product.quantity}</TextField>
+                <Button
+                  border
+                  borderRadius={100}
+                  borderColor={theme.colors.lightThreeColor}
+                  p={1}
+                  onPress={() => _onUpdateQuantity('plus')}
+                >
                   <AddBlackIcon width={20} height={20} />
                 </Button>
               </Box>
@@ -67,7 +116,7 @@ export const CartItem: React.FC<IProps> = ({
                 borderRadius={15}
                 border
                 p={2}
-                borderColor={theme.colors.lightTwoColor}
+                borderColor={theme.colors.lightThreeColor}
                 onPress={onRemoveItem}
               >
                 <TrashIcon width={20} height={20} />

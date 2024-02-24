@@ -15,6 +15,7 @@ import CloseIcon from './close.svg';
 import CommunityIcon from './community.svg';
 import DashboardIcon from './dashboard.svg';
 import EmptySearchIcon from './empty-search.svg';
+import EmptyCartIcon from './empty-cart.svg';
 import ErrorAroundIcon from './error-around.svg';
 import EyeOffIcon from './eye-off.svg';
 import EyeIcon from './eye.svg';
@@ -86,6 +87,7 @@ export {
   CloseIcon,
   CommunityIcon,
   DashboardIcon,
+  EmptyCartIcon,
   EmptySearchIcon,
   ErrorAroundIcon,
   FavoriteIcon,

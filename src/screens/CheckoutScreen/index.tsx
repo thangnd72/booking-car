@@ -1,18 +1,19 @@
 import { ArrowLeftIcon, NoteIcon, RedLocationIcon } from '@/assets/icons';
-import { Box, Button, TextField, TextInputField } from '@/components';
+import { numberWithCommas } from '@/common';
+import { Box, Button, TextField } from '@/components';
 import { goBack } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
-import { IProduct } from '@/interfaces/product.interface';
+import { IProductItem } from '@/interfaces/cart.interface';
 import { useRoute } from '@react-navigation/native';
-import React, { useRef } from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ReceiverModal, IReceiverModalRef, ProductItem } from './components';
+import React, { useMemo, useRef } from 'react';
 import { ScrollView } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { IReceiverModalRef, ProductItem, ReceiverModal } from './components';
 import styles from './styles';
 
 interface IParms {
-  products: IProduct[];
+  products: IProductItem[];
 }
 
 const CheckoutScreen = React.memo(() => {
@@ -21,6 +22,13 @@ const CheckoutScreen = React.memo(() => {
   const { products } = (params as IParms) ?? [];
 
   const addressModalRef = useRef<IReceiverModalRef>(null);
+
+  const grandTotal = useMemo(() => {
+    return products.reduce(
+      (accumulator, currentValue) => accumulator + (currentValue?.totalPrice || 0),
+      0,
+    );
+  }, [products]);
 
   return (
     <Box flex={1} pt={insets.top} between color={theme.colors.backgroundColor}>
@@ -49,7 +57,8 @@ const CheckoutScreen = React.memo(() => {
           </Button>
           <Box h={1} flex={1} color={theme.colors.lightSixColor} mv={8} />
           <Box gap={8} ph={16}>
-            {products && products.map((item) => <ProductItem key={item.id} product={item} />)}
+            {products &&
+              products.map((item) => <ProductItem key={item.productId} product={item} />)}
           </Box>
           <Box h={1} flex={1} color={theme.colors.lightSixColor} mv={8} />
           <Box direction='row' ph={16} gap={8}>
@@ -74,7 +83,7 @@ const CheckoutScreen = React.memo(() => {
           <Box gap={8}>
             <TextField color={theme.colors.textColor}>Tổng tiền</TextField>
             <TextField fontFamily={theme.fonts.medium} color={theme.colors.secondary} size={16}>
-              0 d
+              {`${numberWithCommas(grandTotal || 0)} đ`}
             </TextField>
           </Box>
           <Button

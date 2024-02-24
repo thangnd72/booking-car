@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import * as asyncActions from './cart.actions';
+import { TCartList } from '@/interfaces/cart.interface';
 
 type TCartState = {
-  shoppingCart: any;
+  shoppingCart: TCartList | undefined;
 };
 
 const initialState: TCartState = {
@@ -14,7 +15,11 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(asyncActions.addProductToCartAction.fulfilled, (state, action) => {
+    builder.addCase(asyncActions.getListCartAction.fulfilled, (state, action) => {
+      state.shoppingCart = action.payload;
+    });
+
+    builder.addCase(asyncActions.updateCartAction.fulfilled, (state, action) => {
       state.shoppingCart = action.payload;
     });
   },

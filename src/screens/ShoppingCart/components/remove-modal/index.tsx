@@ -3,6 +3,11 @@ import theme from '@/helpers/theme';
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { SlideInDown, SlideOutDown } from 'react-native-reanimated';
 import { ERemoveType, IAction, IRemoveModalRef } from './types';
+import { IUpdateCartParams } from '@/interfaces/cart.interface';
+import { TRootState, useAppDispatch } from '@/stores';
+import { getListCartAction, updateCartAction } from '@/stores/cart';
+import { showError, showSuccess } from '@/helpers/toast';
+import { useSelector } from 'react-redux';
 
 const INITIAL_ACTIONS: IAction = {
   isVisible: false,
@@ -11,9 +16,12 @@ const INITIAL_ACTIONS: IAction = {
 };
 
 export const RemoveModal = forwardRef<IRemoveModalRef>(({}, ref) => {
-  const [actions, setActions] = useState(INITIAL_ACTIONS);
+  const dispatch = useAppDispatch();
 
+  const [actions, setActions] = useState(INITIAL_ACTIONS);
   const { isVisible, type, itemId } = actions;
+
+  const { shoppingCart } = useSelector((state: TRootState) => state.cart);
 
   useImperativeHandle(
     ref,
@@ -28,6 +36,53 @@ export const RemoveModal = forwardRef<IRemoveModalRef>(({}, ref) => {
     }),
     [],
   );
+
+  const _onConfirmCleanCart = () => {
+    const carts: IUpdateCartParams = {
+      items: [],
+    };
+    dispatch(
+      updateCartAction({
+        ...carts,
+        onSuccess: () => {
+          setActions(INITIAL_ACTIONS);
+          setTimeout(() => showSuccess('Xoá tất cả sản phầm thành công!'), 100);
+          dispatch(getListCartAction({}));
+        },
+        onError: (err) => showError(err.message),
+      }),
+    );
+  };
+
+  const _onRemoveItem = () => {
+    if (!shoppingCart) {
+      return;
+    }
+    const newItems = shoppingCart.items.filter((e) => e.productId !== itemId);
+    const carts: IUpdateCartParams = {
+      items: newItems,
+    };
+
+    dispatch(
+      updateCartAction({
+        ...carts,
+        onSuccess: () => {
+          setActions(INITIAL_ACTIONS);
+          setTimeout(() => showSuccess('Xoá sản phầm thành công!'), 100);
+          dispatch(getListCartAction({}));
+        },
+        onError: (err) => showError(err.message),
+      }),
+    );
+  };
+
+  const _onConfirm = () => {
+    if (type === ERemoveType.ALL_ITEM) {
+      _onConfirmCleanCart();
+    } else {
+      _onRemoveItem();
+    }
+  };
 
   return (
     <Modal
@@ -65,7 +120,7 @@ export const RemoveModal = forwardRef<IRemoveModalRef>(({}, ref) => {
             color={theme.colors.primary}
             pv={10}
             borderRadius={8}
-            onPress={() => {}}
+            onPress={_onConfirm}
           >
             <TextField color={theme.colors.backgroundColor} fontFamily={theme.fonts.medium}>
               Xoá

@@ -12,4 +12,5 @@ export const {
   updateProfileUserAction,
   getListRoleAction,
   updateCustomerProfileAction,
+  getCartTypesAction,
 } = asyncActions;

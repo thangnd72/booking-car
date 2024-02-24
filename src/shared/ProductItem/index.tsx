@@ -3,15 +3,16 @@ import { numberWithCommas } from '@/common';
 import { Box, Button, FastImg, TextField } from '@/components';
 import { navigate } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
+import useAuth from '@/hooks/useAuth';
 import { IProduct } from '@/interfaces/product.interface';
 import { APP_SCREEN } from '@/navigators/screen-types';
-import { useRef } from 'react';
-import { CartModal, ICartModalRef } from '../CartModal';
-import { EActionType } from '../CartModal/types';
-import styles from './styles';
-import useAuth from '@/hooks/useAuth';
 import { useAppDispatch } from '@/stores';
 import { setShowDialog } from '@/stores/client';
+import { useRoute } from '@react-navigation/native';
+import { useMemo, useRef } from 'react';
+import { CartModal, ICartModalRef } from '../CartModal';
+import { EActionType, EOrderType } from '../CartModal/types';
+import styles from './styles';
 
 interface IProps {
   product: IProduct;
@@ -22,16 +23,33 @@ export const ProductItem: React.FC<IProps> = ({ product }) => {
   const dispatch = useAppDispatch();
   const cartModalRef = useRef<ICartModalRef>(null);
 
+  const { name } = useRoute();
+
   const _onPressProduct = () => {
     navigate(APP_SCREEN.PRODUCT_DETAIL, { productId: product.id });
   };
+
+  const orderType = useMemo(() => {
+    switch (name) {
+      case APP_SCREEN.HOME:
+      case APP_SCREEN.PRODUCT_BY_CATEGORY:
+        return EOrderType.TODAY;
+
+      case APP_SCREEN.PRODUCT_BY_DAY:
+        return EOrderType.TOMORROW;
+
+      default:
+        return EOrderType.TODAY;
+    }
+  }, [name]);
 
   const _onAddToCart = () => {
     if (!isAuth) {
       dispatch(setShowDialog(true));
       return;
     }
-    cartModalRef.current?.onShowModal(true, EActionType.ADD_TO_CART, product);
+
+    cartModalRef.current?.onShowModal(true, EActionType.ADD_TO_CART, orderType, product);
   };
 
   return (

@@ -5,7 +5,7 @@ import theme from '@/helpers/theme';
 import { showError } from '@/helpers/toast';
 import ResponseError from '@/interfaces/error.interface';
 import { ILocation, ILocationParams } from '@/interfaces/location.interface';
-import { getDistrictsApi, getProvincesApi, getWardsApi } from '@/services/locations';
+import { getDistrictsApi, getProvincesApi, getWardsApi } from '@/services/location.services';
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ScrollView } from 'react-native';

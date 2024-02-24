@@ -1,11 +1,11 @@
 import { numberWithCommas } from '@/common';
 import { Box, Button, FastImg, TextField } from '@/components';
 import theme from '@/helpers/theme';
-import { IProduct } from '@/interfaces/product.interface';
+import { IProductItem } from '@/interfaces/cart.interface';
 import styles from './styles';
 
 interface IProps {
-  product: IProduct;
+  product: IProductItem;
 }
 
 export const ProductItem: React.FC<IProps> = ({ product }) => {
@@ -32,9 +32,11 @@ export const ProductItem: React.FC<IProps> = ({ product }) => {
           >
             Thanh Lieu Moc chau (29999 canh`)
           </TextField>
-          <TextField color={theme.colors.primary}>{`${numberWithCommas(188995)} đ`}</TextField>
+          <TextField color={theme.colors.primary}>{`${numberWithCommas(
+            product.price,
+          )} đ`}</TextField>
         </Box>
-        <TextField color={theme.colors.darkSixColor}>x1</TextField>
+        <TextField color={theme.colors.darkSixColor}>{`x${product.quantity}`}</TextField>
       </Box>
     </Button>
   );

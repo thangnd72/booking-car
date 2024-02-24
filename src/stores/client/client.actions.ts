@@ -7,7 +7,13 @@ import {
 } from '@/services/user.services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { EClientActions } from './client.constants';
-import { TGetListRoleAction, TGetListUserAction, TUpdateProfileUserAction } from './client.types';
+import {
+  TGetCartTypesAction,
+  TGetListRoleAction,
+  TGetListUserAction,
+  TUpdateProfileUserAction,
+} from './client.types';
+import { getCartTypesApi } from '@/services/cart.services';
 
 export const getListUserAction = createAsyncThunk(
   EClientActions.GET_LIST_USER,
@@ -49,6 +55,21 @@ export const getListRoleAction = createAsyncThunk(
     const { onSuccess, onError } = payload;
     try {
       const response = await getListRoleApi();
+      onSuccess?.(response);
+      return response.data;
+    } catch (error) {
+      onError?.(error as ResponseError);
+      return rejectWithValue(error);
+    }
+  },
+);
+
+export const getCartTypesAction = createAsyncThunk(
+  EClientActions.GET_CART_TYPES,
+  async (payload: TGetCartTypesAction, { rejectWithValue }) => {
+    const { onSuccess, onError } = payload;
+    try {
+      const response = await getCartTypesApi();
       onSuccess?.(response);
       return response.data;
     } catch (error) {

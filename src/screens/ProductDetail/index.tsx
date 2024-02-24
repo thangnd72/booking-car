@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { numberWithCommas } from '@/common';
 import { useRoute } from '@react-navigation/native';
 import { CartModal, ICartModalRef } from '@/shared';
-import { EActionType } from '@/shared/CartModal/types';
+import { EActionType, EOrderType } from '@/shared/CartModal/types';
 import { Header } from './components';
 
 interface IParms {
@@ -32,7 +32,7 @@ const ProductDetails = React.memo(() => {
 
   const _onAddToCart = (type: EActionType) => {
     if (!productDetail) return;
-    cartModalRef.current?.onShowModal(true, type, productDetail);
+    cartModalRef.current?.onShowModal(true, type, EOrderType.TODAY, productDetail);
   };
 
   React.useEffect(() => {

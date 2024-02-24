@@ -5,8 +5,14 @@ export enum EActionType {
   BUY_NOW = 'buy_now',
 }
 
+export enum EOrderType {
+  TODAY = 'TODAY',
+  TOMORROW = 'TOMORROW',
+}
+
 export type TDataAction = {
   isVisible: boolean;
   actionType: EActionType;
+  orderType: EOrderType;
   product: IProduct | undefined;
 };
