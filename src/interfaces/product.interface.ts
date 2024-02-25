@@ -28,3 +28,8 @@ export type TGetListProductParams = TCommonGetListParams & {
   categoryId?: string;
   tomorrow?: boolean;
 };
+
+export type TUpdatePlanParams = {
+  id: string;
+  plan: number;
+};

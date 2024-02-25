@@ -14,8 +14,8 @@ import CheckedIcon from './checked.svg';
 import CloseIcon from './close.svg';
 import CommunityIcon from './community.svg';
 import DashboardIcon from './dashboard.svg';
-import EmptySearchIcon from './empty-search.svg';
 import EmptyCartIcon from './empty-cart.svg';
+import EmptySearchIcon from './empty-search.svg';
 import ErrorAroundIcon from './error-around.svg';
 import EyeOffIcon from './eye-off.svg';
 import EyeIcon from './eye.svg';
@@ -59,6 +59,7 @@ import StarIcon from './star.svg';
 import ThemeIcon from './theme.svg';
 import TickActiveIcon from './tick-active.svg';
 import TickInactiveIcon from './tick-inactive.svg';
+import TransformIcon from './transform.svg';
 import TrashIcon from './trash.svg';
 import UncheckIcon from './uncheck.svg';
 import UserManageIcon from './user-manage.svg';
@@ -131,6 +132,7 @@ export {
   ThemeIcon,
   TickActiveIcon,
   TickInactiveIcon,
+  TransformIcon,
   TrashIcon,
   UncheckIcon,
   UserIcon,

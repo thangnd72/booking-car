@@ -1,17 +1,20 @@
 import { CloseIcon, MinusIcon, PlusIcon } from '@/assets/icons';
 import { numberWithCommas } from '@/common';
 import { Box, Button, FastImg, Modal, TextField } from '@/components';
+import { navigate } from '@/helpers/GlobalNavigation';
+import { SIZE } from '@/helpers/size';
 import theme from '@/helpers/theme';
-import { IProduct } from '@/interfaces/product.interface';
-import { forwardRef, useImperativeHandle, useState } from 'react';
-import { SlideInDown, SlideOutDown } from 'react-native-reanimated';
-import styles from './styles';
-import { EActionType, EOrderType, TDataAction } from './types';
-import { TRootState, useAppDispatch } from '@/stores';
-import { getListCartAction, updateCartAction } from '@/stores/cart';
-import { useSelector } from 'react-redux';
 import { showError, showSuccess } from '@/helpers/toast';
 import { IUpdateCartParams } from '@/interfaces/cart.interface';
+import { IProduct } from '@/interfaces/product.interface';
+import { APP_SCREEN } from '@/navigators/screen-types';
+import { TRootState, useAppDispatch } from '@/stores';
+import { getListCartAction, updateCartAction } from '@/stores/cart';
+import { forwardRef, useImperativeHandle, useState } from 'react';
+import { SlideInDown, SlideOutDown } from 'react-native-reanimated';
+import { useSelector } from 'react-redux';
+import styles from './styles';
+import { EActionType, EOrderType, TDataAction } from './types';
 
 export interface ICartModalRef {
   onShowModal(
@@ -53,7 +56,7 @@ export const CartModal = forwardRef<ICartModalRef>(({}, ref) => {
   );
 
   const _onIncreaseQuantity = () => {
-    setQuantity((prev) => prev + 1);
+    setQuantity((prev) => (actions.product?.quantity === prev ? prev : prev + 1));
   };
 
   const _onDecreaseQuantity = () => {
@@ -96,6 +99,23 @@ export const CartModal = forwardRef<ICartModalRef>(({}, ref) => {
     );
   };
 
+  const _handleBuyNow = () => {
+    const { product, orderType } = actions;
+    if (!product) return;
+
+    const products = [
+      {
+        productId: product.id,
+        quantity,
+        price: product.basePrice,
+        type: orderType === EOrderType.TODAY ? 1 : 2,
+      },
+    ];
+
+    _onCloseModal();
+    navigate(APP_SCREEN.CHECKOUT_SCREEN, { products });
+  };
+
   return (
     <Modal
       isVisible={actions.isVisible}
@@ -107,7 +127,13 @@ export const CartModal = forwardRef<ICartModalRef>(({}, ref) => {
           <Box direction='row' gap={8}>
             <FastImg pictureStyle={styles.coverPhoto} uri={actions.product?.imageUrls[0] || ''} />
             <Box>
-              <TextField size={18} fontFamily={theme.fonts.medium} color={theme.colors.textColor}>
+              <TextField
+                size={18}
+                fontFamily={theme.fonts.medium}
+                color={theme.colors.textColor}
+                numberOfLines={2}
+                style={{ width: SIZE.WIDTH - 180 }}
+              >
                 {actions.product?.name}
               </TextField>
               <TextField size={16} pv={6} color={theme.colors.primary}>{`${numberWithCommas(
@@ -148,7 +174,13 @@ export const CartModal = forwardRef<ICartModalRef>(({}, ref) => {
           color={theme.colors.primary}
           pv={12}
           borderRadius={12}
-          onPress={_handleAddToCart}
+          onPress={() => {
+            if (actions.actionType === EActionType.ADD_TO_CART) {
+              _handleAddToCart();
+            } else {
+              _handleBuyNow();
+            }
+          }}
         >
           <TextField size={16} color={theme.colors.white} fontFamily={theme.fonts.medium}>
             {actions.actionType === EActionType.ADD_TO_CART ? 'Thêm vào giỏ hàng' : 'Mua ngay'}

@@ -62,7 +62,13 @@ export const ProductItem: React.FC<IProps> = ({ product }) => {
         onPress={_onPressProduct}
         style={styles.shadow}
       >
-        <FastImg uri={product.imageUrls[0] || ''} pictureStyle={styles.thumbnail} />
+        <FastImg
+          uri={
+            product.imageUrls[0] ||
+            'https://hinhnen4k.com/wp-content/uploads/2023/02/hinh-nen-dien-thoai-hoa-1.jpg'
+          }
+          pictureStyle={styles.thumbnail}
+        />
         <Box gap={4} p={12}>
           <TextField numberOfLines={2} color={theme.colors.textColor} size={14}>
             {product.name}

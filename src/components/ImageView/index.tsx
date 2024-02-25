@@ -56,6 +56,7 @@ export const ImageView: React.FC<IProps> = ({ isVisible = false, imageUrls, onDi
     >
       <Box w={SIZE.SCREEN_WIDTH} h={SIZE.SCREEN_HEIGHT}>
         <ImageViewer
+          style={{ paddingTop: 10, backgroundColor: 'black' }}
           imageUrls={imageUrls.map((item) => ({ url: item }))}
           onCancel={onDismiss}
           useNativeDriver

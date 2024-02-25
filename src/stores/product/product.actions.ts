@@ -6,8 +6,13 @@ import {
   TGetListProductAction,
   TGetListProductCategoryAction,
   TGetListProductDetailAction,
+  TUpdatePlanProductAction,
 } from './product.types';
-import { getListProductApi, getListProductDetailApi } from '@/services/product.services';
+import {
+  getListProductApi,
+  getListProductDetailApi,
+  updatePlanProductApi,
+} from '@/services/product.services';
 
 export const getListProductAction = createAsyncThunk(
   EProductActions.GET_LIST_PRODUCT,
@@ -66,6 +71,25 @@ export const getListProductTomorrowAction = createAsyncThunk(
   },
 );
 
+export const getListPlanProductAction = createAsyncThunk(
+  EProductActions.GET_LIST_PLAN_PRODUCT,
+  async (payload: TGetListProductAction, { rejectWithValue }) => {
+    const { onSuccess, onError, ...bodyRequest } = payload;
+    try {
+      const response = await getListProductApi(bodyRequest);
+      onSuccess?.(response);
+      return {
+        ...response,
+        page: bodyRequest.page || 0,
+        totalPages: Math.ceil(response.total / (bodyRequest.size || 10)),
+      };
+    } catch (error) {
+      onError?.(error as ResponseError);
+      return rejectWithValue(error);
+    }
+  },
+);
+
 export const getProductCategoryAction = createAsyncThunk(
   EProductActions.GET_PRODUCT_CATEGORY,
   async (payload: TGetListProductCategoryAction, { rejectWithValue }) => {
@@ -87,6 +111,21 @@ export const getProductDetailAction = createAsyncThunk(
     const { onSuccess, onError, id } = payload;
     try {
       const response = await getListProductDetailApi(id);
+      onSuccess?.(response.data);
+      return response.data;
+    } catch (error) {
+      onError?.(error as ResponseError);
+      return rejectWithValue(error);
+    }
+  },
+);
+
+export const updatePlanProductAction = createAsyncThunk(
+  EProductActions.UPDATE_PLAN_PRODUCT,
+  async (payload: TUpdatePlanProductAction, { rejectWithValue }) => {
+    const { onSuccess, onError, ...bodyRequest } = payload;
+    try {
+      const response = await updatePlanProductApi(bodyRequest);
       onSuccess?.(response.data);
       return response.data;
     } catch (error) {

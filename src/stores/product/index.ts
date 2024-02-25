@@ -13,4 +13,6 @@ export const {
   getListProductTomorrowAction,
   getProductDetailAction,
   getListProductByCategoryAction,
+  getListPlanProductAction,
+  updatePlanProductAction,
 } = productActions;
