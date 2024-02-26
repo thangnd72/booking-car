@@ -32,7 +32,7 @@ const HomeScreen = React.memo(() => {
 
   const _init = async () => {
     await Promise.all([
-      dispatch(getProductCategoryAction({ ...DEFAULT_GET_LIST_PARAMS, size: 20 })),
+      dispatch(getProductCategoryAction({ ...DEFAULT_GET_LIST_PARAMS, size: 50 })),
       dispatch(getListRoleAction({})),
       dispatch(getCartTypesAction({})),
       dispatch(getListCartAction({})),

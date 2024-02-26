@@ -2,12 +2,13 @@ import {
   ArrowRightIcon,
   CameraIcon,
   ListIcon,
-  LocationIcon,
   LockIcon,
   LogoutIcon,
+  SyncIcon,
+  UserIcon,
   UserManageIcon,
 } from '@/assets/icons';
-import { randomUniqueId } from '@/common';
+import { EUserRole, randomUniqueId } from '@/common';
 import { Box, Button, FastImg, TextField } from '@/components';
 import { navigate, reset } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
@@ -18,12 +19,12 @@ import { uploadPhotoApi } from '@/services/common.services';
 import { TRootState, useAppDispatch } from '@/stores';
 import { logout, updateProfileUserAction } from '@/stores/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { uniqueId } from 'lodash';
+import { compact, uniqueId } from 'lodash';
 import React, { useState } from 'react';
 import { ActivityIndicator, Platform, ScrollView } from 'react-native';
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
 import { useSelector } from 'react-redux';
-import { LogoutDialog, Statistical } from './components';
+import { LogoutDialog } from './components';
 import styles from './styles';
 
 const SettingScreen = React.memo(() => {
@@ -104,12 +105,40 @@ const SettingScreen = React.memo(() => {
     navigate(APP_SCREEN.SHOPPING_CART);
   };
 
+  const _onNavigateChangePassword = () => {
+    navigate(APP_SCREEN.CREATE_NEW_PASSWORD);
+  };
+
+  const _onNavigateSynchronized = () => {
+    navigate(APP_SCREEN.SYNCHRONIZED);
+  };
+
+  const _onNavigateUserDetail = () => {
+    navigate(APP_SCREEN.USER_DETAIL_SCREEN, { userId: profile?.id });
+  };
+
   const _renderSettings = [
+    profile?.roles[0].code === EUserRole.SUPER_ADMIN
+      ? {
+          key: randomUniqueId(),
+          title: 'Quản lý người dùng',
+          icon: <UserManageIcon />,
+          action: _onManageUser,
+        }
+      : undefined,
+    profile?.roles[0].code === EUserRole.SUPER_ADMIN
+      ? {
+          key: randomUniqueId(),
+          title: 'Đồng bộ dữ liệu',
+          icon: <SyncIcon />,
+          action: _onNavigateSynchronized,
+        }
+      : undefined,
     {
       key: randomUniqueId(),
-      title: 'Quản lý người dùng',
-      icon: <UserManageIcon />,
-      action: _onManageUser,
+      title: 'Thông tin người dùng',
+      icon: <UserIcon width={24} height={24} />,
+      action: _onNavigateUserDetail,
     },
     {
       key: randomUniqueId(),
@@ -126,6 +155,7 @@ const SettingScreen = React.memo(() => {
       key: randomUniqueId(),
       title: 'Đổi mật khẩu',
       icon: <LockIcon />,
+      action: _onNavigateChangePassword,
     },
     {
       key: randomUniqueId(),
@@ -173,9 +203,9 @@ const SettingScreen = React.memo(() => {
           </TextField>
         </Box>
       </Box>
-      <Statistical />
-      <Box gap={12}>
-        {_renderSettings.map((entry) => (
+      {/* <Statistical /> */}
+      <Box gap={12} pt={24}>
+        {compact(_renderSettings).map((entry) => (
           <Button
             pv={12}
             ph={12}

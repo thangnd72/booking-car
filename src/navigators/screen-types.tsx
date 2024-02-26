@@ -39,6 +39,8 @@ export enum APP_SCREEN {
   SETTING_STACK = 'SETTING_STACK',
   SETTING = 'SETTING',
   PROFILE = 'PROFILE',
+  USER_DETAIL_SCREEN = 'USER_DETAIL_SCREEN',
+  SYNCHRONIZED = 'SYNCHRONIZED',
 }
 
 export type TUnAuthorizeParamsList = {
@@ -62,6 +64,8 @@ export type TAuthorizeParamsList = {
   [APP_SCREEN.PRODUCT_DETAIL]: { productId: string };
   [APP_SCREEN.SHOPPING_CART]: undefined;
   [APP_SCREEN.CHECKOUT_SCREEN]: { products: IProduct[] };
+  [APP_SCREEN.USER_DETAIL_SCREEN]: { userId: string };
+  [APP_SCREEN.SYNCHRONIZED]: undefined;
 };
 
 export type TRootStackParamList = {

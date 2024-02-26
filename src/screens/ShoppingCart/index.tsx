@@ -73,8 +73,9 @@ const ShoppingCart = React.memo(() => {
   const grandTotal = useMemo(() => {
     return shoppingCart?.items
       .filter((e) => selectedProducts.map((e) => e.productId).includes(e.productId))
+      .filter((item) => item.type === selectedTabId)
       .reduce((accumulator, currentValue) => accumulator + (currentValue?.totalPrice || 0), 0);
-  }, [selectedProducts, shoppingCart?.items]);
+  }, [selectedProducts, shoppingCart?.items, selectedTabId]);
 
   useEffect(() => {
     if (isSelectAll) {

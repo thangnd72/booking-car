@@ -26,11 +26,20 @@ export interface IUser {
   avatarUrl: string;
   avatar: string;
 }
-
 export interface IUserRole {
   id: string;
   name: string;
   roleId: string;
   code: EUserRole;
   modified?: string;
+}
+export interface IChangePasswordParams {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
+export interface IChangeUserParams {
+  phoneNumber: string;
+  fullName: string;
 }

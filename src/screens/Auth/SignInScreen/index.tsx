@@ -89,7 +89,7 @@ const SignInScreen: React.FC = () => {
         borderRadius={8}
         mv={32}
       >
-        <TextField size={16} color={theme.colors.lightSixColor} fontFamily={theme.fonts.medium}>
+        <TextField size={16} color={theme.colors.white} fontFamily={theme.fonts.medium}>
           Đăng nhập
         </TextField>
       </Button>

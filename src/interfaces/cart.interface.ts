@@ -9,6 +9,8 @@ export interface IProductItem {
   quantity: number;
   price: number;
   totalPrice?: number;
+  name: string;
+  imageUrls: string[];
   type: number;
 }
 

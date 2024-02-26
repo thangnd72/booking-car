@@ -32,3 +32,17 @@ export const updateCustomerProfileApi = async (payload: IUser) => {
   );
   return response.data;
 };
+
+export const getCurrentUserProfileApi = async () => {
+  const response: AxiosResponse<TCommonGetListResponse<IUser>> = await ApiClient.get(
+    `/api/v1/user/profile`,
+  );
+  return response.data;
+};
+
+export const getProfileUserApi = async (userId: string) => {
+  const response: AxiosResponse<TCommonGetListResponse<IUser>> = await ApiClient.get(
+    `/api/v1/user/${userId}`,
+  );
+  return response.data;
+};

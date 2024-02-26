@@ -76,7 +76,10 @@ export const CartItem: React.FC<IProps> = ({
         <Box direction='row' gap={12}>
           <FastImg
             pictureStyle={styles.flowerImg}
-            uri='https://media-cdn-v2.laodong.vn/storage/newsportal/2023/8/26/1233821/Giai-Nhi-1--Nang-Tre.jpg'
+            uri={
+              product.imageUrls[0] ||
+              'https://hinhnen4k.com/wp-content/uploads/2023/02/hinh-nen-dien-thoai-hoa-1.jpg'
+            }
           />
           <Box flex={1} gap={6}>
             <TextField
@@ -85,7 +88,7 @@ export const CartItem: React.FC<IProps> = ({
               size={16}
               fontFamily={theme.fonts.medium}
             >
-              Thanh Lieu Moc chau (29999 canh`)
+              {product.name}
             </TextField>
             <TextField color={theme.colors.primary}>{`${numberWithCommas(
               product.price,

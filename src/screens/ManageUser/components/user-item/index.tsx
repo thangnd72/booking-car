@@ -6,6 +6,8 @@ import { IUser } from '@/interfaces/auth.interfaces';
 import { useRef } from 'react';
 import { IRoleModalRef, RoleModal } from '../role-modal';
 import styles from './styles';
+import { navigate } from '@/helpers/GlobalNavigation';
+import { APP_SCREEN } from '@/navigators/screen-types';
 
 interface IProps {
   user: IUser;
@@ -18,8 +20,12 @@ export const UserItem: React.FC<IProps> = ({ user }) => {
     roleModalRef.current?.onShowModal(true, user);
   };
 
+  const _onNavigateUserDetail = () => {
+    navigate(APP_SCREEN.USER_DETAIL_SCREEN, { userId: user.id });
+  };
+
   return (
-    <Box
+    <Button
       direction='row'
       middle
       gap={8}
@@ -28,6 +34,7 @@ export const UserItem: React.FC<IProps> = ({ user }) => {
       ph={8}
       pv={8}
       borderRadius={12}
+      onPress={_onNavigateUserDetail}
     >
       <FastImg
         pictureStyle={styles.avatarImg}
@@ -55,6 +62,6 @@ export const UserItem: React.FC<IProps> = ({ user }) => {
         </Button>
       )}
       <RoleModal ref={roleModalRef} />
-    </Box>
+    </Button>
   );
 };

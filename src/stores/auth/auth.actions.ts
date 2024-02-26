@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { EAuthActions } from './auth.constants';
-import { logInApi, signUpApi } from '@/services/auth.services';
+import { changePasswordApi, logInApi, signUpApi } from '@/services/auth.services';
 import ResponseError from '@/interfaces/error.interface';
-import { TLoginAction, TSignUpAction } from './auth.types';
+import { TChangePasswordAction, TLoginAction, TSignUpAction } from './auth.types';
 
 export const logInAction = createAsyncThunk(
   EAuthActions.LOGIN,
@@ -25,6 +25,21 @@ export const signUpAction = createAsyncThunk(
     const { onSuccess, onError, ...bodyRequest } = payload;
     try {
       const response = await signUpApi(bodyRequest);
+      onSuccess?.(response.data);
+      return response;
+    } catch (error) {
+      onError?.(error as ResponseError);
+      return rejectWithValue(error);
+    }
+  },
+);
+
+export const changePasswordAction = createAsyncThunk(
+  EAuthActions.CHANGE_PASSWORD,
+  async (payload: TChangePasswordAction, { rejectWithValue }) => {
+    const { onSuccess, onError, ...bodyRequest } = payload;
+    try {
+      const response = await changePasswordApi(bodyRequest);
       onSuccess?.(response.data);
       return response;
     } catch (error) {

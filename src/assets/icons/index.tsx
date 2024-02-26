@@ -56,6 +56,8 @@ import ReportIcon from './report.svg';
 import SearchIcon from './search.svg';
 import ShoppingCartIcon from './shopping-cart.svg';
 import StarIcon from './star.svg';
+import SyncWhiteIcon from './sync-white.svg';
+import SyncIcon from './sync.svg';
 import ThemeIcon from './theme.svg';
 import TickActiveIcon from './tick-active.svg';
 import TickInactiveIcon from './tick-inactive.svg';
@@ -129,6 +131,8 @@ export {
   ShoppingCartIcon,
   ShowHidePasswordIcon,
   StarIcon,
+  SyncIcon,
+  SyncWhiteIcon,
   ThemeIcon,
   TickActiveIcon,
   TickInactiveIcon,

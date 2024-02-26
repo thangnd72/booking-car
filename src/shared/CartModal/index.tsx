@@ -71,14 +71,15 @@ export const CartModal = forwardRef<ICartModalRef>(({}, ref) => {
   const _handleAddToCart = () => {
     const { product, orderType } = actions;
 
-    if (!product || !shoppingCart) {
+    if (!product) {
       return;
     }
 
     const carts: IUpdateCartParams = {
       items: [
-        ...shoppingCart.items,
+        ...(shoppingCart?.items ?? []),
         {
+          ...product,
           productId: product.id,
           quantity,
           price: product.basePrice,
@@ -86,12 +87,14 @@ export const CartModal = forwardRef<ICartModalRef>(({}, ref) => {
         },
       ],
     };
+
     dispatch(
       updateCartAction({
         ...carts,
         onSuccess: () => {
           _onCloseModal();
-          showSuccess('Thêm vào giỏ hàng thành công!');
+          setTimeout(() => showSuccess('Thêm vào giỏ hàng thành công!'), 100);
+
           dispatch(getListCartAction({}));
         },
         onError: (err) => showError(err.message),
