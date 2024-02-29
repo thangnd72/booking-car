@@ -1,4 +1,4 @@
-import { DashboardIcon, FlowerIcon } from '@/assets/icons';
+import { FlowerIcon } from '@/assets/icons';
 import { CATEGORY_COLORS } from '@/common/constants/common';
 import { Box, Button, TextField } from '@/components';
 import { navigate } from '@/helpers/GlobalNavigation';
@@ -16,13 +16,7 @@ export const Category: React.FC<IProps> = ({ categories }) => {
     navigate(APP_SCREEN.PRODUCT_BY_CATEGORY, { categoryId });
   };
   return (
-    <Box pb={10}>
-      <Box direction='row' middle gap={8} pv={16} ph={16}>
-        <DashboardIcon width={24} height={24} />
-        <TextField size={16} color={theme.colors.textColor}>
-          Danh mục
-        </TextField>
-      </Box>
+    <Box pv={10}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}

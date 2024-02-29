@@ -30,6 +30,8 @@ export enum APP_SCREEN {
   // home stack
   ORDER_STACK = 'ORDER_STACK',
   PRODUCT_BY_DAY = 'PRODUCT_BY_DAY',
+  CONVERSATION_SCREEN = 'CONVERSATION_SCREEN',
+  MESSAGE_DETAIL = 'MESSAGE_DETAIL',
 
   // notification stack
   PLAN_STACK = 'PLAN_STACK',
@@ -66,6 +68,8 @@ export type TAuthorizeParamsList = {
   [APP_SCREEN.CHECKOUT_SCREEN]: { products: IProduct[] };
   [APP_SCREEN.USER_DETAIL_SCREEN]: { userId: string };
   [APP_SCREEN.SYNCHRONIZED]: undefined;
+  [APP_SCREEN.CONVERSATION_SCREEN]: undefined;
+  [APP_SCREEN.MESSAGE_DETAIL]: { conversationId: string };
 };
 
 export type TRootStackParamList = {

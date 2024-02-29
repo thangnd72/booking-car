@@ -13,6 +13,8 @@ import CheckoutScreen from '@/screens/CheckoutScreen';
 import ChangePasswordScreen from '@/screens/Auth/ChangePassword';
 import UserDetailScreen from '@/screens/UserDetails';
 import SynchronizedScreen from '@/screens/SynchronizedScreen';
+import ConversationScreen from '@/screens/Conversation';
+import MessageDetails from '@/screens/MesageDetails';
 
 const RootStack = createStackNavigator<TRootStackParamList>();
 
@@ -87,6 +89,20 @@ const RootNavigator = React.memo(() => {
       <RootStack.Screen
         name={APP_SCREEN.SYNCHRONIZED}
         component={SynchronizedScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <RootStack.Screen
+        name={APP_SCREEN.CONVERSATION_SCREEN}
+        component={ConversationScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <RootStack.Screen
+        name={APP_SCREEN.MESSAGE_DETAIL}
+        component={MessageDetails}
         options={{
           headerShown: false,
         }}

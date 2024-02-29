@@ -48,6 +48,8 @@ export interface IButtonProps extends TouchableOpacityProps {
   activeOpacity?: number;
   wrap?: boolean;
   gap?: number;
+  borderBottomColor?: string;
+  borderBottomWidth?: number;
 }
 
 export const Button = (props: IButtonProps) => {
@@ -87,6 +89,8 @@ export const Button = (props: IButtonProps) => {
     activeOpacity,
     wrap,
     gap,
+    borderBottomColor,
+    borderBottomWidth,
     ...rest
   } = props;
 
@@ -129,6 +133,8 @@ export const Button = (props: IButtonProps) => {
       shadowOffset: { height: 0, width: 0 },
       elevation: 5,
     },
+    borderBottomColor && { borderBottomColor },
+    borderBottomWidth && { borderBottomWidth },
     style,
   ];
 

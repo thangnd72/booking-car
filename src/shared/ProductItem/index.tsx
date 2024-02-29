@@ -86,7 +86,9 @@ export const ProductItem: React.FC<IProps> = ({ product }) => {
             <Button
               color={theme.colors.primary}
               centered
-              p={6}
+              middle
+              h={36}
+              w={36}
               borderRadius={30}
               onPress={_onAddToCart}
             >

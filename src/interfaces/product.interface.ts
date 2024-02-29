@@ -10,6 +10,7 @@ export interface IProduct {
   type: number;
   imageUrls: string[];
   quantity: number;
+  plan: number;
   id: string;
   createdDate: string;
   lastModifiedDate: any;

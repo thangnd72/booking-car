@@ -54,6 +54,7 @@ import RankingIcon from './ranking.svg';
 import RedLocationIcon from './red-location.svg';
 import ReportIcon from './report.svg';
 import SearchIcon from './search.svg';
+import SendIcon from './send.svg';
 import ShoppingCartIcon from './shopping-cart.svg';
 import StarIcon from './star.svg';
 import SyncWhiteIcon from './sync-white.svg';
@@ -128,6 +129,7 @@ export {
   RedLocationIcon,
   ReportIcon,
   SearchIcon,
+  SendIcon,
   ShoppingCartIcon,
   ShowHidePasswordIcon,
   StarIcon,

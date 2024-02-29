@@ -87,7 +87,9 @@ const PlanProduct = React.memo(() => {
             keyExtractor={(item) => item.id}
             data={planProduct.data}
             showsVerticalScrollIndicator={false}
-            renderItem={({ item }) => <ProductItem product={item} onPressItem={() => {}} />}
+            renderItem={({ item }) => (
+              <ProductItem type='PLAN' product={item} onPressItem={() => {}} />
+            )}
             contentContainerStyle={styles.containerItem}
             style={styles.wrapperProduct}
             onEndReached={_onLoadMore}

@@ -11,3 +11,10 @@ export const randomUniqueId = () => {
 export const numberWithCommas = (value: number) => {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
+
+export const truncateString = (value: string, maxLength = 30) => {
+  if (value?.length === 0 || !value) return ' ';
+  if (value.length <= maxLength) return value;
+
+  return value.substring(0, maxLength) + '...';
+};

@@ -9,6 +9,7 @@ import { forwardRef, useRef } from 'react';
 import { IPlanModalRef, PlanModal } from '../plan-modal';
 
 interface IProps {
+  type?: 'PLAN' | 'DEFAULT';
   product: IProduct;
   onPressItem: () => void;
 }
@@ -17,7 +18,7 @@ export interface IProductRef {
   close: () => void;
 }
 
-export const ProductItem: React.FC<IProps> = ({ product, onPressItem }) => {
+export const ProductItem: React.FC<IProps> = ({ product, type = 'DEFAULT', onPressItem }) => {
   const planModalRef = useRef<IPlanModalRef>(null);
   const swipeRef = useRef<Swipeable>(null);
 
@@ -72,10 +73,9 @@ export const ProductItem: React.FC<IProps> = ({ product, onPressItem }) => {
             <TextField color={theme.colors.primary}>{`${numberWithCommas(
               product.basePrice,
             )} đ`}</TextField>
-            <TextField
-              size={12}
-              color={theme.colors.darkSixColor}
-            >{`Số lượng: ${product.quantity}`}</TextField>
+            <TextField size={12} color={theme.colors.darkSixColor}>{`Số lượng: ${
+              type === 'DEFAULT' ? product.quantity : product.plan
+            }`}</TextField>
           </Box>
         </Box>
       </Button>

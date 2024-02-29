@@ -67,7 +67,7 @@ const CheckoutScreen = React.memo(() => {
               <TextField color={theme.colors.textColor} mt={4}>
                 Ghi chú
               </TextField>
-              <TextInput style={styles.textInput} />
+              <TextInput style={styles.textInput} placeholder='Nhập ghi chú' />
             </Box>
           </Box>
         </ScrollView>

@@ -1,20 +1,26 @@
 import { LogoApp, MessageIcon, NotificationIcon, ShoppingCartIcon } from '@/assets/icons';
+import { EUserRole } from '@/common';
 import { Box, Button } from '@/components';
 import { navigate } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
 import useAuth from '@/hooks/useAuth';
 import { APP_SCREEN } from '@/navigators/screen-types';
-import { useAppDispatch } from '@/stores';
+import { TRootState, useAppDispatch } from '@/stores';
 import { setShowDialog } from '@/stores/client';
+import { useSelector } from 'react-redux';
 
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const isAuth = useAuth();
+  const { profile } = useSelector((state: TRootState) => state.client);
 
   const _onPressMessage = () => {
     if (!isAuth) {
       dispatch(setShowDialog(true));
       return;
+    }
+    if (profile?.roles && profile.roles[0].code === EUserRole.SUPER_ADMIN) {
+      navigate(APP_SCREEN.CONVERSATION_SCREEN);
     }
   };
 
