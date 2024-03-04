@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.placeflowers"
+    namespace "com.bookingcar.app"
     defaultConfig {
-        applicationId "com.placeflowers"
+        applicationId "com.bookingcar.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

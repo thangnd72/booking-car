@@ -1,4 +1,4 @@
-package com.placeflowers
+package com.bookingcar.app
 
 import android.app.Application
 import com.facebook.react.PackageList
