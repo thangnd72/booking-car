@@ -24,7 +24,7 @@ export const Empty = ({ icon, title, description, colorText }: IProps) => {
       >
         {title ? title : 'Danh sách trống!'}
       </TextField>
-      <TextField centered mh={30} size={14} color={colorText || theme.colors.darkSixColor}>
+      <TextField centered mh={30} size={14} color={colorText || theme.colors.darkFiveColor}>
         {description}
       </TextField>
     </Box>

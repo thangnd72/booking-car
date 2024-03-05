@@ -9,7 +9,7 @@ const TruckScreen: React.FC = () => {
     <Box flex ph={16} pt={insets.top}>
       {/* <Header /> */}
       <TextField mb={32} size={32} fontFamily={theme.fonts.regular} centered>
-        Setting
+        Home
       </TextField>
     </Box>
   );

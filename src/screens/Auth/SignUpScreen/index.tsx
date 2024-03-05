@@ -1,4 +1,3 @@
-import { LockIcon, PhoneIcon, UserIcon } from '@/assets/icons';
 import { validationError, validationSchema } from '@/common';
 import { Box, Button, Spacer, TextField, TextInputField } from '@/components';
 import { ETypeField } from '@/components/TextInput/types';
@@ -53,7 +52,7 @@ export const SignUpScreen: React.FC = () => {
         <TextInputField
           autoFocus
           leftLabel='Số điện thoại'
-          iconLeft={<PhoneIcon width={20} height={20} />}
+          // iconLeft={<PhoneIcon width={20} height={20} />}
           control={control}
           name='phoneNumber'
           keyboardType='numeric'
@@ -70,7 +69,7 @@ export const SignUpScreen: React.FC = () => {
         <Spacer height={16} />
         <TextInputField
           leftLabel='Họ tên'
-          iconLeft={<UserIcon width={20} height={20} />}
+          // iconLeft={<UserIcon width={20} height={20} />}
           control={control}
           name='fullName'
           showRequiredMark
@@ -82,7 +81,7 @@ export const SignUpScreen: React.FC = () => {
         <Spacer height={16} />
         <TextInputField
           leftLabel='Mật khẩu'
-          iconLeft={<LockIcon width={20} height={20} />}
+          // iconLeft={<LockIcon width={20} height={20} />}
           control={control}
           name='password'
           type={ETypeField.PASSWORD}
@@ -99,7 +98,7 @@ export const SignUpScreen: React.FC = () => {
         <Spacer height={16} />
         <TextInputField
           leftLabel='Xác nhận mật khẩu'
-          iconLeft={<LockIcon width={20} height={20} />}
+          // iconLeft={<LockIcon width={20} height={20} />}
           control={control}
           name='confirmPassword'
           type={ETypeField.PASSWORD}

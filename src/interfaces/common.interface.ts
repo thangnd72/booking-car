@@ -1,5 +1,3 @@
-import { ESortType } from '@/common';
-
 export type TCommonGetListParams = {
   page?: number;
   size?: number;

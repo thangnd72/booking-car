@@ -1,80 +1,81 @@
 import { useCallback } from 'react';
 
-import { Box, Button, Spacer, TextField } from '@/components';
-import { APP_SCREEN } from '@/navigators/screen-types';
-import theme from '@/helpers/theme';
 import {
-  FlowerActiveIcon,
-  FlowerInactiveIcon,
-  HomeActiveIcon,
-  HomeInactiveIcon,
-  OrderActive,
-  OrderInactive,
   ProfileActive,
   ProfileInactive,
-  WareHouseActiveIcon,
-  WareHouseInactiveIcon,
+  ReportActiveIcon,
+  ReportInactiveIcon,
+  RouteActiveIcon,
+  RouteInactiveIcon,
+  TimeActiveIcon,
+  TimeInactiveIcon,
+  TruckActiveIcon,
+  TruckInactiveIcon,
 } from '@/assets/icons';
-import { SIZE } from '@/helpers/size';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
-import { TRootState, useAppDispatch } from '@/stores';
-import { setShowDialog } from '@/stores/client';
+import { Box, Button, Spacer, TextField } from '@/components';
+import theme from '@/helpers/theme';
 import useAuth from '@/hooks/useAuth';
+import { APP_SCREEN } from '@/navigators/screen-types';
+import { useAppDispatch } from '@/stores';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const titleBottom = (route: string) => {
   switch (route) {
-    case APP_SCREEN.HOME_STACK:
-      return 'Trang chủ';
-    case APP_SCREEN.ORDER_STACK:
-      return 'Hoa ngày mai';
-    case APP_SCREEN.PLAN_STACK:
-      return 'Dự trù';
+    case APP_SCREEN.TRUCK_STACK:
+      return 'Đầu xe';
+    case APP_SCREEN.ROUTE_STACK:
+      return 'Lộ trình';
+    case APP_SCREEN.TIME_STACK:
+      return 'Thời gian';
+    case APP_SCREEN.REPORT_STACK:
+      return 'Báo cáo';
     case APP_SCREEN.SETTING_STACK:
-      return 'Tài khoản';
+      return 'Cá nhân';
 
     default:
-      return 'Trang chủ';
+      return 'Đầu xe';
   }
 };
 
 const IconActive = (route: any) => {
   switch (route.name) {
-    case APP_SCREEN.HOME_STACK:
-      return <HomeActiveIcon width={24} height={24} />;
-    case APP_SCREEN.ORDER_STACK:
-      return <FlowerActiveIcon width={24} height={24} />;
-    case APP_SCREEN.PLAN_STACK:
-      return <WareHouseActiveIcon width={24} height={24} />;
+    case APP_SCREEN.TRUCK_STACK:
+      return <TruckActiveIcon />;
+    case APP_SCREEN.ROUTE_STACK:
+      return <RouteActiveIcon />;
+    case APP_SCREEN.TIME_STACK:
+      return <TimeActiveIcon />;
+    case APP_SCREEN.REPORT_STACK:
+      return <ReportActiveIcon />;
     case APP_SCREEN.SETTING_STACK:
       return <ProfileActive />;
 
     default:
-      return <HomeActiveIcon width={24} height={24} />;
+      return <TruckActiveIcon />;
   }
 };
 
 const IconInActive = (route: any) => {
   switch (route.name) {
-    case APP_SCREEN.HOME_STACK:
-      return <HomeInactiveIcon width={24} height={24} />;
-    case APP_SCREEN.ORDER_STACK:
-      return <FlowerInactiveIcon width={24} height={24} />;
-    case APP_SCREEN.PLAN_STACK:
-      return <WareHouseInactiveIcon width={24} height={24} />;
+    case APP_SCREEN.TRUCK_STACK:
+      return <TruckInactiveIcon />;
+    case APP_SCREEN.ROUTE_STACK:
+      return <RouteInactiveIcon />;
+    case APP_SCREEN.TIME_STACK:
+      return <TimeInactiveIcon />;
+    case APP_SCREEN.REPORT_STACK:
+      return <ReportInactiveIcon />;
     case APP_SCREEN.SETTING_STACK:
       return <ProfileInactive />;
 
     default:
-      return <HomeInactiveIcon width={24} height={24} />;
+      return <TruckInactiveIcon />;
   }
 };
 
 export const TabBar = (prop: any) => {
   const { state, navigation } = prop;
   const insets = useSafeAreaInsets();
-  const dispatch = useAppDispatch();
-  const isAuth = useAuth();
 
   const onPress = useCallback(
     (routeKey: string, routeName: string, isFocused: boolean) => {
@@ -84,14 +85,10 @@ export const TabBar = (prop: any) => {
       });
 
       if (!isFocused && !event.defaultPrevented) {
-        if (!isAuth) {
-          dispatch(setShowDialog(true));
-        } else {
-          navigation.navigate(routeName);
-        }
+        navigation.navigate(routeName);
       }
     },
-    [navigation, isAuth],
+    [navigation],
   );
 
   const onLongPress = useCallback(

@@ -1,5 +1,4 @@
 import { IUser, IUserRole } from '@/interfaces/auth.interfaces';
-import { ICartType } from '@/interfaces/cart.interface';
 import {
   TCommonGetDataResponse,
   TCommonGetListParams,
@@ -19,10 +18,5 @@ export type TUpdateProfileUserAction = IUser & {
 
 export type TGetListRoleAction = {
   onSuccess?: (response: TCommonGetListResponse<IUserRole[]>) => void;
-  onError?: (error: ResponseError) => void;
-};
-
-export type TGetCartTypesAction = {
-  onSuccess?: (response: TCommonGetDataResponse<ICartType[]>) => void;
   onError?: (error: ResponseError) => void;
 };

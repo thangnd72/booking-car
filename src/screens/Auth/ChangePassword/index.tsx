@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, LockIcon } from '@/assets/icons';
+import { ArrowLeftIcon } from '@/assets/icons';
 import { validationError, validationSchema } from '@/common';
 import { Box, Button, Spacer, TextField, TextInputField } from '@/components';
 import { ETypeField } from '@/components/TextInput/types';
@@ -57,7 +57,7 @@ const ChangePasswordScreen: React.FC = () => {
         <TextInputField
           autoFocus
           leftLabel='Mật khẩu cũ'
-          iconLeft={<LockIcon width={20} height={20} />}
+          // iconLeft={<LockIcon width={20} height={20} />}
           control={control}
           type={ETypeField.PASSWORD}
           showRequiredMark
@@ -70,7 +70,7 @@ const ChangePasswordScreen: React.FC = () => {
         <Spacer height={8} />
         <TextInputField
           leftLabel='Mật khẩu mới'
-          iconLeft={<LockIcon width={20} height={20} />}
+          // iconLeft={<LockIcon width={20} height={20} />}
           control={control}
           name='newPassword'
           type={ETypeField.PASSWORD}
@@ -87,7 +87,7 @@ const ChangePasswordScreen: React.FC = () => {
         <Spacer height={8} />
         <TextInputField
           leftLabel='Xác nhận mật khẩu'
-          iconLeft={<LockIcon width={20} height={20} />}
+          // iconLeft={<LockIcon width={20} height={20} />}
           control={control}
           name='confirmPassword'
           type={ETypeField.PASSWORD}

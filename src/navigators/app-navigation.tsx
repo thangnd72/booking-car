@@ -1,6 +1,5 @@
 import { LoadingScreen, ToastError, ToastSuccess } from '@/components';
 import { navigationRef } from '@/helpers/GlobalNavigation';
-import { AuthPopup } from '@/shared/AuthPopup';
 import { PortalHost } from '@gorhom/portal';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import React from 'react';
@@ -9,13 +8,14 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 import RootNavigator from './root-navigator';
 import { AutocompleteDropdownContextProvider } from 'react-native-autocomplete-dropdown';
+import theme from '@/helpers/theme';
 
 export const AppContainer = () => {
   const navTheme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      // background: theme.colors.backgroundColor,
+      background: theme.colors.backgroundColor,
     },
   };
 
@@ -37,7 +37,6 @@ export const AppContainer = () => {
           <PortalHost name={'AppModal'} />
         </NavigationContainer>
         <Toast config={toastConfig} position='top' />
-        <AuthPopup />
         <LoadingScreen />
       </SafeAreaProvider>
     </AutocompleteDropdownContextProvider>

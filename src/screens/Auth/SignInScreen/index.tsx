@@ -1,4 +1,3 @@
-import { LockIcon, UserIcon } from '@/assets/icons';
 import { EAuthToken, validationError, validationSchema } from '@/common';
 import { Box, Button, Spacer, TextField, TextInputField } from '@/components';
 import { ETypeField } from '@/components/TextInput/types';
@@ -51,7 +50,7 @@ const SignInScreen: React.FC = () => {
       <TextInputField
         autoFocus
         leftLabel='Số điện thoại'
-        iconLeft={<UserIcon width={20} height={20} />}
+        // iconLeft={<UserIcon width={20} height={20} />}
         control={control}
         name='username'
         keyboardType='numeric'
@@ -67,7 +66,7 @@ const SignInScreen: React.FC = () => {
       <Spacer height={8} />
       <TextInputField
         leftLabel='Mật khẩu'
-        iconLeft={<LockIcon width={20} height={20} />}
+        // iconLeft={<LockIcon width={20} height={20} />}
         control={control}
         name='password'
         type={ETypeField.PASSWORD}

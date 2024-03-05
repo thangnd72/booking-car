@@ -1,5 +1,3 @@
-import { IProduct } from '@/interfaces/product.interface';
-
 export enum APP_SCREEN {
   // root stack
   AUTHORIZE = 'AUTHORIZE',
@@ -18,31 +16,22 @@ export enum APP_SCREEN {
    * AUTH
    */
 
-  // home stack
-  HOME_STACK = 'HOME_STACK',
+  // truck stack
+  TRUCK_STACK = 'TRUCK_STACK',
   HOME = 'HOME',
-  PRODUCT_BY_CATEGORY = 'PRODUCT_BY_CATEGORY',
-  MANAGE_USER = 'MANAGE_USER',
-  PRODUCT_DETAIL = 'PRODUCT_DETAIL',
-  SHOPPING_CART = 'SHOPPING_CART',
-  CHECKOUT_SCREEN = 'CHECKOUT_SCREEN',
 
-  // home stack
-  ORDER_STACK = 'ORDER_STACK',
-  PRODUCT_BY_DAY = 'PRODUCT_BY_DAY',
-  CONVERSATION_SCREEN = 'CONVERSATION_SCREEN',
-  MESSAGE_DETAIL = 'MESSAGE_DETAIL',
+  // route stack
+  ROUTE_STACK = 'ROUTE_STACK',
 
-  // notification stack
-  PLAN_STACK = 'PLAN_STACK',
-  PLAN_PRODUCT = 'PLAN_PRODUCT',
+  // time stack
+  TIME_STACK = 'TIME_STACK',
 
-  // setting
+  // report stack
+  REPORT_STACK = 'REPORT_STACK',
+
+  // setting stack
   SETTING_STACK = 'SETTING_STACK',
   SETTING = 'SETTING',
-  PROFILE = 'PROFILE',
-  USER_DETAIL_SCREEN = 'USER_DETAIL_SCREEN',
-  SYNCHRONIZED = 'SYNCHRONIZED',
 }
 
 export type TUnAuthorizeParamsList = {
@@ -57,19 +46,7 @@ export type TUnAuthorizeParamsList = {
 
 export type TAuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
-  [APP_SCREEN.PRODUCT_BY_DAY]: undefined;
-  [APP_SCREEN.PLAN_PRODUCT]: undefined;
-  [APP_SCREEN.PROFILE]: undefined;
   [APP_SCREEN.SETTING]: undefined;
-  [APP_SCREEN.PRODUCT_BY_CATEGORY]: { categoryId: string };
-  [APP_SCREEN.MANAGE_USER]: undefined;
-  [APP_SCREEN.PRODUCT_DETAIL]: { productId: string };
-  [APP_SCREEN.SHOPPING_CART]: undefined;
-  [APP_SCREEN.CHECKOUT_SCREEN]: { products: IProduct[] };
-  [APP_SCREEN.USER_DETAIL_SCREEN]: { userId: string };
-  [APP_SCREEN.SYNCHRONIZED]: undefined;
-  [APP_SCREEN.CONVERSATION_SCREEN]: undefined;
-  [APP_SCREEN.MESSAGE_DETAIL]: { conversationId: string };
 };
 
 export type TRootStackParamList = {

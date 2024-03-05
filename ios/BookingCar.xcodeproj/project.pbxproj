@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* BookingCarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BookingCarTests.m */; };
 		0C80B921A6F3F58F76C31292 /* libPods-BookingCar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-BookingCar.a */; };
-		0ECDB064BB114B469A06A34C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E649A207229046C28A588CAB /* Roboto-Bold.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		33EC1637AA594D67AD7BE136 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37F8C9EA50964DBF8082308E /* Roboto-Regular.ttf */; };
-		70CA04A4F07040289AB313C1 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB3CBAFD4F404D83B32DCEED /* Roboto-Medium.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-BookingCar-BookingCarTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-BookingCar-BookingCarTests.a */; };
-		90FFA39DF74D41E689968D8E /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2425069AC440918CB511B5 /* Roboto-Italic.ttf */; };
-		A93C1C6B0D34410481A2668B /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3373C16BA58741E39218C992 /* Roboto-Light.ttf */; };
 		CF8997C62B69E82F0033807D /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8997C52B69E82E0033807D /* BootSplash.storyboard */; };
+		29EA171A0655431C917379AD /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25C45C0D485A40ADA42D50EE /* Inter-Bold.ttf */; };
+		74C9B63200C94CCB841BA252 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67A5C758CBC042CF8A7644FD /* Inter-Light.ttf */; };
+		FD2CC777F0A84471B1A144FA /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39A7F236FA7D4CCCB6AFB106 /* Inter-Medium.ttf */; };
+		240110D7C2DE46DD82C400A4 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F27D123CAC184699985A9E15 /* Inter-Regular.ttf */; };
+		FA722A7E0F3743CCA4516F94 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F738BD9B045453D8DCDAF4B /* Inter-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,33 +27,33 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = "BookingCar";
+			remoteInfo = BookingCar;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* BookingCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BookingCarTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* BookingCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookingCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* BookingCarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BookingCarTests.m"; sourceTree = "<group>"; };
-		0E2425069AC440918CB511B5 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../src/assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* BookingCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BookingCar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "BookingCar/AppDelegate.h"; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = "BookingCar/AppDelegate.mm"; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "BookingCar/Images.xcassets"; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "BookingCar/Info.plist"; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "BookingCar/main.m"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* BookingCarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookingCarTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* BookingCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookingCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = BookingCar/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = BookingCar/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BookingCar/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BookingCar/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BookingCar/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-BookingCar-BookingCarTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BookingCar-BookingCarTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3373C16BA58741E39218C992 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../src/assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
-		37F8C9EA50964DBF8082308E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-BookingCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingCar.debug.xcconfig"; path = "Target Support Files/Pods-BookingCar/Pods-BookingCar.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-BookingCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingCar.release.xcconfig"; path = "Target Support Files/Pods-BookingCar/Pods-BookingCar.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-BookingCar-BookingCarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingCar-BookingCarTests.debug.xcconfig"; path = "Target Support Files/Pods-BookingCar-BookingCarTests/Pods-BookingCar-BookingCarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-BookingCar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BookingCar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-BookingCar-BookingCarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingCar-BookingCarTests.release.xcconfig"; path = "Target Support Files/Pods-BookingCar-BookingCarTests/Pods-BookingCar-BookingCarTests.release.xcconfig"; sourceTree = "<group>"; };
 		CF8997C52B69E82E0033807D /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = BookingCar/BootSplash.storyboard; sourceTree = "<group>"; };
-		E649A207229046C28A588CAB /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FB3CBAFD4F404D83B32DCEED /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		25C45C0D485A40ADA42D50EE /* Inter-Bold.ttf */ = {isa = PBXFileReference; name = "Inter-Bold.ttf"; path = "../src/assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		67A5C758CBC042CF8A7644FD /* Inter-Light.ttf */ = {isa = PBXFileReference; name = "Inter-Light.ttf"; path = "../src/assets/fonts/Inter-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		39A7F236FA7D4CCCB6AFB106 /* Inter-Medium.ttf */ = {isa = PBXFileReference; name = "Inter-Medium.ttf"; path = "../src/assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F27D123CAC184699985A9E15 /* Inter-Regular.ttf */ = {isa = PBXFileReference; name = "Inter-Regular.ttf"; path = "../src/assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3F738BD9B045453D8DCDAF4B /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; name = "Inter-SemiBold.ttf"; path = "../src/assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 				00E356F21AD99517003FC87E /* BookingCarTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = "BookingCarTests";
+			path = BookingCarTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -103,7 +103,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = "BookingCar";
+			name = BookingCar;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -162,11 +162,11 @@
 		D25E0ED8138C4FC4832D3427 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E649A207229046C28A588CAB /* Roboto-Bold.ttf */,
-				0E2425069AC440918CB511B5 /* Roboto-Italic.ttf */,
-				3373C16BA58741E39218C992 /* Roboto-Light.ttf */,
-				FB3CBAFD4F404D83B32DCEED /* Roboto-Medium.ttf */,
-				37F8C9EA50964DBF8082308E /* Roboto-Regular.ttf */,
+				25C45C0D485A40ADA42D50EE /* Inter-Bold.ttf */,
+				67A5C758CBC042CF8A7644FD /* Inter-Light.ttf */,
+				39A7F236FA7D4CCCB6AFB106 /* Inter-Medium.ttf */,
+				F27D123CAC184699985A9E15 /* Inter-Regular.ttf */,
+				3F738BD9B045453D8DCDAF4B /* Inter-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -211,8 +211,8 @@
 			);
 			dependencies = (
 			);
-			name = "BookingCar";
-			productName = "BookingCar";
+			name = BookingCar;
+			productName = BookingCar;
 			productReference = 13B07F961A680F5B00A75B9A /* BookingCar.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -265,12 +265,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				0ECDB064BB114B469A06A34C /* Roboto-Bold.ttf in Resources */,
 				CF8997C62B69E82F0033807D /* BootSplash.storyboard in Resources */,
-				90FFA39DF74D41E689968D8E /* Roboto-Italic.ttf in Resources */,
-				A93C1C6B0D34410481A2668B /* Roboto-Light.ttf in Resources */,
-				70CA04A4F07040289AB313C1 /* Roboto-Medium.ttf in Resources */,
-				33EC1637AA594D67AD7BE136 /* Roboto-Regular.ttf in Resources */,
+				29EA171A0655431C917379AD /* Inter-Bold.ttf in Resources */,
+				74C9B63200C94CCB841BA252 /* Inter-Light.ttf in Resources */,
+				FD2CC777F0A84471B1A144FA /* Inter-Medium.ttf in Resources */,
+				240110D7C2DE46DD82C400A4 /* Inter-Regular.ttf in Resources */,
+				FA722A7E0F3743CCA4516F94 /* Inter-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +446,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BookingCarTests/Info.plist";
+				INFOPLIST_FILE = BookingCarTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -458,7 +458,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bookingcar.app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bookingcar.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookingCar.app/BookingCar";
 			};
@@ -470,7 +470,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = "BookingCarTests/Info.plist";
+				INFOPLIST_FILE = BookingCarTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -482,7 +482,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bookingcar.app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bookingcar.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookingCar.app/BookingCar";
 			};
@@ -497,8 +497,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J47D9JGF46;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "BookingCar/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "Booking Car";
+				INFOPLIST_FILE = BookingCar/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Booking Car";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,8 +509,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bookingcar.app";
-				PRODUCT_NAME = "BookingCar";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bookingcar.app;
+				PRODUCT_NAME = BookingCar;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -525,8 +525,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J47D9JGF46;
-				INFOPLIST_FILE = "BookingCar/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "Booking Car";
+				INFOPLIST_FILE = BookingCar/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Booking Car";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -537,8 +537,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bookingcar.app";
-				PRODUCT_NAME = "BookingCar";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bookingcar.app;
+				PRODUCT_NAME = BookingCar;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -613,7 +613,11 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -681,7 +685,11 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
