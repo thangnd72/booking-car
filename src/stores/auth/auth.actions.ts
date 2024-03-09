@@ -10,7 +10,7 @@ export const logInAction = createAsyncThunk(
     const { onSuccess, onError, ...bodyRequest } = payload;
     try {
       const response = await logInApi(bodyRequest);
-      onSuccess?.(response.data);
+      onSuccess?.(response);
       return response;
     } catch (error) {
       onError?.(error as ResponseError);

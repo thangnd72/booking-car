@@ -1,10 +1,11 @@
+import { LoginIcon } from '@/assets/icons';
 import { validationError, validationSchema } from '@/common';
 import { Box, Button, Spacer, TextField, TextInputField } from '@/components';
 import { ETypeField } from '@/components/TextInput/types';
 import { goBack } from '@/helpers/GlobalNavigation';
 import theme from '@/helpers/theme';
 import { showError, showSuccess } from '@/helpers/toast';
-import { ISignUpFormData, ISignUpResponse } from '@/interfaces/auth.interfaces';
+import { ISignUpFormData } from '@/interfaces/auth.interfaces';
 import { useAppDispatch } from '@/stores';
 import { signUpAction } from '@/stores/auth';
 import { setGlobalLoading } from '@/stores/client';
@@ -15,15 +16,15 @@ export const SignUpScreen: React.FC = () => {
   const dispatch = useAppDispatch();
   const { control, handleSubmit, watch } = useForm<ISignUpFormData>({
     defaultValues: {
-      phoneNumber: '',
+      email: '',
       password: '',
-      confirmPassword: '',
-      fullName: '',
+      enterThePassword: '',
+      userName: '',
     },
   });
   const pwd = watch('password');
 
-  const _onSuccess = (response: ISignUpResponse) => {
+  const _onSuccess = () => {
     dispatch(setGlobalLoading(false));
     showSuccess('Đăng ký tài khoản thành công!');
     goBack();
@@ -34,7 +35,7 @@ export const SignUpScreen: React.FC = () => {
     dispatch(
       signUpAction({
         ...values,
-        onSuccess: (response) => _onSuccess(response),
+        onSuccess: () => _onSuccess(),
         onError: (err) => {
           dispatch(setGlobalLoading(false));
           showError(err.message);
@@ -45,33 +46,31 @@ export const SignUpScreen: React.FC = () => {
 
   return (
     <Box p={16} flex={1} color={theme.colors.backgroundColor}>
-      <TextField centered size={24} mb={24} mt={8} fontFamily={theme.fonts.medium}>
-        Thông tin đăng ký
-      </TextField>
       <ScrollView showsVerticalScrollIndicator={false}>
+        <Box middle pb={36}>
+          <LoginIcon />
+        </Box>
         <TextInputField
           autoFocus
-          leftLabel='Số điện thoại'
-          // iconLeft={<PhoneIcon width={20} height={20} />}
+          leftLabel='Email'
+          autoCapitalize='none'
           control={control}
-          name='phoneNumber'
-          keyboardType='numeric'
+          name='email'
           showRequiredMark
           required
           rules={{
-            required: 'Vui lòng nhập số điện thoại!',
+            required: 'Vui lòng nhập email!',
             pattern: {
-              value: validationSchema.phoneNumber,
-              message: validationError.phoneNumber,
+              value: validationSchema.email,
+              message: validationError.email,
             },
           }}
         />
         <Spacer height={16} />
         <TextInputField
           leftLabel='Họ tên'
-          // iconLeft={<UserIcon width={20} height={20} />}
           control={control}
-          name='fullName'
+          name='userName'
           showRequiredMark
           required
           rules={{
@@ -81,7 +80,6 @@ export const SignUpScreen: React.FC = () => {
         <Spacer height={16} />
         <TextInputField
           leftLabel='Mật khẩu'
-          // iconLeft={<LockIcon width={20} height={20} />}
           control={control}
           name='password'
           type={ETypeField.PASSWORD}
@@ -100,7 +98,7 @@ export const SignUpScreen: React.FC = () => {
           leftLabel='Xác nhận mật khẩu'
           // iconLeft={<LockIcon width={20} height={20} />}
           control={control}
-          name='confirmPassword'
+          name='enterThePassword'
           type={ETypeField.PASSWORD}
           showRequiredMark
           required
@@ -109,10 +107,10 @@ export const SignUpScreen: React.FC = () => {
             validate: (value) => value === pwd || 'Không khớp mật khẩu',
           }}
         />
-        <Spacer height={32} />
+        <Spacer height={16} />
         <Button
           onPress={handleSubmit(_signUp)}
-          h={52}
+          h={44}
           color={theme.colors.primary}
           centered
           middle
@@ -120,7 +118,7 @@ export const SignUpScreen: React.FC = () => {
           mv={32}
         >
           <TextField size={16} color={theme.colors.white} fontFamily={theme.fonts.medium}>
-            Đăng nhập
+            Đăng ký
           </TextField>
         </Button>
       </ScrollView>

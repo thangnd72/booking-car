@@ -22,8 +22,8 @@ const HeaderBack = () => (
 export const headerOptions: StackNavigationOptions = {
   headerShown: true,
   headerTitleStyle: {
-    fontWeight: '700',
-    fontSize: SIZE.sizeScale(22),
+    fontWeight: '600',
+    fontSize: SIZE.sizeScale(20),
     color: theme.colors.darkOneColor,
     paddingHorizontal: SIZE.scaleW(20),
   },

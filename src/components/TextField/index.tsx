@@ -35,6 +35,8 @@ export interface ITextProps extends TextProps {
   borderRadius?: number;
   numberOfLines?: number;
   transparent?: any;
+  lineHeight?: number;
+  decorationLine?: string;
 }
 
 export const TextField = (props: ITextProps) => {
@@ -71,6 +73,8 @@ export const TextField = (props: ITextProps) => {
     children,
     transparent,
     numberOfLines,
+    lineHeight,
+    decorationLine,
     ...rest
   } = props;
   const styleComponent = [
@@ -91,6 +95,8 @@ export const TextField = (props: ITextProps) => {
     pr && { paddingRight: pr },
     w && { width: w },
     h && { height: h },
+    lineHeight && { lineHeight },
+    decorationLine && { textDecorationLine: decorationLine },
     border && { borderWidth: 1, borderColor: 'gray' },
     borderWidth && { borderWidth },
     borderColor && { borderColor },

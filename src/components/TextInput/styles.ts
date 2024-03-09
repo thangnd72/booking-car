@@ -4,16 +4,18 @@ import theme from '@/helpers/theme';
 
 export const styles = StyleSheet.create({
   container: {
-    height: 52,
-    borderRadius: 5,
+    height: 44,
+    borderRadius: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: theme.colors.lightFourColor,
+    backgroundColor: theme.colors.backgroundColor,
+    borderWidth: 1,
+    borderColor: theme.colors.borderColor,
   },
   textInput: {
     flex: 1,
-    height: 52,
+    height: 44,
     color: theme.colors.darkOneColor,
     fontFamily: theme.fonts.regular,
     fontSize: 15,

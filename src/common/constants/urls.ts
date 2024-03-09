@@ -1,1 +1,1 @@
-export const API_URL = 'http://103.176.179.24';
+export const API_URL = 'https://hoanghai.pro';

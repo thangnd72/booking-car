@@ -36,6 +36,8 @@ const responseErrorHandler = async (err: AxiosError<TErrorData>) => {
   const data = err?.response?.data;
   const message = data?.message;
 
+  console.log('err?.response?.data', err);
+
   if (message && typeof message === 'object' && message.length) {
     throw new ResponseError(message[0], data);
   }
@@ -47,7 +49,10 @@ const responseSuccessHandler = async (response: AxiosResponse) => {
   return response;
 };
 
-axiosInstance.interceptors.request.use(requestHandler, (err: any) => Promise.reject(err));
+axiosInstance.interceptors.request.use(requestHandler, (err: any) => {
+  console.log('REEEE', err);
+  return Promise.reject(err);
+});
 axiosInstance.interceptors.response.use(responseSuccessHandler, responseErrorHandler);
 
 export { axiosInstance as ApiClient };

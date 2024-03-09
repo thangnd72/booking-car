@@ -18,7 +18,10 @@ export type TCommonGetListResponse<T = any> = TPagination & {
 
 export type TFormatResponse = {
   code: number;
-  message: string;
+  success: boolean;
+  errorMessage: string;
+  validateInfo: any;
+  serverTime: string;
 };
 
 export type TCommonGetDataResponse<T = any> = TFormatResponse & {

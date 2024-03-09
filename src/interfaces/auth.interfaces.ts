@@ -1,19 +1,18 @@
 import { EUserRole } from '@/common';
 
 export interface ILoginFormData {
-  username: string;
+  email: string;
   password: string;
+}
+export interface ILoginResponse {
+  token: string;
+  refreshToken: string;
 }
 export interface ISignUpFormData {
-  phoneNumber: string;
-  fullName: string;
+  email: string;
+  userName: string;
   password: string;
-  confirmPassword: string;
-}
-export interface ISignUpResponse {
-  accessToken: string;
-  profile: IUser;
-  refreshToken: string;
+  enterThePassword: string;
 }
 
 export interface IUser {
@@ -42,4 +41,13 @@ export interface IChangePasswordParams {
 export interface IChangeUserParams {
   phoneNumber: string;
   fullName: string;
+}
+
+export interface IForgotPwParams {
+  email: string;
+}
+
+export interface IVerifyOTPParams {
+  email: string;
+  code: string;
 }

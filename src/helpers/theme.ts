@@ -1,8 +1,10 @@
 enum Colors {
-  primary = '#31AA52',
+  primary = '#039D71',
   secondary = '#E83E33',
   textColor = '#181F2D',
   backgroundColor = '#FFFFFF',
+  borderColor = '#CCD1DB',
+  borderCodeColor = '#D8D9DE',
   white = '#FFFFFF',
   transparent = 'transparent',
   black = '#000000',
@@ -12,7 +14,7 @@ enum Colors {
   errorColor = '#E24F2F',
   successColor = '#6ec05e',
   darkOneColor = '#333333',
-  darkTwoColor = '#595F6A',
+  darkTwoColor = '#878A9C',
   darkThreeColor = '#c6c6c6',
   darkFourColor = '#AFB0B8',
   darkFiveColor = '#8A8A8A',
@@ -25,6 +27,7 @@ enum Colors {
   lightSevenColor = '#F4F4F4',
   greenOneColor = '#e0f5e5',
   greenTwoColor = '#93dba3',
+  blueOneColor = '#1c4683',
 }
 
 enum Fonts {

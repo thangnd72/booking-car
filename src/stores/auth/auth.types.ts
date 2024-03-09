@@ -2,7 +2,6 @@ import {
   IChangePasswordParams,
   ILoginFormData,
   ISignUpFormData,
-  ISignUpResponse,
 } from '@/interfaces/auth.interfaces';
 import ResponseError from '@/interfaces/error.interface';
 
@@ -12,7 +11,7 @@ export type TLoginAction = ILoginFormData & {
 };
 
 export type TSignUpAction = ISignUpFormData & {
-  onSuccess?: (response: ISignUpResponse) => void;
+  onSuccess?: (response: boolean) => void;
   onError?: (error: ResponseError) => void;
 };
 

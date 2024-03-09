@@ -41,7 +41,7 @@ export type TUnAuthorizeParamsList = {
   [APP_SCREEN.BOTTOM_TAB]: undefined;
   [APP_SCREEN.FORGOT_PASSWORD]: undefined;
   [APP_SCREEN.CREATE_NEW_PASSWORD]: { email: string; code: string };
-  [APP_SCREEN.VERIFICATION_OTP]: { email: string; type: 'FORGOT' | 'SIGN_UP' };
+  [APP_SCREEN.VERIFICATION_OTP]: { email: string };
 };
 
 export type TAuthorizeParamsList = {
